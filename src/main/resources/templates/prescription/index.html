@@ -25,9 +25,9 @@
     <tbody>
     <tr th:each = "prescription: ${prescriptions}">
         <td th:text = "${prescription.id}">1</td>
-        <td th:text = "${prescription.drug}">Buscofen</td>
         <td th:text = "${prescription.patient.name}">Jane</td>
         <td th:text = "${prescription.patient.surname}">Doe</td>
+        <td th:text = "${prescription.drug}">Ibuprofen</td>
         <td th:text = "${prescription.dosage}">10.0</td>
         <td th:text = "${prescription.dateStart}">11/03/2021</td>
         <td th:text = "${prescription.dateEnd}">11/03/2022</td>

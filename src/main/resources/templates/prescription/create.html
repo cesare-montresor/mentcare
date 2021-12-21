@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Creating new prescription</title>
+</head>
+<body>
+
+<form action="create" method="post">
+
+    <!-- >Patient<!-->
+    <label for="drug_selector">Patient: </label>
+    <select id="patient_selector" name="patient">
+        <option value="patient-id">Jane Doe</option>
+    </select>
+
+    <!-- >Drug<!-->
+    <label for="drug_selector">Drug: </label>
+    <select id="drug_selector" name="drug">
+        <option value="ibuprofen">Ibuprofen</option>
+    </select>
+
+    <!-- >Dosage<!-->
+    <label for="dosage_selector">Dosage: </label>
+    <input id= "dosage_selector" type="text" name="dosage">10.0</input>
+
+    <input type="submit" />
+</form>
+
+<a href="/prescription"> Go back to the list </a>
+
+</body>
+</html>
