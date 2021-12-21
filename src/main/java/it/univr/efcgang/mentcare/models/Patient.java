@@ -19,7 +19,7 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String name;
+    private String name;
 
     //@ManyToOne
     //User mainDoctor;
