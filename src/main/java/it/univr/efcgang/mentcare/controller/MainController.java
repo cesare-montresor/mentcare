@@ -1,7 +1,7 @@
 package it.univr.efcgang.mentcare.controller;
 
-import it.univr.efcgang.mentcare.models.User;
 
+import it.univr.efcgang.mentcare.config.SampleData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -20,9 +20,7 @@ public class MainController {
 
     @GetMapping("/init")
     public String init(){
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword("admin");
+        SampleData.sharedInstance.run();
 
         return "redirect:/";
     }

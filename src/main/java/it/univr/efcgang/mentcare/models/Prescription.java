@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -21,13 +18,23 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //@ManyToOne
-    //Drug drug;
-
-    //@ManyToOne
-    //Patient patient;
+    @ManyToOne
+    Drug drug;
+    @ManyToOne
+    Patient patient;
+    @ManyToOne
+    User doctor;
 
     String dosage;
     Date dateStart;
     Date dateEnd;
+
+    public Prescription(Drug drug, Patient patient, User doctor, String dosage, Date dateStart,  Date dateEnd ){
+        this.drug = drug;
+        this.patient = patient;
+        this.doctor=doctor;
+        this.dosage=dosage;
+        this.dateStart=dateStart;
+        this.dateEnd=dateEnd;
+    }
 }

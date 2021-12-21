@@ -13,9 +13,8 @@ import java.util.List;
 
 @Controller
 public class PatientController {
-    @Autowired
-    private PatientRepository repository;
-    @GetMapping("/patient*")
+
+    @GetMapping("/patient/")
     public String index() {
         return "patient/index";
 

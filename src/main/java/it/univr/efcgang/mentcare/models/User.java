@@ -5,10 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -20,11 +21,23 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id=0l ;
+    private Long id= 0L;
 
-    String username="";
-    String password="";
-    String name="";
-    String role="";
-    Boolean enabled=true;
+    String username;
+    String password;
+    String name;
+    String role;
+
+    @OneToMany
+    Collection<Patient> patients;
+
+    @OneToMany
+    Collection<Prescription> prescriptions;
+
+    public User(String username, String password, String name, String role){
+        this.username=username;
+        this.password=password;
+        this.name=name;
+        this.role=role;
+    }
 }
