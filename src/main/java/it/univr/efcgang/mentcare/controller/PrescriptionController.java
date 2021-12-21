@@ -12,6 +12,11 @@ public class PrescriptionController {
 
         return "prescription/index";
     }
+    @GetMapping("/prescription/create")
+    public String createPrescription() {
+
+        return "prescription/create";
+    }
 
 
 }
