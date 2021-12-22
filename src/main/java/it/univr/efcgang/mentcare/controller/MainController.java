@@ -1,7 +1,6 @@
 package it.univr.efcgang.mentcare.controller;
 
 
-import it.univr.efcgang.mentcare.config.SampleData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -16,13 +15,6 @@ public class MainController {
     @GetMapping("/login")
     public String getLogin() {
         return "login";
-    }
-
-    @GetMapping("/init")
-    public String init(){
-        SampleData.sharedInstance.run();
-
-        return "redirect:/";
     }
 
 

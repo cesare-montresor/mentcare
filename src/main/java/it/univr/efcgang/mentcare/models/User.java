@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @NoArgsConstructor
-@AllArgsConstructor
+
 @Getter
 @Setter
 @Entity
@@ -28,11 +28,12 @@ public class User {
     String name;
     String role;
 
-    @OneToMany
+    @OneToMany(mappedBy = "mainDoctor", orphanRemoval = true, cascade = CascadeType.ALL)
     Collection<Patient> patients;
 
-    @OneToMany
+    @OneToMany(mappedBy = "doctor", orphanRemoval = true, cascade = CascadeType.ALL)
     Collection<Prescription> prescriptions;
+
 
     public User(String username, String password, String name, String role){
         this.username=username;

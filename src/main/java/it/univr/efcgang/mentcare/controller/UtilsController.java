@@ -1,4 +1,4 @@
-package it.univr.efcgang.mentcare.config;
+package it.univr.efcgang.mentcare.controller;
 
 import it.univr.efcgang.mentcare.models.Drug;
 import it.univr.efcgang.mentcare.models.Patient;
@@ -9,31 +9,38 @@ import it.univr.efcgang.mentcare.repository.DrugRepository;
 import it.univr.efcgang.mentcare.repository.PatientRepository;
 import it.univr.efcgang.mentcare.repository.PrescriptionRepository;
 import it.univr.efcgang.mentcare.repository.UserRepository;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Calendar;
 import java.util.Date;
 
-@Setter
-@Getter
-public class SampleData {
 
-    public static final SampleData sharedInstance = new SampleData();
-
-    @Autowired DrugRepository drugRepository;
-    @Autowired PatientRepository patientRepository;
-    @Autowired PrescriptionRepository prescriptionRepository;
-    @Autowired UserRepository userRepository;
+@Controller
+public class UtilsController {
 
 
-    public boolean run(){
-        // ------------ Drug
+    @Autowired
+    DrugRepository drugRepository;
+    @Autowired
+    PatientRepository patientRepository;
+    @Autowired
+    PrescriptionRepository prescriptionRepository;
+    @Autowired
+    UserRepository userRepository;
+
+    @GetMapping("/utils")
+    public String index() {
+        return "utils/index";
+    }
+
+    @GetMapping("/utils/initDatabase")
+    public String initDatabase(Model model){
         Drug drug1 = new Drug("drug A");
         drugRepository.save(drug1);
+        drug1 = drugRepository.findById(drug1.getId()).get();
 
         // ------------ User
         User admin = new User("admin","admin","admin","ADMIN");
@@ -70,7 +77,11 @@ public class SampleData {
         Prescription presc1 = new Prescription(drug1, patient2, docMaria, "3 dia", today, nextMonth);
         prescriptionRepository.save(presc1);
 
+        model.addAttribute("num_drugs", 1);
+        model.addAttribute("num_users", 3);
+        model.addAttribute("num_patients", 2);
+        model.addAttribute("num_prescriptions", 1);
 
-        return true;
+        return "utils/initDatabase";
     }
 }

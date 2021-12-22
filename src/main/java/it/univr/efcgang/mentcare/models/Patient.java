@@ -7,9 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Collection;
-
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -19,10 +17,10 @@ public class Patient {
     private Long id;
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     User mainDoctor;
 
-    @OneToMany
+    @OneToMany(mappedBy = "patient", orphanRemoval = true, cascade = CascadeType.ALL)
     Collection<Prescription> prescriptions;
 
     public Patient(String name, User mainDoctor){

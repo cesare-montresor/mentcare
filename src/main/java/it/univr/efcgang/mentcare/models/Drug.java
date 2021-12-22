@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -21,7 +20,7 @@ public class Drug {
     private Long id;
     String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "drug", orphanRemoval = true, cascade = CascadeType.ALL)
     Collection<Prescription> prescriptions;
 
 

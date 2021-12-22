@@ -7,9 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -18,11 +16,11 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Drug drug;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Patient patient;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     User doctor;
 
     String dosage;
