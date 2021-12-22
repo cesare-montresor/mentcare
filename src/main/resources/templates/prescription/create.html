@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Creating new prescription</title>
+</head>
+<body>
+
+<form action="create" method="post">
+
+    <!-- >Patient<!-->
+    <label for="drug_selector">Patient: </label>
+    <select id="patient_selector" name="patient_id">
+        <option value="1">Jane Doe</option>
+    </select>
+    </br>
+
+    <!-- >Drug-->
+    <label for="drug_selector">Drug: </label>
+    <select id="drug_selector" name="drug_id">
+        <option value="1">Ibuprofen 500mg</option>
+    </select>
+    </br>
+
+    <!-- >Dosage-->
+    <label for="dosage_selector">Dosage: </label>
+    <input id= "dosage_selector" type="text" name="dosage" value="10"/>
+    </br>
+
+
+    <!-- Dates-->
+    <label for="datestart-selector">Start date:</label>
+    <input type="date" id="datestart-selector" name="dateStart"
+           value="2018-07-22"
+           min="2018-01-01" max="2018-12-31">
+    </br>
+    <label for="dateend-selector">End date:</label>
+    <input type="date" id="dateend-selector" name="dateEnd"
+           value="2018-07-22"
+           min="2018-01-01" max="2018-12-31">
+    </br>
+    <input type="submit"/>
+</form>
+
+<a href="/prescription"> Go back to the list </a>
+
+</body>
+</html>
