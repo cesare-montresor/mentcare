@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="menu"></div>
+
+Report:
+<ul>
+    <li th:text="|Drugs: ${num_drugs}|">Drugs: 0</li>
+    <li th:text="|Users: ${num_users}|">>Users: 0</li>
+    <li th:text="|Patients: ${num_patients}|">>Patients: 0</li>
+    <li th:text="|Prescription: ${num_prescriptions}|">>Prescription: 0</li>
+
+</ul>
+</body>
+</html>

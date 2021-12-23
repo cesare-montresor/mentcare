@@ -19,7 +19,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="patient: ${people}">
+    <tr th:each="patient: ${patients}">
         <td th:text="${patient.id}"> <b>10 </b></td>
         <td th:text="${patient.name}"> John </td>
         <td> <a href="edit?id=10" th:href="@{edit(id=${patient.id})}"> edit </a></td>

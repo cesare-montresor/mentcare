@@ -10,4 +10,5 @@ public class MentcareApplication {
 		SpringApplication.run(MentcareApplication.class, args);
 	}
 
+
 }
