@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,27 +44,20 @@ public class PrescriptionController {
 
     @RequestMapping("prescription/create")
     public String create(Model model){
-
-        // I need to send info about available patients and drugs to the model.
-
-        // Patients:
-        List<Patient> data = new LinkedList<>();
-        for (Patient p: patientRepository.findAll()){
-            data.add(p);
-        }
-        model.addAttribute("patients",data);
-
-        // Drugs:
-        List<Drug> data_d = new LinkedList<>();
-        for (Drug d: drugRepository.findAll()){
-            data_d.add(d);
-        }
-
-        model.addAttribute("drugs",data_d);
-
-
+        sendPatientsToModel(model);
+        sendDrugsToModel(model);
         return "prescription/create";
     }
+
+    @RequestMapping("prescription/edit")
+    public String edit(@RequestParam(name="id", required=true) long id, Model model){
+        sendPatientsToModel(model);
+        sendDrugsToModel(model);
+        Prescription prescription = prescriptionRepository.findById(id);
+        model.addAttribute("prescription",prescription);
+        return "prescription/edit";
+    }
+
     @RequestMapping("prescription/save")
     public String save(@RequestParam(name="patient_id", required=true) long patient_id,
                        @RequestParam(name="drug_id", required=true) long drug_id,
@@ -75,7 +67,6 @@ public class PrescriptionController {
                        @RequestParam(name="dateEnd",required=true)
                            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateEnd){
 
-        // TODO: will save in the repository once we have one
         // TODO: check that end date is bigger than start date
 
         // Find patient and drug
@@ -93,7 +84,7 @@ public class PrescriptionController {
         return "redirect:/prescription";
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping("prescription/delete")
     public String delete(
             @RequestParam(name="id", required=true) Long id) {
 
@@ -105,5 +96,21 @@ public class PrescriptionController {
         }
 
         return "notfound";
+    }
+
+    private void sendPatientsToModel(Model model){
+        List<Patient> data = new LinkedList<>();
+        for (Patient p: patientRepository.findAll()){
+            data.add(p);
+        }
+        model.addAttribute("patients",data);
+    }
+
+    private void sendDrugsToModel(Model model){
+        List<Drug> data_d = new LinkedList<>();
+        for (Drug d: drugRepository.findAll()){
+            data_d.add(d);
+        }
+        model.addAttribute("drugs",data_d);
     }
 }
