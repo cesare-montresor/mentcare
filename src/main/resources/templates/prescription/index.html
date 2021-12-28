@@ -13,10 +13,9 @@
 <table>
     <thead>
     <tr>
-        <th>Id</th>
+        <th>Prescription code</th>
+        <th>Patient</th>
         <th>Drug name</th>
-        <th>Patient name</th>
-        <th>Patient surname</th>
         <th>Dosage</th>
         <th>Date start</th>
         <th>Date end</th>
@@ -25,15 +24,13 @@
     <tbody>
     <tr th:each = "prescription: ${prescriptions}">
         <td th:text = "${prescription.id}">1</td>
-        <td th:text = "${prescription.patient.name}">Jane</td>
-        <td th:text = "${prescription.patient.surname}">Doe</td>
-        <td th:text = "${prescription.drug}">Ibuprofen</td>
+        <td th:text = "${prescription.patient.name}">Jane Doe</td>
+        <td th:text = "${prescription.drug.name}">Ibuprofen</td>
         <td th:text = "${prescription.dosage}">10.0</td>
-        <td th:text = "${prescription.dateStart}">11/03/2021</td>
-        <td th:text = "${prescription.dateEnd}">11/03/2022</td>
-        <td> <a href="showPrescription?id=1" th:href="@{show(id=${prescription.id})}"> show </a></td>
-        <td> <a href="editPrescription?id=1" th:href="@{edit(id=${prescription.id})}"> edit </a></td>
-        <td> <a href="deletePrescription?id=1" th:href="@{delete(id=${prescription.id})}"> delete </a></td>
+        <td th:text = "${#dates.format(prescription.dateStart, 'dd-MM-yyyy')}">11/03/2021</td>
+        <td th:text = "${#dates.format(prescription.dateEnd, 'dd-MM-yyyy')}">11/03/2022</td>
+        <td> <a href="editPrescription?id=1" th:href="@{prescription/edit(id=${prescription.id})}"> edit </a></td>
+        <td> <a href="deletePrescription?id=1" th:href="@{prescription/delete(id=${prescription.id})}"> delete </a></td>
     </tr>
     </tbody>
 </table>
