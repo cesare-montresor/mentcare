@@ -1,11 +1,37 @@
-<!DOCTYPE html>
+
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>patient</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+
 <body>
+<h1>Patients list</h1>
+
 <div th:insert="menu"></div>
-patient list
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Doctor</th>
+        <th>edit</th>
+        <th>delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="patient: ${patients}">
+        <td th:text="${patient.id}"> <b>10 </b></td>
+        <td th:text="${patient.name}"> Matthew </td>
+        <td th:text="${patient.mainDoctor.id}"> John Watson</td>
+        <td> <a href="edit?id=10" th:href="@{edit(id=${patient.id})}"> edit </a></td>
+        <td> <a href="delete?id=10" th:href="@{delete(id=${patient.id})}"> delete </a></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="create"> Add new patient </a>
+
 </body>
 </html>
