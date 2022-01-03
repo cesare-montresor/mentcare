@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PrescriptionEmptyPO extends PageObject{
+public class PrescriptionListEmptyPO extends PageObject{
 
+    // TODO there is duplicate code between this and PrescriptionListPO
     @FindBy(tagName = "h1")
     private WebElement message;
 
@@ -16,13 +17,13 @@ public class PrescriptionEmptyPO extends PageObject{
     @FindBy(id = "createPrescription")
     WebElement createPrescriptionLink;
 
-    public PrescriptionEmptyPO(WebDriver driver) {
+    public PrescriptionListEmptyPO(WebDriver driver) {
         super(driver);
     }
 
-    public CreatePrescriptionPO clickNewPrescription(){
+    public PrescriptionCreatePO clickNewPrescription(){
         createPrescriptionLink.click();
-        return new CreatePrescriptionPO(driver);
+        return new PrescriptionCreatePO(driver);
     }
 
     public String getTitle(){
