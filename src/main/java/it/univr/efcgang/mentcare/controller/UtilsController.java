@@ -44,7 +44,7 @@ public class UtilsController {
 
         // ------------ User
         User admin = new User("admin","admin","admin","ADMIN");
-        User docMaria = new User("maria","maria","mario","DOCTOR");
+        User docMaria = new User("maria","maria","maria","DOCTOR");
         User docLuigi = new User("luigi","luigi","luigi","DOCTOR");
         userRepository.save(admin);
         userRepository.save(docMaria);

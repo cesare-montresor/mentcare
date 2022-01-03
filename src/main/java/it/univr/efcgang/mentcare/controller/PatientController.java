@@ -47,7 +47,7 @@ public class PatientController {
             @RequestParam(name="doctor_id", required = true) long doctor_id,
             Model model) {
 
-        sendUsersToModel(model);
+
         repository.save(new Patient(name,userRepository.findById(doctor_id)));
         return "redirect:/patient";
     }
@@ -60,10 +60,8 @@ public class PatientController {
         //TODO: check if the result is found
         //TODO: put data in the model field to be displayed in the next page to edit them
         if(result.isPresent()) {
-            sendPrescriptionsToModel(model, result.get());
             sendUsersToModel(model);
-
-            model.addAttribute("patient", result);//serve nell'update
+            model.addAttribute("patient", result.get());//serve nell'update
             return "patient/edit";
         }
 
@@ -112,18 +110,14 @@ public class PatientController {
 
     private void sendUsersToModel(Model model) {
         List<User> doctors = new LinkedList<>();
-        for(User u: userRepository.findByRole("doctor"))
+        for (User u : userRepository.findByRole("DOCTOR")){
             doctors.add(u);
+            System.out.println("Id:"+ u.getId() + "Name: "+ u.getName());
+        }
         model.addAttribute("doctors", doctors);
 
     }
-    private void sendPrescriptionsToModel(Model model, Patient patient) {
-        List<Prescription> prescriptions = new LinkedList<>();
-        for(Prescription p: prescriptionRepository.findByPatient(patient))
-            prescriptions.add(p);
-        model.addAttribute("prescriptions", prescriptions);
 
-    }
 
 
 }
