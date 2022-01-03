@@ -1,10 +1,7 @@
 package it.univr.efcgang.mentcare;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -22,18 +19,20 @@ public class BaseTest {
     }
 
     public String baseUrl = "http://localhost:8080/";
-    public static BrowserDriver selectedBrowser = BrowserDriver.Firefox;
+    public static BrowserDriver selectedBrowser = BrowserDriver.Chrome;
     public static Boolean headless = false;
     public static Boolean autoclose = false;
 
     protected static WebDriver driver;
 
+    /*
     @Test
     public void SystemOnline() {
         driver.get(baseUrl);
     }
+     */
 
-
+    //@BeforeEach
     @BeforeAll
     public static void setUp() {
         if (driver != null) return;
@@ -54,7 +53,7 @@ public class BaseTest {
             driver = new FirefoxDriver(firefox_options);
         }
     }
-
+    //@BeforeEach
     @AfterAll
     public static void tearDown() {
         if (driver != null && ( autoclose || headless ) ) {
