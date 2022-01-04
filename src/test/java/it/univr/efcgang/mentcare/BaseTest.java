@@ -52,6 +52,7 @@ public class BaseTest {
             firefox_options.setHeadless(headless);
             driver = new FirefoxDriver(firefox_options);
         }
+
     }
     //@BeforeEach
     @AfterAll
