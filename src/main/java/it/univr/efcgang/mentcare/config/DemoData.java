@@ -9,8 +9,6 @@ import it.univr.efcgang.mentcare.repository.PatientRepository;
 import it.univr.efcgang.mentcare.repository.PrescriptionRepository;
 import it.univr.efcgang.mentcare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
@@ -29,21 +27,24 @@ public class DemoData {
     UserRepository userRepository;
 
     @Autowired
-    UserAuthDetailsService userAuthDetailsService;
+    AuthService authService;
 
 
 
     public boolean addDemoData() {
         System.out.println("Adding Demo Data");
 
+        // ------------ User
+        User guest = authService.UserAdd("guest", "guest", "guest", "GUEST");
+        User admin = authService.UserAdd("admin", "admin", "admin", "ADMIN");
+        User docMaria = authService.UserAdd("maria", "maria", "maria", "DOCTOR");
+        User docLuigi = authService.UserAdd("luigi", "luigi", "luigi", "DOCTOR");
+        User offUgo = authService.UserAdd("ugo", "ugo", "ugo", "OFFICE");
+
+
+        // ------------ Drug
         Drug drug1 = new Drug("drug A");
         drugRepository.save(drug1);
-        drug1 = drugRepository.findById(drug1.getId()).get();
-
-        // ------------ User
-        User admin = userAuthDetailsService.UserAdd("admin", "admin", "admin", "ADMIN");
-        User docMaria = userAuthDetailsService.UserAdd("maria", "maria", "maria", "DOCTOR");
-        User docLuigi = userAuthDetailsService.UserAdd("luigi", "luigi", "luigi", "DOCTOR");
 
         // ------------ Patient
         Patient patient1 = new Patient("Giovanni Rossi", docMaria);

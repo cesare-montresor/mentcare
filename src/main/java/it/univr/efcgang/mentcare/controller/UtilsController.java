@@ -1,28 +1,15 @@
 package it.univr.efcgang.mentcare.controller;
 
-import it.univr.efcgang.mentcare.config.DemoData;
-import it.univr.efcgang.mentcare.config.SecurityConfiguration;
-import it.univr.efcgang.mentcare.config.UserAuthDetailsService;
-import it.univr.efcgang.mentcare.models.Drug;
-import it.univr.efcgang.mentcare.models.Patient;
-import it.univr.efcgang.mentcare.models.Prescription;
-import it.univr.efcgang.mentcare.models.User;
+import it.univr.efcgang.mentcare.config.AuthService;
 
 import it.univr.efcgang.mentcare.repository.DrugRepository;
 import it.univr.efcgang.mentcare.repository.PatientRepository;
 import it.univr.efcgang.mentcare.repository.PrescriptionRepository;
 import it.univr.efcgang.mentcare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.Calendar;
-import java.util.Date;
 
 @Controller
 public class UtilsController {
@@ -37,7 +24,7 @@ public class UtilsController {
     UserRepository userRepository;
 
     @Autowired
-    UserAuthDetailsService userAuthDetailsService;
+    AuthService authService;
 
     @GetMapping("/utils")
     public String index() {
