@@ -110,7 +110,7 @@ public class PatientController {
 
     private void sendUsersToModel(Model model) {
         List<User> doctors = new LinkedList<>();
-        for (User u : userRepository.findByRole("DOCTOR")){
+        for (User u : userRepository.findByRolesContains("DOCTOR")){
             doctors.add(u);
             System.out.println("Id:"+ u.getId() + "Name: "+ u.getName());
         }
