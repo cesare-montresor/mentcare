@@ -27,7 +27,7 @@ public class EventHandler {
         System.out.println("System: OnReady");
         demoData.addDemoData();
 
-        //browserLogin("maria","maria");
+        browserLogin("maria","maria");
     }
 
     public void browserLogin(String  user, String pass){

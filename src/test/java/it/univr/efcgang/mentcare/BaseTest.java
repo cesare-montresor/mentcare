@@ -35,7 +35,9 @@ public class BaseTest {
 
     @BeforeAll
     public static void open() {
-        browser = new BrowserDriver(kind, headless);
+        if (browser == null) {
+            browser = new BrowserDriver(kind, headless);
+        }
         browser.open();
         driver = browser.driver;
     }
