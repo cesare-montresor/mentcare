@@ -27,15 +27,16 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
-	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
-
-
 	//Testing suite
+	implementation "io.github.bonigarcia:webdrivermanager:3.8.1"
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
 	testImplementation 'junit:junit:4.12'
-	testImplementation "io.github.bonigarcia:webdrivermanager:3.8.1"
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+
 
 	// Utils
 	compileOnly 'org.projectlombok:lombok'

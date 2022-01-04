@@ -1,6 +1,9 @@
 package it.univr.efcgang.mentcare.config;
 
 import it.univr.efcgang.mentcare.repository.UserRepository;
+import it.univr.efcgang.mentcare.utils.BrowserDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -24,26 +27,25 @@ public class EventHandler {
         System.out.println("System: OnReady");
         demoData.addDemoData();
 
-        //TODO: remove me
-        openBrowser("http://localhost:8080/");
+        //browserLogin("maria","maria");
     }
 
-    public static void openBrowser(String url) {
-        if(Desktop.isDesktopSupported()){
-            Desktop desktop = Desktop.getDesktop();
-            try {
-                desktop.browse(new URI(url));
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-        }else{
-            Runtime runtime = Runtime.getRuntime();
-            try {
-                runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public void browserLogin(String  user, String pass){
+        BrowserDriver browser = BrowserDriver.sharedInstance;
+        browser.open();
+        browser.driver.get("http://localhost:8080/login");
+
+        WebElement username = browser.driver.findElement(By.xpath( "//form//input[@name='username']" ));
+        WebElement password = browser.driver.findElement(By.xpath( "//form//input[@name='password']" ));
+        WebElement submit = browser.driver.findElement(By.xpath( "//form//input[@type='submit']" ));
+
+        username.clear();
+        username.sendKeys(user);
+
+        password.clear();
+        password.sendKeys(pass);
+
+        password.submit();
     }
 
 }

@@ -1,66 +1,87 @@
 package it.univr.efcgang.mentcare;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import it.univr.efcgang.mentcare.utils.BrowserDriver;
+import it.univr.efcgang.mentcare.utils.BrowserDriver.BrowserKind;
 import org.junit.jupiter.api.*;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.concurrent.TimeUnit;
+
 
 //@SpringBootTest: run spring boot before stating the tests
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class BaseTest {
 
-    public enum BrowserDriver {
-        Chrome,
-        Firefox
-    }
+    public String baseUrl = "http://localhost:8080";
 
-    public String baseUrl = "http://localhost:8080/";
-    public static BrowserDriver selectedBrowser = BrowserDriver.Chrome;
-    public static Boolean headless = false;
-    public static Boolean autoclose = false;
+    public static BrowserKind kind = BrowserKind.Firefox;
+    public static boolean headless = false;
+    public static boolean autoclose = false;
 
+    protected static BrowserDriver browser;
     protected static WebDriver driver;
 
-
-    @Test
-    public void SystemOnline() {
-        driver.get(baseUrl);
-    }
-
-
-    //@BeforeEach
     @BeforeAll
-    public static void setUp() {
-        if (driver != null) return;
-
-
-        if (selectedBrowser == BrowserDriver.Chrome) {
-            WebDriverManager.chromedriver().setup();
-
-            ChromeOptions chrome_options = new ChromeOptions();
-            chrome_options.setHeadless(headless);
-            driver = new ChromeDriver(chrome_options);
-        }
-        if (selectedBrowser == BrowserDriver.Firefox) {
-            WebDriverManager.firefoxdriver().setup();
-
-            FirefoxOptions firefox_options = new FirefoxOptions();
-            firefox_options.setHeadless(headless);
-            driver = new FirefoxDriver(firefox_options);
-        }
-
+    public static void open() {
+        browser = new BrowserDriver(kind, headless);
+        browser.open();
+        driver = browser.driver;
     }
-    //@BeforeEach
     @AfterAll
-    public static void tearDown() {
-        if (driver != null && ( autoclose || headless ) ) {
-            driver.quit();
+    public static void close() {
+        if ( headless || autoclose ) {
+            browser.close();
         }
     }
+
+    //@BeforeEach
+    //@AfterEach
+    public static void clear() {
+        browser.clear();
+    }
+
+
+    public String url(String path){
+        return baseUrl + path;
+    }
+
+    public boolean browserLogin(String  user, String pass){
+        browser.open();
+        driver = browser.driver;
+        driver.get(url("/login"));
+
+        WebElement username = browser.driver.findElement(By.xpath( "//form//input[@name='username']" ));
+        WebElement password = browser.driver.findElement(By.xpath( "//form//input[@name='password']" ));
+        WebElement submit = browser.driver.findElement(By.xpath( "//form//input[@type='submit']" ));
+
+        username.clear();
+        username.sendKeys(user);
+
+        password.clear();
+        password.sendKeys(pass);
+
+        submit.click();
+        return true;
+    }
+
+    public boolean logout(){
+        driver.get(url("/logout"));
+        return true;
+    }
+
+
 
 }
 

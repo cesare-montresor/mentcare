@@ -56,7 +56,7 @@ public class AuthService implements UserDetailsService {
     }
 
 
-    public User UserAuth() {
+    public User UserGet() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (! (auth.getPrincipal() instanceof UserAuthDetails )){ return null; } // auth.getPrincipal() returns an empty string when not authenticated
         UserAuthDetails details = (UserAuthDetails) auth.getPrincipal();

@@ -22,25 +22,17 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class MainController implements ErrorController {
-
-    private final String fakeUser = "maria"; // null | "admin" | "maria" | ...
-
     @Autowired
     AuthService authService;
 
     @GetMapping("/")
     public String getIndex() {
-        //TODO: remove this, it's autologin for manual testing purposes only
-        User userAuth = authService.UserAuth();
-        if (userAuth==null && fakeUser != null) {
-            authService.UserSet(fakeUser);
-        }
         return "index";
     }
 
     @GetMapping("/login")
     public String getLogin() {
-        User userAuth = authService.UserAuth();
+        User userAuth = authService.UserGet();
         if (userAuth==null){
             return "login";
         }
@@ -49,7 +41,7 @@ public class MainController implements ErrorController {
 
     @GetMapping("/profile")
     public String getProfile(Model model) {
-        User authUser = authService.UserAuth();
+        User authUser = authService.UserGet();
         model.addAttribute("user",authUser);
         return "profile";
     }

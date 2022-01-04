@@ -1,6 +1,7 @@
 package it.univr.efcgang.mentcare;
 
 import it.univr.efcgang.mentcare.po.MenuPO;
+import it.univr.efcgang.mentcare.po.PrescriptionListEmptyPO;
 import it.univr.efcgang.mentcare.po.PrescriptionListPO;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Dimension;
@@ -9,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class PrescriptionControllerTest extends BaseTest{
+
+
 
     @Test
     public void tableIsInitState(){
@@ -42,9 +45,25 @@ class PrescriptionControllerTest extends BaseTest{
         */
     }
 
+
+    /*
     @Test
-    public void SystemOnline() {
+    public void testPrescriptionTableIsEmptyOnStartup(){
+        // TODO: se i test sono eseguiti insieme la tabella non inizia vuota
         driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(300,300));
+
+        MenuPO menuPage = new MenuPO(driver);
+
+        // Go to prescription page
+        PrescriptionListEmptyPO prescriptionEmptyPage = menuPage.goToPrescriptionPageEmpty();
+
+        // Check I'm in correct page
+        assertEquals("Prescription list",prescriptionEmptyPage.getTitle());
+
+        // Check table is empty
+        assertEquals(0,prescriptionEmptyPage.getRowsNumber());
+
     }
+    */
+
 }
