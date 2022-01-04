@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration
+
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -29,22 +29,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             // Public
             .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/error").permitAll()
+                .regexMatchers("/").permitAll()
+                .regexMatchers("/error").permitAll()
+                .regexMatchers("/menu").permitAll()
 
             // Doctors & Office
             .and().authorizeRequests()
-                .antMatchers("/drug").hasAnyAuthority("ADMIN", "DOCTOR", "OFFICE")
-                .antMatchers("/patient").hasAnyAuthority("ADMIN", "DOCTOR", "OFFICE")
-                .antMatchers("/prescription").hasAnyAuthority("ADMIN", "DOCTOR")
+                .regexMatchers("/drug.*").hasAnyAuthority("DOCTOR", "OFFICE")
+                .regexMatchers("/patient.*").hasAnyAuthority("DOCTOR", "OFFICE")
+                .regexMatchers("/prescription.*").hasAnyAuthority( "DOCTOR")
 
             // Admin
             .and().authorizeRequests()
-                .antMatchers("/user").hasAuthority("ADMIN")
-                .antMatchers("/utils").hasAuthority("ADMIN")
+                .regexMatchers("/user.*").hasAuthority("ADMIN")
+                .regexMatchers("/utils.*").hasAuthority("ADMIN")
 
-            // Any other request, other than public, require authentication
+            // Guest
             .and().authorizeRequests()
+                .regexMatchers("/profile.*").authenticated()
                 .anyRequest().authenticated()
 
             // Login
@@ -54,15 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             // Logut
             .and().logout()
                 .logoutUrl("/logout")
-                .deleteCookies("remove")
-                .invalidateHttpSession(true)
-                .logoutSuccessUrl("/")
-                .permitAll()
-;
-            // Errors
-            //.and().exceptionHandling()
-            //    .accessDeniedPage("/error");
-        ;
+                .permitAll();
     }
 
     @Bean

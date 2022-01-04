@@ -63,9 +63,10 @@ public class PrescriptionController {
                        @RequestParam(name="drug_id", required=true) long drug_id,
                        @RequestParam(name="dosage",required = true) String dosage,
                        @RequestParam(name="dateStart",required=true)
-                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateStart,
+                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateStart,
                        @RequestParam(name="dateEnd",required=true)
-                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateEnd){
+                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateEnd
+        ){
 
         // TODO: check that end date is bigger than start date
 

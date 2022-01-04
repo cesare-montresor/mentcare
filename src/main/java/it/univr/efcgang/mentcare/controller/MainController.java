@@ -1,6 +1,9 @@
 package it.univr.efcgang.mentcare.controller;
 
 
+import it.univr.efcgang.mentcare.config.AuthService;
+import it.univr.efcgang.mentcare.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -20,14 +23,35 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class MainController implements ErrorController {
 
+    private final String fakeUser = "maria"; // null | "admin" | "maria" | ...
+
+    @Autowired
+    AuthService authService;
+
     @GetMapping("/")
-    public String index() {
+    public String getIndex() {
+        //TODO: remove this, it's autologin for manual testing purposes only
+        User userAuth = authService.UserAuth();
+        if (userAuth==null && fakeUser != null) {
+            authService.UserSet(fakeUser);
+        }
         return "index";
     }
 
     @GetMapping("/login")
     public String getLogin() {
-        return "login";
+        User userAuth = authService.UserAuth();
+        if (userAuth==null){
+            return "login";
+        }
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/profile")
+    public String getProfile(Model model) {
+        User authUser = authService.UserAuth();
+        model.addAttribute("user",authUser);
+        return "profile";
     }
 
     @GetMapping("/logout")
@@ -36,7 +60,7 @@ public class MainController implements ErrorController {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
+        return "redirect:/login"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
     @RequestMapping("/error")
@@ -54,7 +78,7 @@ public class MainController implements ErrorController {
             error_message += ":Access forbidden.\nYou need higher powers to access this resource.\nThis incident will be reported.";
         }
         else if(statusCode == HttpStatus.NOT_FOUND.value()) {
-            error_message = ": Access forbidden.\nThe resource you are looking for has never existed.";
+            error_message = ": Not found.\nThe resource you are looking for has never existed.";
         }
         else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
             error_message = ": Access forbidden.\nServer is on fire.";

@@ -4,7 +4,6 @@ import it.univr.efcgang.mentcare.models.User;
 import it.univr.efcgang.mentcare.models.UserAuthDetails;
 import it.univr.efcgang.mentcare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,15 +11,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 @Service
-public class UserAuthDetailsService implements UserDetailsService {
+public class AuthService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -71,10 +67,14 @@ public class UserAuthDetailsService implements UserDetailsService {
         return user.get();
     }
 
-    public void UserSet(User user){
+    public User UserSet(String username){
+        Optional<User> userSearch = userRepository.findByUsername(username);
+        if ( userSearch.isEmpty() ) {return null;}
+        User user = userSearch.get();
         UserAuthDetails userAuth = new UserAuthDetails(user);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userAuth, null, userAuth.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        return user;
     }
 
 }

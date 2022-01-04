@@ -25,12 +25,12 @@ public class BaseTest {
 
     protected static WebDriver driver;
 
-    /*
+
     @Test
     public void SystemOnline() {
         driver.get(baseUrl);
     }
-     */
+
 
     //@BeforeEach
     @BeforeAll
