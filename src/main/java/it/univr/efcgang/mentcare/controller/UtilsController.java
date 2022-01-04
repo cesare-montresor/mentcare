@@ -1,5 +1,8 @@
 package it.univr.efcgang.mentcare.controller;
 
+import it.univr.efcgang.mentcare.config.DemoData;
+import it.univr.efcgang.mentcare.config.SecurityConfiguration;
+import it.univr.efcgang.mentcare.config.UserAuthDetailsService;
 import it.univr.efcgang.mentcare.models.Drug;
 import it.univr.efcgang.mentcare.models.Patient;
 import it.univr.efcgang.mentcare.models.Prescription;
@@ -10,6 +13,10 @@ import it.univr.efcgang.mentcare.repository.PatientRepository;
 import it.univr.efcgang.mentcare.repository.PrescriptionRepository;
 import it.univr.efcgang.mentcare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +24,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Calendar;
 import java.util.Date;
 
-
 @Controller
 public class UtilsController {
-
 
     @Autowired
     DrugRepository drugRepository;
@@ -31,57 +36,28 @@ public class UtilsController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserAuthDetailsService userAuthDetailsService;
+
     @GetMapping("/utils")
     public String index() {
         return "utils/index";
     }
 
-    @GetMapping("/utils/initDatabase")
+
+    @GetMapping("/utils/statsDatabase")
     public String initDatabase(Model model){
-        Drug drug1 = new Drug("drug A");
-        drugRepository.save(drug1);
-        drug1 = drugRepository.findById(drug1.getId()).get();
+        long num_drugs = drugRepository.count();
+        long num_users = userRepository.count();
+        long num_patients = patientRepository.count();
+        long num_prescriptions = prescriptionRepository.count();
 
-        // ------------ User
-        User admin = new User("admin","admin","admin","ADMIN");
-        User docMaria = new User("maria","maria","maria","DOCTOR");
-        User docLuigi = new User("luigi","luigi","luigi","DOCTOR");
-        userRepository.save(admin);
-        userRepository.save(docMaria);
-        userRepository.save(docLuigi);
+        model.addAttribute("num_drugs", num_drugs);
+        model.addAttribute("num_users", num_users);
+        model.addAttribute("num_patients", num_patients);
+        model.addAttribute("num_prescriptions", num_prescriptions);
 
-        // ------------ Patient
-        Patient patient1 = new Patient("Giovanni Rossi", docMaria);
-        Patient patient2 = new Patient("Andrea Andrei", docLuigi);
-        patientRepository.save(patient1);
-        patientRepository.save(patient2);
-
-        // ------------ Prescription
-        Calendar cal = Calendar.getInstance();
-        Date today = new Date();
-        Date tomorrow, nextWeek, nextMonth;
-
-        cal.setTime(today);
-        cal.add(Calendar.DATE, 1); // 10 is the days you want to add or subtract
-        tomorrow = cal.getTime();
-
-        cal.setTime(today);
-        cal.add(Calendar.WEEK_OF_YEAR, 1);
-        nextWeek = cal.getTime();
-
-        cal.setTime(today);
-        cal.add(Calendar.MONTH, 1);
-        nextMonth = cal.getTime();
-
-        Date yesterday = cal.getTime();
-        Prescription presc1 = new Prescription(drug1, patient2, docMaria, "3 dia", today, nextMonth);
-        prescriptionRepository.save(presc1);
-
-        model.addAttribute("num_drugs", 1);
-        model.addAttribute("num_users", 3);
-        model.addAttribute("num_patients", 2);
-        model.addAttribute("num_prescriptions", 1);
-
-        return "utils/initDatabase";
+        return "utils/statsDatabase";
     }
+
 }

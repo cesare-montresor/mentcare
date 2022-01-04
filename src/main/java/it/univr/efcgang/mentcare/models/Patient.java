@@ -17,7 +17,7 @@ public class Patient {
     private Long id;
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     User mainDoctor;
 
     @OneToMany(mappedBy = "patient", orphanRemoval = true, cascade = CascadeType.ALL)

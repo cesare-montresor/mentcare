@@ -14,11 +14,22 @@ repositories {
 
 
 dependencies {
+
+	// App: springboot, jpa, h2, thymeleaf
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'junit:junit:4.12'
+    implementation 'org.jetbrains:annotations:20.1.0'
+    runtimeOnly 'com.h2database:h2'
 
+	// Plugins: security/login
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+
+
+	//Testing suite
+	testImplementation 'junit:junit:4.12'
 	testImplementation "io.github.bonigarcia:webdrivermanager:3.8.1"
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -26,9 +37,9 @@ dependencies {
 	testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
 
 
+	// Utils
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
 }
 
 test {

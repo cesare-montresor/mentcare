@@ -1,18 +1,20 @@
 package it.univr.efcgang.mentcare.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AppEventHandler {
+public class EventHandler {
+
+    @Autowired
+    DemoData demoData;
 
     @EventListener(ApplicationReadyEvent.class)
     public void OnReady() {
         System.out.println("System: OnReady");
-        DemoData demo = new DemoData();
-        demo.addDemoData();
-
+        demoData.addDemoData();
     }
 
 }

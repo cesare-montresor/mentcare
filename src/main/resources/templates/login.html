@@ -7,15 +7,16 @@
 
 <body>
 
-<div id="page-login">
-    <form th:action="@{/login}" method="post">
-        <legend>
-            Username:<input type="text" name="username"/><br>
-            Password:<input type="password" name="password"/><br>
-            <input type="submit" value="Login" />
-        </legend>
-    </form>
-</div>
+    <div th:insert="menu"></div>
+    <div id="page-login">
+        <form th:action="@{/login}" method="post">
+            <legend>
+                Username:<input type="text" name="username"/><br>
+                Password:<input type="password" name="password"/><br>
+                <input type="submit" value="Login" />
+            </legend>
+        </form>
+    </div>
 
 </body>
 </html>

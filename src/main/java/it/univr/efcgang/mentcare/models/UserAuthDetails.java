@@ -1,28 +1,32 @@
 package it.univr.efcgang.mentcare.models;
 
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MyUserDetails implements UserDetails {
+public class UserAuthDetails implements UserDetails {
 
-    private String userName;
+    private String username;
     private String password;
     private boolean active;
     private List<GrantedAuthority> authorities;
 
-    public MyUserDetails(User user) {
-        this.userName = user.username;
+    public UserAuthDetails(User user) {
+        this.username = user.username;
         this.password = user.password;
         this.active = user.active;
-        this.authorities = Arrays.stream(user.getRoles().split(","))
-                    .map(SimpleGrantedAuthority::new)
-                    .collect(Collectors.toList());
+        var roles = user.roles.split(",");
+        this.authorities = Arrays.stream(roles)
+                                 .map(SimpleGrantedAuthority::new)
+                                 .collect(Collectors.toList());
     }
 
     @Override
@@ -37,7 +41,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
