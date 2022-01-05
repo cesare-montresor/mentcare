@@ -39,11 +39,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .regexMatchers("/drug.*").hasAnyAuthority("DOCTOR", "OFFICE")
                 .regexMatchers("/patient.*").hasAnyAuthority("DOCTOR", "OFFICE")
                 .regexMatchers("/prescription.*").hasAnyAuthority( "DOCTOR")
-
             // Admin
             .and().authorizeRequests()
-                .regexMatchers("/user.*").hasAuthority("ADMIN")
-                .regexMatchers("/utils.*").hasAuthority("ADMIN")
+                .regexMatchers("/user.*").hasAnyAuthority("ADMIN")
+                .regexMatchers("/utils.*").hasAnyAuthority("ADMIN")
 
             // Guest
             .and().authorizeRequests()

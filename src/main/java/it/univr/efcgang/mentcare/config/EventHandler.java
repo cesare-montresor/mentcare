@@ -26,15 +26,19 @@ public class EventHandler {
     public void OnReady() throws IOException {
         System.out.println("System: OnReady");
         demoData.addDemoData();
-
+        browserOpen();
         browserLogin("maria","maria");
+    }
+
+    public void browserOpen(){
+        BrowserDriver browser = BrowserDriver.sharedInstance;
+        browser.open();
+        browser.driver.get("http://localhost:8080/");
     }
 
     public void browserLogin(String  user, String pass){
         BrowserDriver browser = BrowserDriver.sharedInstance;
-        browser.open();
         browser.driver.get("http://localhost:8080/login");
-
         WebElement username = browser.driver.findElement(By.xpath( "//form//input[@name='username']" ));
         WebElement password = browser.driver.findElement(By.xpath( "//form//input[@name='password']" ));
         WebElement submit = browser.driver.findElement(By.xpath( "//form//input[@type='submit']" ));

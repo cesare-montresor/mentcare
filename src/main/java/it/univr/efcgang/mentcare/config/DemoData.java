@@ -25,7 +25,6 @@ public class DemoData {
     PrescriptionRepository prescriptionRepository;
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     AuthService authService;
 

@@ -21,7 +21,6 @@ class MainControllerTest extends BaseTest {
 		browser.driver.get(url("/profile"));
 		WebElement title = browser.driver.findElement(By.xpath("//h1"));
 		assertEquals(title.getText().toLowerCase(), "profile");
-
 	}
 
 	@Test

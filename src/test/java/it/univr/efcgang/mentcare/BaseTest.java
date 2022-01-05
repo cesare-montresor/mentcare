@@ -41,6 +41,7 @@ public class BaseTest {
         browser.open();
         driver = browser.driver;
     }
+
     @AfterAll
     public static void close() {
         if ( headless || autoclose ) {
