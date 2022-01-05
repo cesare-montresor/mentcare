@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Writing new prescription</title>
+        <title>Writing new prescription</title>
+    <div th:insert="common/head"></div>
 </head>
 <body>
-<div th:insert="menu"></div>
+<div th:insert="common/header"></div>
 <h1>Writing a new prescription</h1>
 <form action="save" method="post">
 

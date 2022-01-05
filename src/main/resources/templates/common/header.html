@@ -1,0 +1,63 @@
+<nav class="navbar"  id="page-header"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+    <div class="container-fluid">
+
+
+        <!--/* LOGO */-->
+        <div class="navbar-brand">
+             <a id="header-logo" href="/">
+                <img src="/img/top-logo-colors.png" width="200px"/>
+            </a>
+        </div>
+
+        <!--/* MENU */-->
+        <div class="nav nav-pills">
+            <ul class="nav nav-pills" id="main-menu">
+
+                <li class="nav-item" sec:authorize-url="/">
+                    <a class="nav-link btn btn-outline-primary" href="/">Home</a>
+                </li>
+                <li class="nav-item" sec:authorize-url="/drug" >
+                    <a class="nav-link btn btn-outline-primary"  href="/drug">Drug</a>
+                </li>
+                <li class="nav-item" sec:authorize-url="/patient" >
+                    <a class="nav-link btn btn-outline-primary"  href="/patient">Patient</a>
+                </li>
+                <li class="nav-item" sec:authorize-url="/prescription">
+                    <a class="nav-link btn btn-outline-primary" href="/prescription">Prescription</a>
+                </li>
+                <li class="nav-item" sec:authorize-url="/user">
+                    <a class="nav-link btn btn-outline-primary" href="/user">User</a>
+                </li>
+                <li class="nav-item" sec:authorize-url="/utils">
+                    <a class="nav-link btn btn-outline-primary" href="/utils">Utils</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!--/* LOGIN - LOGOUT - PROFILE */-->
+        <div class="nav nav-pills justify-content-end" id="page-auth" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+            <ul class="nav nav-pills justify-content-end" sec:authorize="!isAuthenticated()" style="text-align: right">
+                <li class="nav-item" >
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+
+            <ul class="nav nav-pills justify-content-end" sec:authorize="isAuthenticated()" style="text-align: right">
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile"><span sec:authentication="name">Username</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+
+        
+
+    </div>
+
+</nav>

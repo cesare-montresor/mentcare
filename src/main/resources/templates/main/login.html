@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>MentCARE Login</title>
+    <div th:replace="common/head"></div>
+
+</head>
+
+<body>
+    <div th:replace="common/header"></div>
+
+    <div id="content">
+
+        <div id="page-login">
+            <form th:action="@{/login}" method="post">
+                <legend>
+                    Username:<input type="text" name="username"/><br>
+                    Password:<input type="password" name="password"/><br>
+                    <input type="submit" value="Login" />
+                </legend>
+            </form>
+        </div>
+
+    </div>
+
+    <div th:replace="common/footer"></div>
+</body>
+</html>

@@ -27,23 +27,16 @@ public class MainController implements ErrorController {
 
     @GetMapping("/")
     public String getIndex() {
-        return "index";
+        return "main/index";
     }
 
     @GetMapping("/login")
     public String getLogin() {
         User userAuth = authService.UserGet();
         if (userAuth==null){
-            return "login";
+            return "main/login";
         }
         return "redirect:/profile";
-    }
-
-    @GetMapping("/profile")
-    public String getProfile(Model model) {
-        User authUser = authService.UserGet();
-        model.addAttribute("user",authUser);
-        return "profile";
     }
 
     @GetMapping("/logout")
@@ -55,7 +48,17 @@ public class MainController implements ErrorController {
         return "redirect:/login"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
-    @RequestMapping("/error")
+    @GetMapping("/profile")
+    public String getProfile(Model model) {
+        User authUser = authService.UserGet();
+        model.addAttribute("user",authUser);
+        return "main/profile";
+    }
+
+    //Deprecated but necessary for "implements ErrorController"
+    @Override public String getErrorPath() {return null;}
+
+    @RequestMapping("main/error")
     public String handleError(HttpServletRequest request, Model model) {
         String error_message = "Unknown Error";
         int statusCode=-1;
@@ -81,6 +84,5 @@ public class MainController implements ErrorController {
     }
 
 
-    @Override
-    public String getErrorPath() {return null;}
+
 }

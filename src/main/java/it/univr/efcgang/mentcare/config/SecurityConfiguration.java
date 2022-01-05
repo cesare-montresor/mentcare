@@ -31,7 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .regexMatchers("/").permitAll()
                 .regexMatchers("/error").permitAll()
-                .regexMatchers("/menu").permitAll()
+                .regexMatchers("/static.*").permitAll()
+                .regexMatchers("/img.*").permitAll()
 
             // Doctors & Office
             .and().authorizeRequests()

@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Create a new patient</title>
+      <title>Create a new patient</title>
+    <div th:insert="common/head"></div>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
-<div th:insert="menu"></div>
+<div th:insert="common/header"></div>
 <h1>Create a new patient</h1>
 <form action="save" method="post">
   Name: <input type="text" name="name"><br>

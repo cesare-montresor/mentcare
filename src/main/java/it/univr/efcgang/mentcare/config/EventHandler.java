@@ -45,7 +45,7 @@ public class EventHandler {
         password.clear();
         password.sendKeys(pass);
 
-        password.submit();
+        submit.click();
     }
 
 }
