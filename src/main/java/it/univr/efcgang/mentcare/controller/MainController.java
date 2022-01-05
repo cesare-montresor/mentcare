@@ -41,17 +41,14 @@ public class MainController implements ErrorController {
 
     @GetMapping("/logout")
     public String getLogout (HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
+        authService.UserLogout(request, response);
         return "redirect:/login"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
     @GetMapping("/profile")
     public String getProfile(Model model) {
         User authUser = authService.UserGet();
-        model.addAttribute("user",authUser);
+        model.addAttribute("user", authUser);
         return "main/profile";
     }
 
@@ -70,13 +67,13 @@ public class MainController implements ErrorController {
         }
 
         if(statusCode == HttpStatus.FORBIDDEN.value()) {
-            error_message += ":Access forbidden.\nYou need higher powers to access this resource.\nThis incident will be reported.";
+            error_message += ": Access forbidden.\nYou need higher powers to access this resource.\nThis incident will be reported.";
         }
         else if(statusCode == HttpStatus.NOT_FOUND.value()) {
-            error_message = ": Not found.\nThe resource you are looking for has never existed.";
+            error_message += ": Not found.\nThe resource you are looking for has never existed.";
         }
         else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-            error_message = ": Access forbidden.\nServer is on fire.";
+            error_message += ": Access forbidden.\nServer is on fire.";
         }
 
         model.addAttribute("error_message",error_message);

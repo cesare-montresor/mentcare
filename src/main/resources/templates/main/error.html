@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
         <title>Title</title>
-    <div th:insert="common/head"></div>
+    <div th:replace="common/head"></div>
 </head>
 <body>
-    <div th:insert="common/header"></div>
+    <div th:replace="common/header"></div>
     <div id="error_message" th:text="|${error_message}|"></div>
+    <div th:replace="common/footer"></div>
 </body>
 </html>
