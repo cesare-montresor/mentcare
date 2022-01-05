@@ -1,16 +1,48 @@
-* {
-
-}
 
 h1{
     color: #b00b69;
 }
 
+
+/* HEADER */
 #page-header
 {
-
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
 }
 
-#header-logo{
+#page-header a
+{
+    margin: 5px;
+}
 
+/* HEADER: LOGO */
+#header-logo {
+    justify-content: start;
+}
+
+/* HEADER: MENU */
+#main-menu{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+#main-menu a{
+    flex-direction: row;
+    justify-content: start;
+}
+
+/* HEADER: PROFILE */
+#page-auth{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+#page-auth a{
+      flex-direction: row;
+      justify-content: end;
 }

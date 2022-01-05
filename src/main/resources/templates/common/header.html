@@ -1,63 +1,35 @@
-<nav class="navbar"  id="page-header"
+<nav id="page-header"
      xmlns:th="http://www.thymeleaf.org"
      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
-    <div class="container-fluid">
 
+    <!--/* LOGO */-->
+     <a id="header-logo" href="/">
+        <img src="/img/top-logo-colors.png" width="200px"/>
+    </a>
 
-        <!--/* LOGO */-->
-        <div class="navbar-brand">
-             <a id="header-logo" href="/">
-                <img src="/img/top-logo-colors.png" width="200px"/>
+    <!--/* MENU */-->
+
+    <div id="main-menu">
+        <a sec:authorize-url="/" class="btn btn-primary" href="/">Home</a>
+        <a  sec:authorize-url="/drug" class="btn btn-primary"  href="/drug">Drug</a>
+        <a sec:authorize-url="/patient" class="btn btn-primary"  href="/patient">Patient</a>
+        <a sec:authorize-url="/prescription" class="btn btn-primary" href="/prescription">Prescription</a>
+        <a sec:authorize-url="/user" class="btn btn-primary" href="/user">User</a>
+        <a sec:authorize-url="/utils" class="btn btn-primary" href="/utils">Utils</a>
+    </div>
+
+    <!--/* LOGIN - LOGOUT - PROFILE */-->
+    <div id="page-auth" >
+        <div id="page-auth-login" sec:authorize="!isAuthenticated()">
+                <a href="/login">Login</a>
+        </div>
+
+        <div id="page-auth-profile" sec:authorize="isAuthenticated()">
+            <a class="btn btn-primary" href="/profile">
+                <span sec:authentication="name">Username</span>
             </a>
+            <a class="btn btn-warning" href="/logout">Logout</a>
         </div>
-
-        <!--/* MENU */-->
-        <div class="nav nav-pills">
-            <ul class="nav nav-pills" id="main-menu">
-
-                <li class="nav-item" sec:authorize-url="/">
-                    <a class="nav-link btn btn-outline-primary" href="/">Home</a>
-                </li>
-                <li class="nav-item" sec:authorize-url="/drug" >
-                    <a class="nav-link btn btn-outline-primary"  href="/drug">Drug</a>
-                </li>
-                <li class="nav-item" sec:authorize-url="/patient" >
-                    <a class="nav-link btn btn-outline-primary"  href="/patient">Patient</a>
-                </li>
-                <li class="nav-item" sec:authorize-url="/prescription">
-                    <a class="nav-link btn btn-outline-primary" href="/prescription">Prescription</a>
-                </li>
-                <li class="nav-item" sec:authorize-url="/user">
-                    <a class="nav-link btn btn-outline-primary" href="/user">User</a>
-                </li>
-                <li class="nav-item" sec:authorize-url="/utils">
-                    <a class="nav-link btn btn-outline-primary" href="/utils">Utils</a>
-                </li>
-
-            </ul>
-        </div>
-
-        <!--/* LOGIN - LOGOUT - PROFILE */-->
-        <div class="nav nav-pills justify-content-end" id="page-auth" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
-            <ul class="nav nav-pills justify-content-end" sec:authorize="!isAuthenticated()" style="text-align: right">
-                <li class="nav-item" >
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-            </ul>
-
-            <ul class="nav nav-pills justify-content-end" sec:authorize="isAuthenticated()" style="text-align: right">
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile"><span sec:authentication="name">Username</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-            </ul>
-        </div>
-
-
-        
-
     </div>
 
 </nav>
