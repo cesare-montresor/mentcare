@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Updating a patient</title>
+        <title>Updating a patient</title>
+    <div th:insert="common/head"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
-<div th:insert="menu"></div>
+<div th:insert="common/header"></div>
 <h1>Updating a patient</h1>
 <form action="save" method="post">
     Name: <input type="text" name="name" th:value="${patient.name}"><br>

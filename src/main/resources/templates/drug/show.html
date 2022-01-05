@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>drug details</title>
+        <title>drug details</title>
+    <div th:insert="common/head"></div>
 </head>
 <body>
-<div th:insert="menu"></div>
+<div th:insert="common/header"></div>
 Name: <div th:text="${drug.name}">TODO: implement show details </div> </br>
 </body>
 </html>

@@ -33,7 +33,7 @@ public class UtilsController {
 
 
     @GetMapping("/utils/statsDatabase")
-    public String initDatabase(Model model){
+    public String statsDatabase(Model model){
         long num_drugs = drugRepository.count();
         long num_users = userRepository.count();
         long num_patients = patientRepository.count();

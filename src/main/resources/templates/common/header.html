@@ -1,0 +1,35 @@
+<nav id="page-header"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+    <!--/* LOGO */-->
+     <a id="header-logo" href="/">
+        <img src="/img/top-logo-colors.png" width="200px"/>
+    </a>
+
+    <!--/* MENU */-->
+
+    <div id="main-menu">
+        <a sec:authorize-url="/" class="btn btn-primary" href="/">Home</a>
+        <a  sec:authorize-url="/drug" class="btn btn-primary"  href="/drug">Drug</a>
+        <a sec:authorize-url="/patient" class="btn btn-primary"  href="/patient">Patient</a>
+        <a sec:authorize-url="/prescription" class="btn btn-primary" href="/prescription">Prescription</a>
+        <a sec:authorize-url="/user" class="btn btn-primary" href="/user">User</a>
+        <a sec:authorize-url="/utils" class="btn btn-primary" href="/utils">Utils</a>
+    </div>
+
+    <!--/* LOGIN - LOGOUT - PROFILE */-->
+    <div id="page-auth" >
+        <div id="page-auth-login" sec:authorize="!isAuthenticated()">
+                <a href="/login">Login</a>
+        </div>
+
+        <div id="page-auth-profile" sec:authorize="isAuthenticated()">
+            <a class="btn btn-primary" href="/profile">
+                <span sec:authentication="name">Username</span>
+            </a>
+            <a class="btn btn-warning" href="/logout">Logout</a>
+        </div>
+    </div>
+
+</nav>
