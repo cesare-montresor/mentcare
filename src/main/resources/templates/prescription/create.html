@@ -1,54 +1,62 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Writing new prescription</title>
-    <div th:insert="common/head"></div>
+    <title>Writing new prescription</title>
+    <div th:replace="common/head"></div>
 </head>
+
 <body>
-<div th:insert="common/header"></div>
-<h1>Writing a new prescription</h1>
-<form action="save" method="post">
-
-    <!-- >Patient<!-->
-    <label for="patient_selector">Patient: </label>
-    <select id="patient_selector" name="patient_id">
-        <option value="1" th:each = "patient : ${patients}" th:text = "${patient.name}" th:value = "${patient.id}">Jane Doe</option>
-     </select>
-     </br>
-
-    <!-- >Drug-->
-    <label for="drug_selector">Drug: </label>
-    <select id="drug_selector" name="drug_id">
-        <option value="1" th:each = "drug : ${drugs}" th:text = "${drug.name}" th:value = "${drug.id}">Ibuprofen</option>
-    </select>
-    </br>
-
-    <!-- >Dosage-->
-    <label for="dosage_selector">Dosage: </label>
-    <input id= "dosage_selector" type="text" name="dosage" value="As per package leaflet"/>
-    </br>
+<div th:replace="common/header"></div>
+<div id="page-content">
 
 
-    <!-- Dates-->
-    <label for="datestart-selector">Start date:</label>
-    <input type="date" id="datestart-selector" name="dateStart"
-           value="2000-11-03"
-           th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-           min="2018-01-01"
-           th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
-    </br>
-    <label for="dateend-selector">End date:</label>
-    <input type="date" id="dateend-selector" name="dateEnd"
-           value="2018-07-22"
-           th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-           min="2018-01-01"
-           th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
-    </br>
-    <input type="submit" />
-</form>
-<!--${#dates.format(#dates.createNow(), 'dd MMM yyyy')}-->
-<a href="/prescription"> Go back to the list </a>
 
+    <h1>Writing a new prescription</h1>
+    <form action="save" method="post">
+
+        <!-- >Patient<!-->
+        <label for="patient_selector">Patient: </label>
+        <select id="patient_selector" name="patient_id">
+            <option value="1" th:each = "patient : ${patients}" th:text = "${patient.name}" th:value = "${patient.id}">Jane Doe</option>
+         </select>
+         </br>
+
+        <!-- >Drug-->
+        <label for="drug_selector">Drug: </label>
+        <select id="drug_selector" name="drug_id">
+            <option value="1" th:each = "drug : ${drugs}" th:text = "${drug.name}" th:value = "${drug.id}">Ibuprofen</option>
+        </select>
+        </br>
+
+        <!-- >Dosage-->
+        <label for="dosage_selector">Dosage: </label>
+        <input id= "dosage_selector" type="text" name="dosage" value="As per package leaflet"/>
+        </br>
+
+
+        <!-- Dates-->
+        <label for="datestart-selector">Start date:</label>
+        <input type="date" id="datestart-selector" name="dateStart"
+               value="2000-11-03"
+               th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+               min="2018-01-01"
+               th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
+        </br>
+        <label for="dateend-selector">End date:</label>
+        <input type="date" id="dateend-selector" name="dateEnd"
+               value="2018-07-22"
+               th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+               min="2018-01-01"
+               th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
+        </br>
+        <input type="submit" />
+    </form>
+    <!--${#dates.format(#dates.createNow(), 'dd MMM yyyy')}-->
+    <a href="/prescription"> Go back to the list </a>
+
+
+
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

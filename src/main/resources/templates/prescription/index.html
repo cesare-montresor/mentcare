@@ -1,38 +1,46 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-        <title>Prescriptions</title>
-    <div th:insert="common/head"></div>
+    <title>Prescriptions</title>
+    <div th:replace="common/head"></div>
 </head>
-<body>
-<div th:insert="common/header"></div>
-<h1>Prescriptions</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Prescription code</th>
-        <th>Patient</th>
-        <th>Drug name</th>
-        <th>Dosage</th>
-        <th>Date start</th>
-        <th>Date end</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each = "prescription: ${prescriptions}">
-        <td th:text = "${prescription.id}">1</td>
-        <td th:text = "${prescription.patient.name}">Jane Doe</td>
-        <td th:text = "${prescription.drug.name}">Ibuprofen</td>
-        <td th:text = "${prescription.dosage}">10.0</td>
-        <td th:text = "${#dates.format(prescription.dateStart, 'dd-MM-yyyy')}">11/03/2021</td>
-        <td th:text = "${#dates.format(prescription.dateEnd, 'dd-MM-yyyy')}">11/03/2022</td>
-        <td> <a href="editPrescription?id=1" th:href="@{prescription/edit(id=${prescription.id})}"> edit </a></td>
-        <td> <a href="deletePrescription?id=1" th:href="@{prescription/delete(id=${prescription.id})}"> delete </a></td>
-    </tr>
-    </tbody>
-</table>
 
-<a id="createPrescription"  href="prescription/create">Click here to make a new prescription</a>
+<body>
+<div th:replace="common/header"></div>
+<div id="page-content">
+
+    <h1>Prescriptions</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Prescription code</th>
+            <th>Patient</th>
+            <th>Drug name</th>
+            <th>Dosage</th>
+            <th>Date start</th>
+            <th>Date end</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "prescription: ${prescriptions}">
+            <td th:text = "${prescription.id}">1</td>
+            <td th:text = "${prescription.patient.name}">Jane Doe</td>
+            <td th:text = "${prescription.drug.name}">Ibuprofen</td>
+            <td th:text = "${prescription.dosage}">10.0</td>
+            <td th:text = "${#dates.format(prescription.dateStart, 'dd-MM-yyyy')}">11/03/2021</td>
+            <td th:text = "${#dates.format(prescription.dateEnd, 'dd-MM-yyyy')}">11/03/2022</td>
+            <td> <a href="editPrescription?id=1" th:href="@{prescription/edit(id=${prescription.id})}"> edit </a></td>
+            <td> <a href="deletePrescription?id=1" th:href="@{prescription/delete(id=${prescription.id})}"> delete </a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a id="createPrescription"  href="prescription/create">Click here to make a new prescription</a>
+
+
+
+
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-        <title>drug details</title>
-    <div th:insert="common/head"></div>
+    <title>Welcome to MentCARE</title>
+    <div th:replace="common/head"></div>
 </head>
+
 <body>
-<div th:insert="common/header"></div>
-Name: <div th:text="${drug.name}">TODO: implement show details </div> </br>
+<div th:replace="common/header"></div>
+<div id="page-content">
+    <h1>Drugs</h1>
+    Name: <div th:text="${drug.name}">TODO: implement show details </div> </br>
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

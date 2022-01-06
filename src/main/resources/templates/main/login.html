@@ -7,30 +7,30 @@
 </head>
 
 <body>
-    <div th:replace="common/header"></div>
+<div th:replace="common/header"></div>
+<div id="page-content">
 
-    <div id="page-content">
 
-        <div id="page-login">
-            <form th:action="@{/login}" method="post">
-                <div class="form-group">
-                    <label for="input-username">
-                        Username
-                    </label>
-                    <input class="form-control" type="text" name="username" id="input-username"/>
+    <div id="page-login">
+        <h1>Login</h1>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
 
-                    <label for="input-password">
-                        Password
-                    </label>
-                    <input class="form-control" type="password" name="password" id="input-password"/>
-                    <br>
-                    <input class="btn btn-primary" type="submit" value="Login" />
-                </div>
-            </form>
-        </div>
+                <label for="page-login-username">Username</label>
+                <input class="form-control" type="text" name="username" id="page-login-username"/>
 
+                <label for="page-login-password">Password</label>
+                <input class="form-control" type="password" name="password" id="page-login-password"/>
+
+                <br>
+                <input class="btn btn-primary" type="submit" value="Login" id="page-login-submit" />
+
+            </div>
+        </form>
     </div>
 
-    <div th:replace="common/footer"></div>
+
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

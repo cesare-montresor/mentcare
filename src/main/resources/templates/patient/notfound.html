@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-
-        <title>Mentcare Web application</title>
-    <div th:insert="common/head"></div>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ERROR: Patient not found</title>
+    <div th:replace="common/head"></div>
 </head>
+
 <body>
-<h1>ERROR: Patient not found </h1>
-<a href="patient">Show the list</a>
+<div th:replace="common/header"></div>
+<div id="page-content">
+    <h1>ERROR: Patient not found </h1>
+    <a href="patient">Show the list</a>
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

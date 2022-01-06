@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-        <title>User list</title>
-    <div th:insert="common/head"></div>
+    <title>Users</title>
+    <div th:replace="common/head"></div>
 </head>
+
 <body>
-<div th:insert="common/header"></div>
-<h1>User list</h1>
-(work in progress)
+<div th:replace="common/header"></div>
+<div id="page-content">
+    <h1>User list</h1>
+    (work in progress)
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

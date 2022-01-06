@@ -1,37 +1,42 @@
-
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-        <title>Patients</title>
-    <div th:insert="common/head"></div>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Patients</title>
+    <div th:replace="common/head"></div>
 </head>
 
 <body>
-<div th:insert="common/header"></div>
-<h1>Patients</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Doctor</th>
-        <th>edit</th>
-        <th>delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="patient: ${patients}">
-        <td th:text="${patient.id}"> <b>10 </b></td>
-        <td th:text="${patient.name}"> Matthew </td>
-        <td th:text="${patient.mainDoctor.id}"> John Watson</td>
-        <td> <a href="patient/edit?id=10" th:href="@{patient/edit(id=${patient.id})}"> edit </a></td>
-        <td> <a href="patient/delete?id=10" th:href="@{patient/delete(id=${patient.id})}"> delete </a></td>
-    </tr>
-    </tbody>
-</table>
+<div th:replace="common/header"></div>
+<div id="page-content">
 
-<a href="patient/create"> Add new patient </a>
 
+
+    <h1>Patients</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Doctor</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="patient: ${patients}">
+            <td th:text="${patient.id}"> <b>10 </b></td>
+            <td th:text="${patient.name}"> Matthew </td>
+            <td th:text="${patient.mainDoctor.id}"> John Watson</td>
+            <td> <a href="patient/edit?id=10" th:href="@{patient/edit(id=${patient.id})}"> edit </a></td>
+            <td> <a href="patient/delete?id=10" th:href="@{patient/delete(id=${patient.id})}"> delete </a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="patient/create"> Add new patient </a>
+
+
+
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

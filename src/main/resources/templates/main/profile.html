@@ -6,25 +6,29 @@
 </head>
 
 <body>
+<div th:replace="common/header"></div>
+<div id="page-content">
+
     <!--/*
-        <div style="color: green" th:text="${#authorization.authentication}"></div>
-        <div style="color: blue" th:text="${#authorization.authentication.getPrincipal()}"></div>
-        <div style="color: #00ffff" th:text="${#authorization.authentication.getPrincipal().username}"></div>
-        <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+    <div style="color: green" th:text="${#authorization.authentication}"></div>
+    <div style="color: blue" th:text="${#authorization.authentication.getPrincipal()}"></div>
+    <div style="color: #00ffff" th:text="${#authorization.authentication.getPrincipal().username}"></div>
+    <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
     */-->
 
-    <div th:replace="common/header"></div>
-    <div id="page-content">
-        <h1>Profile</h1>
-        <div id="page-login">
-            <div>Username:<span name="username" th:text="${user.username}">username</span></div>
-            <div>Password: <span name="password" >********</span></div>
-            <div>Roles: <span name="roles" th:text="${user.roles}">roles</span></div>
-            <div>Active: <span name="active" th:text="${user.active}">No</span></div>
-            </form>
-        </div>
+    <h1>Profile</h1>
+    <div id="page-profile">
+        <div>Username: <span id="page-profile-username" th:text="${user.username}">username</span></div>
+        <div>Password: <span id="page-profile-password" >********</span></div>
+        <div>Roles: <span id="page-profile-roles" th:text="${user.roles}">roles</span></div>
+        <div>Active: <span id="page-profile-active" th:text="${user.active}">No</span></div>
+        </form>
     </div>
-    <div th:replace="common/footer"></div>
+
+
+
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>
 

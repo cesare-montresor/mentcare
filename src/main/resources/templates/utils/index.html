@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-        <title>user</title>
-    <div th:insert="common/head"></div>
+    <title>Utils</title>
+    <div th:replace="common/head"></div>
 </head>
+
 <body>
-<div th:insert="common/header"></div>
-<h1>Utils</h1>
-<ul>
-    <li><a href="/utils/statsDatabase">Stats Database</a></li>
-</ul>
+<div th:replace="common/header"></div>
+<div id="page-content">
+    <h1>Utils</h1>
+    <ul>
+        <li><a href="/utils/statsDatabase">Stats Database</a></li>
+    </ul>
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

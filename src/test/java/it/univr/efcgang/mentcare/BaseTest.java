@@ -1,6 +1,8 @@
 package it.univr.efcgang.mentcare;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import it.univr.efcgang.mentcare.po.MainPO;
+import it.univr.efcgang.mentcare.po.MenuPO;
 import it.univr.efcgang.mentcare.utils.BrowserDriver;
 import it.univr.efcgang.mentcare.utils.BrowserDriver.BrowserKind;
 import org.junit.jupiter.api.*;
@@ -33,6 +35,8 @@ public class BaseTest {
     protected static BrowserDriver browser;
     protected static WebDriver driver;
 
+    MainPO mainPO = new MainPO(driver);
+
     @BeforeAll
     public static void open() {
         if (browser == null) {
@@ -61,21 +65,15 @@ public class BaseTest {
     }
 
     public boolean browserLogin(String  user, String pass){
+
         browser.open();
         driver = browser.driver;
         driver.get(url("/login"));
 
-        WebElement username = browser.driver.findElement(By.xpath( "//form//input[@name='username']" ));
-        WebElement password = browser.driver.findElement(By.xpath( "//form//input[@name='password']" ));
-        WebElement submit = browser.driver.findElement(By.xpath( "//form//input[@type='submit']" ));
+        mainPO.loginSetUsername(user);
+        mainPO.loginSetPassword(pass);
+        mainPO.loginPerform();
 
-        username.clear();
-        username.sendKeys(user);
-
-        password.clear();
-        password.sendKeys(pass);
-
-        submit.click();
         return true;
     }
 

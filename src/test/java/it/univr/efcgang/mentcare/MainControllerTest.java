@@ -1,6 +1,7 @@
 package it.univr.efcgang.mentcare;
 
 
+import it.univr.efcgang.mentcare.po.MainPO;
 import org.junit.jupiter.api.Test;
 
 import org.openqa.selenium.By;
@@ -17,10 +18,18 @@ class MainControllerTest extends BaseTest {
 
 	@Test
 	public void testLogin() throws InterruptedException {
+
 		browserLogin("maria", "maria");
 		browser.driver.get(url("/profile"));
-		WebElement title = browser.driver.findElement(By.xpath("//h1"));
-		assertEquals(title.getText().toLowerCase(), "profile");
+
+		String title_txt = mainPO.profileTitle.getText().trim();
+		String username_txt = mainPO.profileUsername.getText().trim();
+		String roles_txt = mainPO.profileRoles.getText().trim();
+
+		assertEquals(title_txt, "Profile");
+		assertEquals(username_txt , "maria");
+		assertEquals(roles_txt, "DOCTOR");
+
 	}
 
 	@Test

@@ -1,25 +1,32 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-        <title>Updating a patient</title>
-    <div th:insert="common/head"></div>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <title>Updating a patient</title>
+    <div th:replace="common/head"></div>
 </head>
+
 <body>
-<div th:insert="common/header"></div>
-<h1>Updating a patient</h1>
-<form action="save" method="post">
-    Name: <input type="text" name="name" th:value="${patient.name}"><br>
-    <!-- >Doctor<!-->
-    <label for="doctor_selector">Doctor: </label>
-    <select id="doctor_selector" name="doctor_id">
-        <option value="1" th:text="${patient.mainDoctor.name}" th:value="${patient.mainDoctor.id}" selected disabled hidden>Selected doctor John Watson</option>
-        <option value="2" th:each ="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}" >John Watson</option>
-    </select>
-    </br>
-    <input type="submit"/>
-</form>
-<a href="/patient">Go back to the list </a>
+<div th:replace="common/header"></div>
+<div id="page-content">
+
+
+    <h1>Updating a patient</h1>
+    <form action="save" method="post">
+        Name: <input type="text" name="name" th:value="${patient.name}"><br>
+        <!-- >Doctor<!-->
+        <label for="doctor_selector">Doctor: </label>
+        <select id="doctor_selector" name="doctor_id">
+            <option value="1" th:text="${patient.mainDoctor.name}" th:value="${patient.mainDoctor.id}" selected disabled hidden>Selected doctor John Watson</option>
+            <option value="2" th:each ="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}" >John Watson</option>
+        </select>
+        </br>
+        <input type="submit"/>
+    </form>
+    <a href="/patient">Go back to the list </a>
+
+
+
+</div>
+<div th:replace="common/footer"></div>
 </body>
 </html>

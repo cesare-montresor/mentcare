@@ -21,7 +21,7 @@
 
     <!--/* LOGIN - LOGOUT - PROFILE */-->
     <div id="page-auth" >
-        <div id="page-auth-login btn btn-primary" sec:authorize="!isAuthenticated()">
+        <div id="page-auth-login" sec:authorize="!isAuthenticated()">
                 <a class="btn btn-info" href="/login">Login</a>
         </div>
 
