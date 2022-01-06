@@ -2,12 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-        <title>Title</title>
+    <title>Error</title>
     <div th:replace="common/head"></div>
 </head>
 <body>
     <div th:replace="common/header"></div>
-    <div id="error_message" th:text="|${error_message}|"></div>
+    <div id="page-content">
+        <div id="error_message" th:text="|${error_message}|"></div>
+    </div>>
     <div th:replace="common/footer"></div>
 </body>
 </html>
+

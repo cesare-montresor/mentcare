@@ -1,15 +1,27 @@
+/* COMMON TAGS */
+
+html, body{
+    height: 100%;
+}
 
 h1{
     color: #b00b69;
 }
 
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
 
 /* HEADER */
 #page-header
 {
     display: flex;
     flex-direction: row;
-    padding: 5px;
+    padding: 20px;
+    border-bottom: 1px lightgray solid;
 }
 
 #page-header a
@@ -24,7 +36,7 @@ h1{
 
 /* HEADER: MENU */
 #main-menu{
-    flex-grow: 2;
+    flex-grow: 4;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -43,6 +55,44 @@ h1{
 }
 
 #page-auth a{
-      flex-direction: row;
-      justify-content: end;
+    flex-direction: row;
+    justify-content: end;
+}
+
+/* MAIN CONTENT  */
+#page-content{
+    flex: 1;
+    margin: 0px 100px 0px 100px;
+    padding:20px;
+    border-left: 1px lightgray solid;
+    border-right: 1px lightgray solid;
+    box-shadow: 3px gray;
+}
+
+/* FOOTER */
+
+/* in-line footer */
+/*
+#page-footer{
+    margin: 0px 100px 0px 100px;
+    padding: 20px;
+    border-left: 1px lightgray solid;
+    border-right: 1px lightgray solid;
+}
+*/
+/* horiz-bar footer */
+#page-footer{
+    padding:  20px 120px 20px 120px;
+    border-top: 1px lightgray solid;
+}
+
+
+/* LOGIN */
+
+#page-login
+{
+    width: 300px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
 }

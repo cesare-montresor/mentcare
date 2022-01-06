@@ -21,12 +21,12 @@
 
     <!--/* LOGIN - LOGOUT - PROFILE */-->
     <div id="page-auth" >
-        <div id="page-auth-login" sec:authorize="!isAuthenticated()">
-                <a href="/login">Login</a>
+        <div id="page-auth-login btn btn-primary" sec:authorize="!isAuthenticated()">
+                <a class="btn btn-info" href="/login">Login</a>
         </div>
 
         <div id="page-auth-profile" sec:authorize="isAuthenticated()">
-            <a class="btn btn-primary" href="/profile">
+            <a class="btn btn-info" href="/profile">
                 <span sec:authentication="name">Username</span>
             </a>
             <a class="btn btn-warning" href="/logout">Logout</a>

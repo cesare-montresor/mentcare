@@ -14,14 +14,18 @@
     */-->
 
     <div th:replace="common/header"></div>
-    <h1>Profile</h1>
-    <div id="page-login">
-        <div>Username:<span name="username" th:text="${user.username}">username</span></div>
-        <div>Password: <span name="password" >********</span></div>
-        <div>Roles: <span name="roles" th:text="${user.roles}">roles</span></div>
-        <div>Active: <span name="active" th:text="${user.active}">No</span></div>
-        </form>
+    <div id="page-content">
+        <h1>Profile</h1>
+        <div id="page-login">
+            <div>Username:<span name="username" th:text="${user.username}">username</span></div>
+            <div>Password: <span name="password" >********</span></div>
+            <div>Roles: <span name="roles" th:text="${user.roles}">roles</span></div>
+            <div>Active: <span name="active" th:text="${user.active}">No</span></div>
+            </form>
+        </div>
     </div>
     <div th:replace="common/footer"></div>
 </body>
 </html>
+
+
