@@ -55,7 +55,7 @@ public class MainController implements ErrorController {
     //Deprecated but necessary for "implements ErrorController"
     @Override public String getErrorPath() {return null;}
 
-    @RequestMapping("main/error")
+    @RequestMapping("error")
     public String handleError(HttpServletRequest request, Model model) {
         String error_message = "Unknown Error";
         int statusCode=-1;
@@ -77,7 +77,7 @@ public class MainController implements ErrorController {
         }
 
         model.addAttribute("error_message",error_message);
-        return "error";
+        return "main/error";
     }
 
 

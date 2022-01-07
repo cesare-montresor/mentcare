@@ -53,10 +53,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and().formLogin()
                 .loginPage("/login").permitAll()
 
-            // Logut
+            // Logout
             .and().logout()
                 .logoutUrl("/logout")
                 .permitAll();
+
+            http.csrf().disable();
     }
 
     @Bean
