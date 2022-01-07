@@ -10,30 +10,30 @@
 <div id="page-content">
 
 
-
-    <h1>Patients</h1>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Doctor</th>
-            <th>edit</th>
-            <th>delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="patient: ${patients}">
-            <td th:text="${patient.id}"> <b>10 </b></td>
-            <td th:text="${patient.name}"> Matthew </td>
-            <td th:text="${patient.mainDoctor.id}"> John Watson</td>
-            <td> <a href="patient/edit?id=10" th:href="@{patient/edit(id=${patient.id})}"> edit </a></td>
-            <td> <a href="patient/delete?id=10" th:href="@{patient/delete(id=${patient.id})}"> delete </a></td>
-        </tr>
-        </tbody>
-    </table>
-    <a href="patient/create"> Add new patient </a>
-
+    <div id="page-patient-index">
+        <h1>Patients</h1>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Doctor</th>
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient: ${patients}">
+                <td th:text="${patient.id}"> <b>10 </b></td>
+                <td th:text="${patient.name}"> Matthew </td>
+                <td th:text="${patient.mainDoctor.id}"> John Watson</td>
+                <td> <a id = "page-patient-index-edit" href="patient/edit?id=10" th:href="@{patient/edit(id=${patient.id})}"> edit </a></td>
+                <td> <a id = "page-patient-index-delete" href="patient/delete?id=10" th:href="@{patient/delete(id=${patient.id})}"> delete </a></td>
+            </tr>
+            </tbody>
+        </table>
+        <a id = "page-patient-index-create" href="patient/create"> Add new patient </a>
+    </div>
 
 
 </div>

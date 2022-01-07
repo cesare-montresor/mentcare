@@ -9,20 +9,21 @@
 <div th:replace="common/header"></div>
 <div id="page-content">
 
-
-    <h1>Updating a patient</h1>
-    <form action="save" method="post">
-        Name: <input type="text" name="name" th:value="${patient.name}"><br>
-        <!-- >Doctor<!-->
-        <label for="doctor_selector">Doctor: </label>
-        <select id="doctor_selector" name="doctor_id">
-            <option value="1" th:text="${patient.mainDoctor.name}" th:value="${patient.mainDoctor.id}" selected disabled hidden>Selected doctor John Watson</option>
-            <option value="2" th:each ="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}" >John Watson</option>
-        </select>
-        </br>
-        <input type="submit"/>
-    </form>
-    <a href="/patient">Go back to the list </a>
+    <div id="page-patient-edit">
+        <h1>Updating a patient</h1>
+        <form action="save" method="post">
+            Name: <input id="page-patient-edit-name" type="text" name="name" th:value="${patient.name}"><br>
+            <!-- >Doctor<!-->
+            <label for="page-patient-edit-doctor">Doctor: </label>
+            <select id="page-patient-edit-doctor" name="doctor_id">
+                <option value="1" th:text="${patient.mainDoctor.name}" th:value="${patient.mainDoctor.id}" selected disabled hidden>Selected doctor John Watson</option>
+                <option value="2" th:each ="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}" >John Watson</option>
+            </select>
+            </br>
+            <input id="page-patient-edit-submit" type="submit"/>
+        </form>
+        <a id="page-patient-edit-list" href="/patient">Go back to the list </a>
+    </div>
 
 
 
