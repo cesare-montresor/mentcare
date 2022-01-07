@@ -10,19 +10,21 @@
 <div id="page-content">
 
 
+    <div id="page-patient-create">
+        <h1>Create a new patient</h1>
+        <form action="save" method="post">
+            Name: <input id="page-patient-create-name" type="text" name="name"><br>
+            <!-- >Doctor<!-->
+            <label for="page-patient-create-doctor">Doctor: </label>
+            <select id="page-patient-create-doctor" name="doctor_id">
+                <option value="1" th:each ="doctor : ${doctors}" th:text = "${doctor.name}" th:value ="${doctor.id}">John Watson</option>
+            </select>
+            </br>
+            <input id="page-patient-create-submit" type="submit"/>
+        </form>
+        <a id="page-patient-create-list" href="/patient">Go back to the list </a>
 
-    <h1>Create a new patient</h1>
-    <form action="save" method="post">
-        Name: <input type="text" name="name"><br>
-        <!-- >Doctor<!-->
-        <label for="doctor_selector">Doctor: </label>
-        <select id="doctor_selector" name="doctor_id">
-            <option value="1" th:each ="doctor : ${doctors}" th:text = "${doctor.name}" th:value ="${doctor.id}">John Watson</option>
-        </select>
-        </br>
-        <input type="submit"/>
-    </form>
-    <a href="/patient">Go back to the list </a>
+    </div>
 
 
 

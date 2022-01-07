@@ -7,13 +7,16 @@ import org.openqa.selenium.support.FindBy;
 public class MenuPO extends PageObject{
 
 
-    @FindBy(xpath = "//*[@id=\"main-menu\"]/div/div[1]/span[1]/a")
+    @FindBy(css = "main-menu-home")
     WebElement home;
 
-    @FindBy(xpath = "//*[@id=\"main-menu\"]/div/div[1]/span[4]/a")
+    @FindBy(css = "main-menu-prescription")
     WebElement prescriptions;
 
-    @FindBy(xpath = "//*[@id=\"main-menu\"]/div/div[1]/span[5]/a")
+    @FindBy(css = "main-menu-patient")
+    WebElement patients;
+
+    @FindBy(css = "main-menu-utils")
     WebElement utils;
 
     public MenuPO(WebDriver driver) {
@@ -28,6 +31,14 @@ public class MenuPO extends PageObject{
     public PrescriptionListPO goToPrescriptionPage(){
         prescriptions.click();
         return new PrescriptionListPO(driver);
+    }
+    public PatientPO goToPatientPageEmpty(){
+        patients.click();
+        return new PatientPO(driver);
+    }
+    public PatientPO goToPatientPage(){
+        patients.click();
+        return new PatientPO(driver);
     }
 
     public UtilsPO goToUtilsPage(){

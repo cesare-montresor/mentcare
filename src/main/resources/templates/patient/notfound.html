@@ -8,8 +8,11 @@
 <body>
 <div th:replace="common/header"></div>
 <div id="page-content">
-    <h1>ERROR: Patient not found </h1>
-    <a href="patient">Show the list</a>
+    <div id="page-patient-error">
+        <h1>ERROR: Patient not found </h1>
+        <a id="page-patient-error-list" href="patient">Show the list</a>
+    </div>
+
 </div>
 <div th:replace="common/footer"></div>
 </body>
