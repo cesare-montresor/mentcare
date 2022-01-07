@@ -1,5 +1,6 @@
 package it.univr.efcgang.mentcare.controller;
 
+import it.univr.efcgang.mentcare.config.AuthService;
 import it.univr.efcgang.mentcare.models.Drug;
 import it.univr.efcgang.mentcare.models.Patient;
 import it.univr.efcgang.mentcare.models.Prescription;
@@ -23,6 +24,8 @@ import java.util.Optional;
 @Controller
 public class PrescriptionController {
 
+    @Autowired
+    private AuthService authService;
     @Autowired
     private PrescriptionRepository prescriptionRepository;
     @Autowired
@@ -78,7 +81,7 @@ public class PrescriptionController {
             return "notfound";
 
         // Make prescription
-        Prescription prescription = new Prescription(drug,patient,null,dosage, dateStart, dateEnd);
+        Prescription prescription = new Prescription(drug,patient,authService.UserGet(),dosage, dateStart, dateEnd);
 
         prescriptionRepository.save(prescription);
 
