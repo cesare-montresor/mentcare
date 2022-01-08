@@ -10,21 +10,21 @@ public class PrescriptionListPO extends PageObject{
     @FindBy(tagName = "h1")
     private WebElement message;
 
-    @FindBy(xpath = "/html/body/table/tbody")
+    @FindBy(css = "#prescription-table")
     WebElement table;
 
     @FindBy(id = "createPrescription")
     WebElement createPrescriptionLink;
 
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[2]")
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[2]")
     WebElement firstPatient;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[3]")
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[3]")
     WebElement firstDrug;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[4]")
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[4]")
     WebElement firstDosage;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[5]")
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[5]")
     WebElement firstDateStart;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[6]")
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[6]")
     WebElement firstDateEnd;
 
     public PrescriptionListPO(WebDriver driver) {

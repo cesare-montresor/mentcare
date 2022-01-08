@@ -22,7 +22,7 @@ class PrescriptionControllerTest extends BaseTest{
         PrescriptionListPO prescriptionlist = menu.goToPrescriptionPage();
 
         // Check that it's the right page
-        assertEquals("Prescription list",prescriptionlist.getTitle());
+        assertEquals("Prescriptions",prescriptionlist.getTitle());
 
         // Check that entries are as expected
 
