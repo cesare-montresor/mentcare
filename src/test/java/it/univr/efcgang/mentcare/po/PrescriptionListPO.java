@@ -18,28 +18,46 @@ public class PrescriptionListPO extends PageObject{
 
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[2]")
     WebElement firstPatient;
+
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[3]")
     WebElement firstDrug;
+
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[4]")
     WebElement firstDosage;
+
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[5]")
     WebElement firstDateStart;
+
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[6]")
     WebElement firstDateEnd;
+
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[7]")
     WebElement treatingPhysician;
 
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody/tr/td[8]/a")
+    WebElement editFirstEntryLink;
+
     @FindBy(xpath = "//table[@id='prescription-table']/tbody/tr/td[9]/a")
     WebElement deleteFirstEntryLink;
+
+
 
     public PrescriptionListPO(WebDriver driver) {
         super(driver);
     }
 
+
     public PrescriptionCreatePO clickNewPrescription(){
         createPrescriptionLink.click();
         return new PrescriptionCreatePO(driver);
     }
+
+    public PrescriptionEditPO clickEditPrescription(){
+        editFirstEntryLink.click();
+        return new PrescriptionEditPO(driver);
+    }
+
+
 
     public String getTitle(){
         return message.getText();
@@ -75,6 +93,7 @@ public class PrescriptionListPO extends PageObject{
     public void deleteFirstEntry(){
         deleteFirstEntryLink.click();
     }
+
 
 
 

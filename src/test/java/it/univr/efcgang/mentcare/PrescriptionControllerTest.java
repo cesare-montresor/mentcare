@@ -2,6 +2,7 @@ package it.univr.efcgang.mentcare;
 
 import it.univr.efcgang.mentcare.po.MenuPO;
 import it.univr.efcgang.mentcare.po.PrescriptionCreatePO;
+import it.univr.efcgang.mentcare.po.PrescriptionEditPO;
 import it.univr.efcgang.mentcare.po.PrescriptionListPO;
 import org.junit.jupiter.api.Test;
 
@@ -114,6 +115,44 @@ class PrescriptionControllerTest extends BaseTest{
         // Physician
         assertEquals("maria",prescriptionList.getTreatingPhysician(),
                 "Start date in first row is "+ prescriptionList.getTreatingPhysician() +"instead of \"maria\"");
+
+
+    }
+
+    @Test
+    public void testEditPrescription(){
+
+        // Get to page
+        PrescriptionListPO prescriptionList = getToPrescriptionPage();
+
+        // Click on edit link //TODO: button would be prettier!
+        PrescriptionEditPO prescriptionEdit = prescriptionList.clickEditPrescription();
+
+        // Enter edits and submit
+        prescriptionEdit.editDosage("Twice a day");
+        prescriptionEdit.editStartDate(generateTodayNextMonthDates(new SimpleDateFormat("yyyy-MM-dd"))[0]);
+        prescriptionEdit.editEndDate(generateTodayNextMonthDates(new SimpleDateFormat("yyyy-MM-dd"))[1]);
+        prescriptionList = prescriptionEdit.confirmEdit();
+
+        // Check results
+
+        // TODO: for now, I delete the first row in order to reuse getFirstX function. Is this ok?
+        prescriptionList.deleteFirstEntry();
+
+        // Dosage
+        assertEquals("Twice a day",prescriptionList.getFirstDosage(),
+                "Dosage in first row is different than expected");
+
+        String today = generateTodayNextMonthDates(new SimpleDateFormat("dd-MM-yyyy"))[0];
+        String nextMonth = generateTodayNextMonthDates(new SimpleDateFormat("dd-MM-yyyy"))[1];
+
+        // Start date
+        assertEquals(today,prescriptionList.getFirstDateStart(),
+                "Start date in first row is "+ prescriptionList.getFirstDateStart() +" instead of"+ today);
+
+        // End date
+        assertEquals(nextMonth,prescriptionList.getFirstDateEnd(),
+                "Start date in first row is "+ prescriptionList.getFirstDateEnd() +" instead of"+ nextMonth);
 
 
     }

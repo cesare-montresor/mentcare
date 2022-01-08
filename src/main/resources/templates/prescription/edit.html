@@ -38,18 +38,18 @@
         <label for="datestart-selector">Start date:</label>
         <input type="date" id="datestart-selector" name="dateStart"
                value="2000-11-03"
-               th:value="${prescription.dateStart}"
+               th:value="${#dates.format(prescription.dateStart, 'yyyy-MM-dd')}"
                min="2018-01-01"
                th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
         </br>
         <label for="dateend-selector">End date:</label>
         <input type="date" id="dateend-selector" name="dateEnd"
                value="2018-07-22"
-               th:value="${prescription.dateEnd}"
+               th:value="${#dates.format(prescription.dateEnd, 'yyyy-MM-dd')}"
                min="2018-01-01"
                th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
         </br>
-        <input type="submit" />
+        <input id="submit-button" type="submit" />
     </form>
     <!--/* ${#dates.format(#dates.createNow(), 'dd MMM yyyy')} */-->
     <a href="/prescription"> Go back to the list </a>
