@@ -29,6 +29,9 @@ public class PrescriptionListPO extends PageObject{
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[7]")
     WebElement treatingPhysician;
 
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody/tr/td[9]/a")
+    WebElement deleteFirstEntryLink;
+
     public PrescriptionListPO(WebDriver driver) {
         super(driver);
     }
@@ -67,6 +70,10 @@ public class PrescriptionListPO extends PageObject{
     }
     public String getTreatingPhysician(){
         return treatingPhysician.getText();
+    }
+
+    public void deleteFirstEntry(){
+        deleteFirstEntryLink.click();
     }
 
 
