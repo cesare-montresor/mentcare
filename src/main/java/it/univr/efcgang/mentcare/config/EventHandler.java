@@ -27,8 +27,8 @@ public class EventHandler {
         System.out.println("System: OnReady");
         demoData.addDemoData();
 
-        browserOpen();
-        browserLogin("maria","maria");
+        //browserOpen();
+        //browserLogin("maria","maria");
     }
 
     public void browserOpen(){

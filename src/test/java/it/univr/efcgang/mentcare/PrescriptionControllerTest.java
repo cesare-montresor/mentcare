@@ -16,12 +16,12 @@ class PrescriptionControllerTest extends BaseTest{
     @Test
     public void tableIsInitState(){
         driver.get(baseUrl);
-
+        browserLogin("maria","maria");
         // Go to Prescription list page
         MenuPO menu = new MenuPO(driver);
         PrescriptionListPO prescriptionlist = menu.goToPrescriptionPage();
 
-        // Check that it's the right pqge
+        // Check that it's the right page
         assertEquals("Prescription list",prescriptionlist.getTitle());
 
         // Check that entries are as expected

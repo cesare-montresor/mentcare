@@ -7,16 +7,16 @@ import org.openqa.selenium.support.FindBy;
 public class MenuPO extends PageObject{
 
 
-    @FindBy(css = "main-menu-home")
+    @FindBy(css = "#main-menu-home")
     WebElement home;
 
-    @FindBy(css = "main-menu-prescription")
+    @FindBy(css = "#main-menu-prescription")
     WebElement prescriptions;
 
-    @FindBy(css = "main-menu-patient")
+    @FindBy(css = "#main-menu-patient")
     WebElement patients;
 
-    @FindBy(css = "main-menu-utils")
+    @FindBy(css = "#main-menu-utils")
     WebElement utils;
 
     public MenuPO(WebDriver driver) {
