@@ -26,6 +26,8 @@ public class PrescriptionListPO extends PageObject{
     WebElement firstDateStart;
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[6]")
     WebElement firstDateEnd;
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[7]")
+    WebElement treatingPhysician;
 
     public PrescriptionListPO(WebDriver driver) {
         super(driver);
@@ -62,6 +64,9 @@ public class PrescriptionListPO extends PageObject{
     }
     public String getFirstDateEnd(){
         return firstDateEnd.getText();
+    }
+    public String getTreatingPhysician(){
+        return treatingPhysician.getText();
     }
 
 
