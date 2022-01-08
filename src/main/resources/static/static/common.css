@@ -68,6 +68,9 @@ body {
     border-right: 1px lightgray solid;
     box-shadow: 3px gray;
 }
+.center-wrapper{
+    text-align: center;
+}
 
 /* FOOTER */
 

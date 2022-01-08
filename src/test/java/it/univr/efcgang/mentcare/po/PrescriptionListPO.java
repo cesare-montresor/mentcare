@@ -10,10 +10,10 @@ public class PrescriptionListPO extends PageObject{
     @FindBy(tagName = "h1")
     private WebElement message;
 
-    @FindBy(css = "#prescription-table")
+    @FindBy(id = "prescription-table")
     WebElement table;
 
-    @FindBy(id = "createPrescription")
+    @FindBy(id = "create-prescription")
     WebElement createPrescriptionLink;
 
     @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[2]")

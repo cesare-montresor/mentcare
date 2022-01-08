@@ -51,7 +51,6 @@ class PrescriptionControllerTest extends BaseTest{
 
     }
 
-
     @Test
     public void testDeletePrescription(){
         // Get to page
@@ -68,7 +67,6 @@ class PrescriptionControllerTest extends BaseTest{
         assertEquals(1,prescriptionList.getRowsNumber(),"Entry wasn't deleted correctly");
 
     }
-
 
     @Test
     public void testAddPrescription(){
@@ -156,6 +154,8 @@ class PrescriptionControllerTest extends BaseTest{
 
 
     }
+
+
 
     /***
      * Every one of the above test must get to the Prescription list page to start. Hence,
