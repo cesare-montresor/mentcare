@@ -12,11 +12,11 @@
 
 
     <h1>Editing a prescription</h1>
-    <form action="save" method="post">
+    <form action="/prescription/save" method="post">
 
         <!--/* Patient */-->
         <label for="patient_selector">Patient: </label>
-        <select id="patient_selector" name="patient_id" class="form-select" disabled>
+        <select id="patient_selector" name="patient_id" class="form-select" >
             <option value="1"  th:text = "${prescription.patient.name}" th:value = "${prescription.patient.id}">Jane Doe</option>
         </select>
         </br>
@@ -63,7 +63,7 @@
         </br></br>
 
         <div class="center-wrapper">
-            <input id="submit-button" type="submit" class="btn btn-primary btn-lg" value="Confirm changes">
+            <input id="submit-button" type="submit" class="btn btn-primary btn-lg" value="Confirm changes"/>
             <a id="button-go-back"  href="/prescription" class="btn btn-secondary btn-lg"> Go back to list </a>
         </div>
     </form>
