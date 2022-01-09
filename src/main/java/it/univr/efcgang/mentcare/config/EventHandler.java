@@ -22,13 +22,17 @@ public class EventHandler {
     @Autowired
     DemoData demoData;
 
+    private final boolean testingMode = true;
+
     @EventListener(ApplicationReadyEvent.class)
     public void OnReady() throws IOException {
         System.out.println("System: OnReady");
         demoData.addDemoData();
 
-        browserOpen();
-        browserLogin("maria","maria");
+        if (!testingMode){
+         browserOpen();
+         browserLogin("maria","maria");
+        }
     }
 
     public void browserOpen(){

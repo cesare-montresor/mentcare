@@ -10,16 +10,21 @@
 <div id="page-content">
 
     <h1>Prescriptions</h1>
-    <table>
+
+    <div class="center-wrapper">
+        <a id ="create-prescription" class="btn btn-primary btn-lg btn-block wrapper" href="prescription/create" >Create new prescription</a>
+    </div>
+
+    <table id="prescription-table" class="table table-striped">
         <thead>
         <tr>
-            <th>Prescription code</th>
+            <th>#</th>
             <th>Patient</th>
             <th>Drug name</th>
             <th>Dosage</th>
             <th>Date start</th>
             <th>Date end</th>
-            <th>Treating physician</th>
+            <th>Physician</th>
         </tr>
         </thead>
         <tbody>
@@ -31,15 +36,15 @@
             <td th:text = "${#dates.format(prescription.dateStart, 'dd-MM-yyyy')}">11/03/2021</td>
             <td th:text = "${#dates.format(prescription.dateEnd, 'dd-MM-yyyy')}">11/03/2022</td>
             <td th:text = "${prescription.doctor.name}">11th Doctor</td>
-            <td> <a href="editPrescription?id=1" th:href="@{prescription/edit(id=${prescription.id})}"> edit </a></td>
-            <td> <a href="deletePrescription?id=1" th:href="@{prescription/delete(id=${prescription.id})}"> delete </a></td>
+            <td>
+                <a href="editPrescription?id=1" th:href="@{prescription/edit(id=${prescription.id})}" class="btn btn-secondary btn-sm">Edit</a>
+            </td>
+            <td>
+                <a href="deletePrescription?id=1" th:href="@{prescription/delete(id=${prescription.id})}" class="btn btn-secondary btn-sm">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
-
-    <a id="createPrescription"  href="prescription/create">Click here to make a new prescription</a>
-
-
 
 
 </div>

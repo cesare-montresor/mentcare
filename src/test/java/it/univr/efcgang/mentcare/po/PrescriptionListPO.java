@@ -10,31 +10,54 @@ public class PrescriptionListPO extends PageObject{
     @FindBy(tagName = "h1")
     private WebElement message;
 
-    @FindBy(xpath = "/html/body/table/tbody")
+    @FindBy(id = "prescription-table")
     WebElement table;
 
-    @FindBy(id = "createPrescription")
+    @FindBy(id = "create-prescription")
     WebElement createPrescriptionLink;
 
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[2]")
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[2]")
     WebElement firstPatient;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[3]")
+
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[3]")
     WebElement firstDrug;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[4]")
+
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[4]")
     WebElement firstDosage;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[5]")
+
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[5]")
     WebElement firstDateStart;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td[6]")
+
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[6]")
     WebElement firstDateEnd;
+
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody[1]/tr[1]/td[7]")
+    WebElement treatingPhysician;
+
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody/tr/td[8]/a")
+    WebElement editFirstEntryLink;
+
+    @FindBy(xpath = "//table[@id='prescription-table']/tbody/tr/td[9]/a")
+    WebElement deleteFirstEntryLink;
+
+
 
     public PrescriptionListPO(WebDriver driver) {
         super(driver);
     }
 
+
     public PrescriptionCreatePO clickNewPrescription(){
         createPrescriptionLink.click();
         return new PrescriptionCreatePO(driver);
     }
+
+    public PrescriptionEditPO clickEditPrescription(){
+        editFirstEntryLink.click();
+        return new PrescriptionEditPO(driver);
+    }
+
+
 
     public String getTitle(){
         return message.getText();
@@ -63,6 +86,14 @@ public class PrescriptionListPO extends PageObject{
     public String getFirstDateEnd(){
         return firstDateEnd.getText();
     }
+    public String getTreatingPhysician(){
+        return treatingPhysician.getText();
+    }
+
+    public void deleteFirstEntry(){
+        deleteFirstEntryLink.click();
+    }
+
 
 
 

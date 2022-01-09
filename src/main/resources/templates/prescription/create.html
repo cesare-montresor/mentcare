@@ -13,45 +13,59 @@
     <h1>Writing a new prescription</h1>
     <form action="/prescription/save" method="post">
 
-        <!-- >Patient<!-->
+        <!--/*Patient*/-->
         <label for="patient_selector">Patient: </label>
-        <select id="patient_selector" name="patient_id">
+        <select id="patient_selector" name="patient_id" class="form-select">
             <option value="1" th:each = "patient : ${patients}" th:text = "${patient.name}" th:value = "${patient.id}">Jane Doe</option>
          </select>
          </br>
 
-        <!-- >Drug-->
+        <!--*/Drug*/-->
         <label for="drug_selector">Drug: </label>
-        <select id="drug_selector" name="drug_id">
+        <select id="drug_selector" name="drug_id" class="form-select">
             <option value="1" th:each = "drug : ${drugs}" th:text = "${drug.name}" th:value = "${drug.id}">Ibuprofen</option>
         </select>
         </br>
 
-        <!-- >Dosage-->
+        <!--*/Dosage*/-->
         <label for="dosage_selector">Dosage: </label>
-        <input id= "dosage_selector" type="text" name="dosage" value="As per package leaflet"/>
+        <input id= "dosage_selector" type="text" class="form-control" name="dosage" value="As per package leaflet"/>
         </br>
 
 
         <!-- Dates-->
-        <label for="datestart-selector">Start date:</label>
-        <input type="date" id="datestart-selector" name="dateStart"
-               value="2000-11-03"
-               th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-               min="2018-01-01"
-               th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
-        </br>
-        <label for="dateend-selector">End date:</label>
-        <input type="date" id="dateend-selector" name="dateEnd"
-               value="2018-07-22"
-               th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-               min="2018-01-01"
-               th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
-        </br>
-        <input type="submit" />
+        <div class="center-wrapper">
+            <div class="row">
+                <div class="col">
+                    <label for="datestart-selector">Start date:</label>
+                    <input type="date" id="datestart-selector" name="dateStart"
+                           value="2000-11-03"
+                           th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                           min="2018-01-01"
+                           th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
+                    </br>
+                </div>
+                <div class="col">
+                <label for="dateend-selector">End date:</label>
+                <input type="date" id="dateend-selector" name="dateEnd"
+                       value="2018-07-22"
+                       th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                       min="2018-01-01"
+                       th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
+                </div>
+            </div>
+        </div>
+
+
+        </br></br>
+
+        <div class="center-wrapper">
+            <input id="submit-button" type="submit" class="btn btn-primary btn-lg" value="Create prescription"/>
+            <a id="button-go-back"  href="/prescription" class="btn btn-secondary btn-lg"> Go back to list </a>
+        </div>
+
     </form>
-    <!--${#dates.format(#dates.createNow(), 'dd MMM yyyy')}-->
-    <a href="/prescription"> Go back to the list </a>
+
 
 
 

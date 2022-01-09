@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class PrescriptionCreatePO extends PageObject {
+public class PrescriptionEditPO extends PageObject {
 
     @FindBy(css = "#patient_selector")
     WebElement patientSelectorWE;
@@ -28,32 +28,26 @@ public class PrescriptionCreatePO extends PageObject {
     WebElement submitButton;
 
 
-    public PrescriptionCreatePO(WebDriver driver) {
+    public PrescriptionEditPO(WebDriver driver) {
         super(driver);
     }
 
-    public PrescriptionListPO insertPrescriptionData(String patient, String drug, String dosage,
-                                                     String dateStart, String dateEnd){
-
-        patientSelector.selectByVisibleText(patient);
-
-        drugSelector.selectByVisibleText(drug);
-
+    public void editDosage(String dosage){
         dosageSelector.clear();
         dosageSelector.sendKeys(dosage);
+    }
 
-        // Note: datepicker supports sendKeys only if date is
-        // sent in standard ISO format (yyyy-MM-dd), independently
-        // of how it's displayed in page (for us, dd/MM/yyyy)
-        // (I might have lost quite a bit of time on this...)
-        dateStartSelector.click();
+    public void editStartDate(String dateStart){
         dateStartSelector.sendKeys(dateStart);
-
-        dateEndSelector.click();
+    }
+    public void editEndDate(String dateEnd){
         dateEndSelector.sendKeys(dateEnd);
+    }
 
+    public PrescriptionListPO confirmEdit(){
         submitButton.click();
-
         return new PrescriptionListPO(driver);
     }
+
+
 }
