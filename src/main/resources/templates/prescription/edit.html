@@ -14,6 +14,10 @@
     <h1>Editing a prescription</h1>
     <form action="/prescription/save" method="post">
 
+        <!--/* Prescription ID*/-->
+        <input id= "perscription_id" type="text" class="form-control" name="prescription_id" value="1" th:value = "${prescription.id}" hidden/>
+        </br>
+
         <!--/* Patient */-->
         <label for="patient_selector">Patient: </label>
         <select id="patient_selector" name="patient_id" class="form-select" >

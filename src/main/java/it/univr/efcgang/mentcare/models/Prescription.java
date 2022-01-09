@@ -1,6 +1,5 @@
 package it.univr.efcgang.mentcare.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,9 +22,10 @@ public class Prescription {
     @ManyToOne(cascade = CascadeType.REFRESH)
     User doctor;
 
-    String dosage;
-    Date dateStart;
-    Date dateEnd;
+    private String dosage;
+    private Date dateStart;
+    private Date dateEnd;
+    private boolean valid;
 
     public Prescription(Drug drug, Patient patient, User doctor, String dosage, Date dateStart,  Date dateEnd ){
         this.drug = drug;
@@ -34,5 +34,23 @@ public class Prescription {
         this.dosage=dosage;
         this.dateStart=dateStart;
         this.dateEnd=dateEnd;
+        valid = checkValidity();
     }
+
+    public boolean getValidity(){ return valid;}
+
+    /***
+     * Checks if the created prescription is valid.
+     * @return
+     */
+    private boolean checkValidity(){
+
+        // 1. Check dateEnd comes after dateStart
+        boolean result = dateEnd.compareTo(dateStart) >= 0 ? true : false;
+        System.out.println(dateStart+ " " + dateEnd + ": "+ result);
+
+        return result;
+    }
+
+
 }
