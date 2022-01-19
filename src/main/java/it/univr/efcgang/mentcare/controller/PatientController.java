@@ -7,6 +7,7 @@ import it.univr.efcgang.mentcare.repository.PatientRepository;
 import it.univr.efcgang.mentcare.repository.PrescriptionRepository;
 import it.univr.efcgang.mentcare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class PatientController {
+public class PatientController implements ErrorController {
 
     @Autowired
     private PatientRepository repository;
@@ -119,5 +120,8 @@ public class PatientController {
     }
 
 
-
+    @Override
+    public String getErrorPath() {
+        return null;
+    }
 }
