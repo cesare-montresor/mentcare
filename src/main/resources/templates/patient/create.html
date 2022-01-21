@@ -11,7 +11,7 @@
 
 
     <div id="page-patient-create">
-        <h1>Create a new patient</h1>
+        <h1 id = "page-patient-create-title" >Create a new patient</h1>
         <form action="/patient/save" method="post">
             Name: <input id="page-patient-create-name" type="text" name="name"><br>
             <!-- >Doctor<!-->
@@ -20,7 +20,7 @@
                 <option value="1" th:each ="doctor : ${doctors}" th:text = "${doctor.name}" th:value ="${doctor.id}">John Watson</option>
             </select>
             </br>
-            <input id="page-patient-create-submit" type="submit"/>
+            <input id="page-patient-create-submit" text="Create patient" type="submit"/>
         </form>
         <a id="page-patient-create-list" href="/patient">Go back to the list </a>
 

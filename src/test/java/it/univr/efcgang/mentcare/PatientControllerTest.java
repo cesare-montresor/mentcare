@@ -1,7 +1,6 @@
 package it.univr.efcgang.mentcare;
 
-import it.univr.efcgang.mentcare.po.MenuPO;
-import it.univr.efcgang.mentcare.po.PatientListPO;
+import it.univr.efcgang.mentcare.po.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,7 +13,6 @@ class PatientControllerTest extends BaseTest{
      */
     @Test
     public void testInitListPatients(){
-        //ha bisogno di ulteriore testing
 
         PatientListPO patientListPO = getToPatientPage();
         assertEquals(2, patientListPO.getRowNum());
@@ -29,9 +27,28 @@ class PatientControllerTest extends BaseTest{
      *
      */
 
+    //TODO
     @Test
     public void testCreatePatient(){
+        // Get to index page
         PatientListPO patientListPO = getToPatientPage();
+
+        //Deleting the first 2 patients
+        //NON FUNZIONANO
+        patientListPO.deleteFirstPatient();
+        patientListPO.deleteFirstPatient();
+
+        // Get to create page
+        PatientCreatePO patientCreatePO = patientListPO.clickNewPatient();
+        patientCreatePO.addPatient();
+        assertEquals("Create a new patient", patientCreatePO.getTitle());
+        patientListPO = patientCreatePO.createPatient();
+
+        assertEquals("Patients", patientListPO.getTitle());
+        assertEquals(3, patientListPO.getRowNum());
+
+        //forse devo usare un modo diverso
+        assertEquals("Luca", patientListPO.getFirstPatient());
 
     }
 
@@ -39,9 +56,23 @@ class PatientControllerTest extends BaseTest{
      * Test for editing a patient that is already in the list and
      * checking if its information are updated
      */
+    //TODO
     @Test
     public void testEditPatient(){
+        // Get to patient page
         PatientListPO patientListPO = getToPatientPage();
+        // Get to edit page
+        PatientEditPO patientEditPO = patientListPO.editFirstPatient();
+
+        patientEditPO.editPatient();
+        assertEquals(" Updating a patient", patientEditPO.getTitle());
+        patientListPO = patientEditPO.updatePatient();
+
+        assertEquals("Patients", patientListPO.getTitle());
+        assertEquals(3, patientListPO.getRowNum());
+
+        //forse devo usare un modo diverso
+        assertEquals(1, patientListPO.getFirstPatientDoctor());
 
     }
 
@@ -49,9 +80,15 @@ class PatientControllerTest extends BaseTest{
      * Test for deleting a patient that is already in the list and
      * checking if the list of patients is updated
      */
+    //TODO
     @Test
     public void testDeletePatient(){
         PatientListPO patientListPO = getToPatientPage();
+
+        patientListPO.deleteFirstPatient();
+
+        assertEquals("Patients", patientListPO.getTitle());
+        assertEquals(1, patientListPO.getRowNum());
 
     }
 
