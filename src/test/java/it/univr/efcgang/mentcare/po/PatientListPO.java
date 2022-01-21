@@ -6,6 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * This class is used for testing method testInitPatient of class PatientControllerTest
+ * and also for getting to the index page of list of patients
+ */
+
 public class PatientListPO extends PageObject {
 
     @FindBy(tagName = "/html/body/div[1]/div/h1")
