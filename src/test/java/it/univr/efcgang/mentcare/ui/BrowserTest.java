@@ -41,7 +41,6 @@ public class BrowserTest extends BaseTest {
         browser.clear();
     }
 
-
     public String url(String path){
         return baseUrl + path;
     }

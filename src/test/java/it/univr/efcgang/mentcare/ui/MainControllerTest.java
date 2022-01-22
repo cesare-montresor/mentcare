@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class MainControllerTest extends BrowserTest {
 
 	@Test
-	public void testLogin() throws InterruptedException {
+	public void testLoginDoctor() throws InterruptedException {
 
 		browserLogin("maria", "maria");
 		browser.driver.get(url("/profile"));
@@ -30,7 +30,6 @@ class MainControllerTest extends BrowserTest {
 		assertEquals(title_txt, "Profile");
 		assertEquals(username_txt , "maria");
 		assertEquals(roles_txt, "DOCTOR");
-
 	}
 
 	@Test
