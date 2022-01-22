@@ -30,8 +30,8 @@ public class EventHandler {
         demoData.addDemoData();
 
         if (!testingMode){
-         browserOpen();
-         browserLogin("maria","maria");
+            browserOpen();
+            browserLogin("maria","maria");
         }
     }
 

@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 
 public class MainPO extends PageObject {
 
@@ -43,6 +46,18 @@ public class MainPO extends PageObject {
     public WebElement profileRoles;
     @FindBy(css = "#page-profile-active")
     public WebElement profileActive;
+
+    @FindBy(css = "#main-menu a")
+    public ArrayList<WebElement> menuItems;
+
+    @FindBy(css = "#page-auth div")
+    public WebElement menuAuth;
+
+    public boolean isLoggedIn(){
+        if (menuAuth == null){ return false; }
+        String cssClass= menuAuth.getAttribute("class");
+        return cssClass.contains("page-auth-profile");
+    }
 
     public MainPO(WebDriver driver) {super(driver);}
 }

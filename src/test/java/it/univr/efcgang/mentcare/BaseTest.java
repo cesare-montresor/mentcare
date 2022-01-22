@@ -9,8 +9,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class BaseTest {
 
     public String baseUrl = "http://localhost:8080";
-
-
-
 }
 
