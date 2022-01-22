@@ -1,6 +1,7 @@
-package it.univr.efcgang.mentcare;
+package it.univr.efcgang.mentcare.ui;
 
 
+import it.univr.efcgang.mentcare.BaseTest;
 import it.univr.efcgang.mentcare.po.MainPO;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-class MainControllerTest extends BaseTest {
+class MainControllerTest extends BrowserTest {
 
 	@Test
 	public void testLogin() throws InterruptedException {
