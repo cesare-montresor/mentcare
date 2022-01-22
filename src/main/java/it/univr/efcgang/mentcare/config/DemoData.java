@@ -84,4 +84,16 @@ public class DemoData {
 
         return true;
     }
+
+    public void clearDemoData(){
+        userRepository.deleteAll();
+        drugRepository.deleteAll();
+        patientRepository.deleteAll();
+        prescriptionRepository.deleteAll();
+    }
+
+    public void resetDemoData(){
+        clearDemoData();
+        addDemoData();
+    }
 }

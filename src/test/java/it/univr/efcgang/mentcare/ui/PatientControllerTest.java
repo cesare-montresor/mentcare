@@ -1,11 +1,12 @@
-package it.univr.efcgang.mentcare;
+package it.univr.efcgang.mentcare.ui;
 
+import it.univr.efcgang.mentcare.BaseTest;
 import it.univr.efcgang.mentcare.po.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PatientControllerTest extends BaseTest{
+class PatientControllerTest extends BrowserTest {
 
     /**
      * Test for checking the list of patient in the index page after the call of the method addDemoData
