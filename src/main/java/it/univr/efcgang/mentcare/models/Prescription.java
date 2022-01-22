@@ -26,6 +26,8 @@ public class Prescription {
     private Date dateStart;
     private Date dateEnd;
     private boolean valid;
+    private String validDescription = "";
+
 
     public Prescription(Drug drug, Patient patient, User doctor, String dosage, Date dateStart,  Date dateEnd ){
         this.drug = drug;
@@ -34,7 +36,7 @@ public class Prescription {
         this.dosage=dosage;
         this.dateStart=dateStart;
         this.dateEnd=dateEnd;
-        valid = checkValidity();
+        checkValidity();
     }
 
     public boolean getValidity(){ return valid;}
@@ -43,13 +45,48 @@ public class Prescription {
      * Checks if the created prescription is valid.
      * @return
      */
-    private boolean checkValidity(){
+    /***
+     * Checks if the created prescription is valid.
+     * @return
+     */
+    private void checkValidity(){
 
-        // 1. Check dateEnd comes after dateStart
+        boolean r = true;
+
+        if(drug==null) {
+            validDescription += "Drug is not set. ";
+            r = r && false; // messo in ogni riga perché IntelliJ altrimenti mi dava errore...
+        }
+        if(patient == null) {
+            validDescription += "Patient is not set. ";
+            r = r && false;
+        }
+        if(doctor == null) {
+            validDescription += "User is not set; something went wrong in authentication. ";
+            r = r && false;
+        }
+        if (dosage == null || dosage.equals("")) {
+            validDescription += "Dosage is not set. ";
+            r = r && false;
+        }
+        if (dateStart == null) {
+            validDescription += "Start date is not set. ";
+            r = r && false;
+        }
+        if (dateEnd == null) {
+            validDescription += "End date is not set. ";
+            r = r && false;
+        }
+
+        if (r == false){
+            valid = false;
+            return;}
+
+        // Check dateEnd comes after dateStart
         boolean result = dateEnd.compareTo(dateStart) >= 0 ? true : false;
-        System.out.println(dateStart+ " " + dateEnd + ": "+ result);
+        validDescription = result == true ? validDescription : validDescription + "End date is before start date. ";
+        valid = r && result;
 
-        return result;
     }
 
 

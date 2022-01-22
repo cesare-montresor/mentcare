@@ -21,14 +21,22 @@
         <!--/* Patient */-->
         <label for="patient_selector">Patient: </label>
         <select id="patient_selector" name="patient_id" class="form-select">
-            <option value="1" th:each = "patient : ${patients}" th:text = "${patient.name}" th:value = "${patient.id}">Jane Doe</option>
+            <option value="1"
+                    th:each = "patient : ${patients}"
+                    th:text = "${patient.name}"
+                    th:value = "${patient.id}"
+                    th:selected="${patient.id} == ${prescription.patient.id} ? true : false">Jane Doe</option>
         </select>
         </br>
 
         <!--/* Drug */-->
         <label for="drug_selector">Drug: </label>
         <select id="drug_selector" name="drug_id" class="form-select">
-            <option value="1" th:each = "drug : ${drugs}" th:text = "${drug.name}" th:value = "${drug.id}">Ibuprofen</option>
+            <option value="1"
+                    th:each = "drug : ${drugs}"
+                    th:text = "${drug.name}"
+                    th:value = "${drug.id}"
+                    th:selected="${drug.id} == ${prescription.drug.id} ? true : false">Ibuprofen</option>
         </select>
         </br>
 
