@@ -78,13 +78,15 @@ public class Prescription {
             r = r && false;
         }
 
-        if (r == false){
+        if (r == false)
             valid = false;
-            return;}
+
 
         // Check dateEnd comes after dateStart
         boolean result = dateEnd.compareTo(dateStart) >= 0 ? true : false;
-        validDescription = result == true ? "Ok" : validDescription + "End date is before start date. ";
+        validDescription = result == true ? "Ok" : validDescription + "End date cannot be before start date. ";
+
+
         valid = r && result;
 
     }

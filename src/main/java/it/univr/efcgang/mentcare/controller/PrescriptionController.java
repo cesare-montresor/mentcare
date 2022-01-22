@@ -46,9 +46,11 @@ public class PrescriptionController {
     }
 
     @RequestMapping("prescription/create")
-    public String create(Model model){
+    public String create(@RequestParam(name="error_msg", required=false) String error_msg,
+                         Model model){
         sendPatientsToModel(model);
         sendDrugsToModel(model);
+        model.addAttribute("error_msg",error_msg);
         return "prescription/create";
     }
 
@@ -85,14 +87,16 @@ public class PrescriptionController {
 
         if (patient == null || drug == null)
             return "notfound";
-        
+
 
         Prescription prescription = new Prescription(drug,patient,authService.UserGet(),dosage, dateStart, dateEnd);
 
-        // TODO: anziché mandare tutto in errore, se i dati non sono validi lascio che il doctor li ricompili
-        if (!prescription.getValidity())
-            return "redirect:/prescription/edit?id=" + prescription_id+"&error_msg="+prescription.getValidDescription();
-
+        if (!prescription.getValidity()) {
+            if(prescription_id != null)
+                return "redirect:/prescription/edit?id=" + prescription_id + "&error_msg=" + prescription.getValidDescription();
+            else
+                return "redirect:/prescription/create?error_msg="+prescription.getValidDescription();
+        }
 
         if(prescription_id != null)
             prescriptionRepository.delete(prescriptionRepository.findById(prescription_id).get());
