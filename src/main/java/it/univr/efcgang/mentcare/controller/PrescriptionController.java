@@ -46,23 +46,33 @@ public class PrescriptionController {
     }
 
     @RequestMapping("prescription/create")
-    public String create(Model model){
+    public String create(@RequestParam(name="error_msg", required=false) String error_msg,
+                         Model model){
         sendPatientsToModel(model);
         sendDrugsToModel(model);
+        model.addAttribute("error_msg",error_msg);
         return "prescription/create";
     }
 
     @RequestMapping("prescription/edit")
-    public String edit(@RequestParam(name="id", required=true) long id, Model model){
+    public String edit(@RequestParam(name="id", required=true) long id,
+                       @RequestParam(name="error_msg", required=false) String error_msg,
+                       Model model){
         sendPatientsToModel(model);
         sendDrugsToModel(model);
+
         Prescription prescription = prescriptionRepository.findById(id);
+        System.out.println(prescription);
+
+        model.addAttribute("error_msg",error_msg);
         model.addAttribute("prescription",prescription);
+
         return "prescription/edit";
     }
 
     @RequestMapping("prescription/save")
-    public String save(@RequestParam(name="patient_id", required=true) long patient_id,
+    public String save(@RequestParam(name="prescription_id", required=false) Long prescription_id,
+                       @RequestParam(name="patient_id", required=true) long patient_id,
                        @RequestParam(name="drug_id", required=true) long drug_id,
                        @RequestParam(name="dosage",required = true) String dosage,
                        @RequestParam(name="dateStart",required=true)
@@ -71,8 +81,6 @@ public class PrescriptionController {
                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateEnd
         ){
 
-        // TODO: check that end date is bigger than start date
-
         // Find patient and drug
         Patient patient = patientRepository.findById(patient_id);
         Drug drug = drugRepository.findById(drug_id);
@@ -80,8 +88,18 @@ public class PrescriptionController {
         if (patient == null || drug == null)
             return "notfound";
 
-        // Make prescription
+
         Prescription prescription = new Prescription(drug,patient,authService.UserGet(),dosage, dateStart, dateEnd);
+
+        if (!prescription.getValidity()) {
+            if(prescription_id != null)
+                return "redirect:/prescription/edit?id=" + prescription_id + "&error_msg=" + prescription.getValidDescription();
+            else
+                return "redirect:/prescription/create?error_msg="+prescription.getValidDescription();
+        }
+
+        if(prescription_id != null)
+            prescriptionRepository.delete(prescriptionRepository.findById(prescription_id).get());
 
         prescriptionRepository.save(prescription);
 

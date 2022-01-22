@@ -37,7 +37,7 @@
             <td th:text = "${#dates.format(prescription.dateEnd, 'dd-MM-yyyy')}">11/03/2022</td>
             <td th:text = "${prescription.doctor.name}">11th Doctor</td>
             <td>
-                <a href="editPrescription?id=1" th:href="@{prescription/edit(id=${prescription.id})}" class="btn btn-secondary btn-sm">Edit</a>
+                <a ref="editPrescription?id=1" th:href="@{prescription/edit(id=${prescription.id})}" class="btn btn-secondary btn-sm">Edit</a>
             </td>
             <td>
                 <a href="deletePrescription?id=1" th:href="@{prescription/delete(id=${prescription.id})}" class="btn btn-secondary btn-sm">Delete</a>
