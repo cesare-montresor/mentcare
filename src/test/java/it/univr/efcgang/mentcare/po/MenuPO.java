@@ -32,13 +32,13 @@ public class MenuPO extends PageObject{
         prescriptions.click();
         return new PrescriptionListPO(driver);
     }
-    public PatientPO goToPatientPageEmpty(){
+    public PatientListPO goToPatientPageEmpty(){
         patients.click();
-        return new PatientPO(driver);
+        return new PatientListPO(driver);
     }
-    public PatientPO goToPatientPage(){
+    public PatientListPO goToPatientPage(){
         patients.click();
-        return new PatientPO(driver);
+        return new PatientListPO(driver);
     }
 
     public UtilsPO goToUtilsPage(){

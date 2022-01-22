@@ -10,8 +10,9 @@
 <div id="page-content">
 
     <div id="page-patient-edit">
-        <h1>Updating a patient</h1>
-        <form action="save" method="post">
+        <h1 id="page-patient-edit-title">Updating a patient</h1>
+        <form action="update" method="post">
+
             Name: <input id="page-patient-edit-name" type="text" name="name" th:value="${patient.name}"><br>
             <!-- >Doctor<!-->
             <label for="page-patient-edit-doctor">Doctor: </label>
@@ -19,6 +20,7 @@
                 <option value="1" th:text="${patient.mainDoctor.name}" th:value="${patient.mainDoctor.id}" selected disabled hidden>Selected doctor John Watson</option>
                 <option value="2" th:each ="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}" >John Watson</option>
             </select>
+            <input type="hidden" name="id" th:value="${patient.id}"/>
             </br>
             <input id="page-patient-edit-submit" type="submit"/>
         </form>

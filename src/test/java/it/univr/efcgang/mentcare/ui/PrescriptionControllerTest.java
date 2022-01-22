@@ -1,5 +1,6 @@
-package it.univr.efcgang.mentcare;
+package it.univr.efcgang.mentcare.ui;
 
+import it.univr.efcgang.mentcare.BaseTest;
 import it.univr.efcgang.mentcare.po.MenuPO;
 import it.univr.efcgang.mentcare.po.PrescriptionCreatePO;
 import it.univr.efcgang.mentcare.po.PrescriptionEditPO;
@@ -14,7 +15,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class PrescriptionControllerTest extends BaseTest{
+class PrescriptionControllerTest extends BrowserTest {
 
     @Test
     public void testTableInitState(){

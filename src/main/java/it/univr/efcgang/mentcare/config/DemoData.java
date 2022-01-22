@@ -84,4 +84,27 @@ public class DemoData {
 
         return true;
     }
+
+    public void clearDemoData(){
+        userRepository.deleteAll();
+        drugRepository.deleteAll();
+        patientRepository.deleteAll();
+        prescriptionRepository.deleteAll();
+    }
+
+    public void resetDemoData(){
+        clearDemoData();
+        addDemoData();
+    }
+
+    /*
+    public void printAllRepository(){
+        System.out.println("Printing all patients: \n");
+        for(Patient p: patientRepository.findAll())
+            System.out.println(p);
+        System.out.println("Printing all users: \n");
+        for(User u: userRepository.findAll())
+            System.out.println(u);
+
+    }*/
 }
