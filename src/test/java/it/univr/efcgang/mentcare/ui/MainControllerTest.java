@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,6 +26,7 @@ class MainControllerTest extends BrowserTest {
 		browserLogin("maria", "maria");
 		assertTrue(mainPO.isLoggedIn());
 		logout();
+		assertTrue(mainPO.isLoggedOut());
 	}
 
 	@Test
@@ -43,6 +45,7 @@ class MainControllerTest extends BrowserTest {
 		assertEquals(username_txt , "maria");
 		assertEquals(roles_txt, "DOCTOR");
 		logout();
+		assertTrue(mainPO.isLoggedOut());
 	}
 
 	@Test
@@ -56,6 +59,7 @@ class MainControllerTest extends BrowserTest {
 		System.out.println(names);
 		assertEquals(String.join( ", ", names), "Home, Drug, Patient, Prescription");
 		logout();
+		assertTrue(mainPO.isLoggedOut());
 	}
 
 	@Test
@@ -69,6 +73,7 @@ class MainControllerTest extends BrowserTest {
 		System.out.println(names);
 		assertEquals(String.join( ", ", names), "Home, User, Utils");
 		logout();
+		assertTrue(mainPO.isLoggedOut());
 	}
 
 	@Test
@@ -82,22 +87,7 @@ class MainControllerTest extends BrowserTest {
 		System.out.println(names);
 		assertEquals(String.join( ", ", names), "Home, Drug, Patient");
 		logout();
+		assertTrue(mainPO.isLoggedOut());
 	}
-
-
-	@Test
-	public void testWelcome() {
-		driver.get(baseUrl);
-	}
-
-	@Test
-	public void testTopMenu() {
-		driver.get(baseUrl);
-	}
-
-
-
-
-
 
 }

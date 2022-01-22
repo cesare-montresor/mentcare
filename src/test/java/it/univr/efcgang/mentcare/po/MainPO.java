@@ -66,6 +66,10 @@ public class MainPO extends PageObject {
         return menuAuthLogin.size() == 0 && menuAuthProfile.size() == 1;
     }
 
+    public boolean isLoggedOut(){
+        return menuAuthLogin.size() == 1 && menuAuthProfile.size() == 0;
+    }
+
 
 
 
