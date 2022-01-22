@@ -1,11 +1,9 @@
 package it.univr.efcgang.mentcare.ui;
 
 import it.univr.efcgang.mentcare.BaseTest;
-import it.univr.efcgang.mentcare.po.MenuPO;
-import it.univr.efcgang.mentcare.po.PrescriptionCreatePO;
-import it.univr.efcgang.mentcare.po.PrescriptionEditPO;
-import it.univr.efcgang.mentcare.po.PrescriptionListPO;
+import it.univr.efcgang.mentcare.po.*;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,6 +50,7 @@ class PrescriptionControllerTest extends BrowserTest {
 
     }
 
+
     @Test
     public void testDeletePrescription(){
         // Get to page
@@ -70,6 +69,19 @@ class PrescriptionControllerTest extends BrowserTest {
     }
 
     @Test
+    void testDeletePrescription404(){
+
+        driver.get(baseUrl);
+        // Login
+        browserLogin("maria","maria");
+
+        driver.get(baseUrl + "/prescription/delete?id=0");
+        assertEquals(driver.findElement(By.tagName("h1")).getText(),"404 - Not found");
+
+    }
+
+
+    @Test
     public void testAddPrescription(){
 
         // Get to page
@@ -79,7 +91,7 @@ class PrescriptionControllerTest extends BrowserTest {
         PrescriptionCreatePO prescriptionCreate = prescriptionList.clickNewPrescription();
 
         //Insert data
-        prescriptionList = prescriptionCreate.insertPrescriptionData("Giovanni Rossi","drug A","Once per day",
+        prescriptionList = (PrescriptionListPO) prescriptionCreate.insertPrescriptionData("Giovanni Rossi","drug A","Once per day",
                 generateTodayNextMonthDates(new SimpleDateFormat("yyyy-MM-dd"))[0],
                 generateTodayNextMonthDates(new SimpleDateFormat("yyyy-MM-dd"))[1]);
 
@@ -119,6 +131,55 @@ class PrescriptionControllerTest extends BrowserTest {
     }
 
     @Test
+    public void testAddPrescriptionWrongDate(){
+
+        // Get to page
+        PrescriptionListPO prescriptionList = getToPrescriptionPage();
+
+        // Get to Create page
+        PrescriptionCreatePO prescriptionCreate = prescriptionList.clickNewPrescription();
+
+        //Insert data
+         prescriptionCreate = (PrescriptionCreatePO) prescriptionCreate.insertPrescriptionData("Giovanni Rossi",
+                "drug A",
+                "Once per day",
+                "2023-11-01",
+                "2023-01-01");
+
+        // Check that system didn't accept this date
+        assertEquals("End date cannot be before start date.",prescriptionCreate.getErrorMessage());
+
+
+
+    }
+
+    @Test
+    public void testAddPrescriptionWrongDosage(){
+
+        // Get to page
+        PrescriptionListPO prescriptionList = getToPrescriptionPage();
+
+        // Get to Create page
+        PrescriptionCreatePO prescriptionCreate = prescriptionList.clickNewPrescription();
+
+        //Insert data
+        PrescriptionCreatePO prescription404 = (PrescriptionCreatePO) prescriptionCreate.insertPrescriptionData(
+                "Giovanni Rossi",
+                "drug A",
+                "",
+                "2023-11-01",
+                "2023-11-01");
+
+        // Check that system didn't accept this
+        assertEquals("Dosage is not set.",prescription404.getErrorMessage());
+
+
+
+    }
+
+
+
+    @Test
     public void testEditPrescription(){
 
         // Get to page
@@ -127,11 +188,12 @@ class PrescriptionControllerTest extends BrowserTest {
         // Click on edit link
         PrescriptionEditPO prescriptionEdit = prescriptionList.clickEditPrescription();
 
+
         // Enter edits and submit
         prescriptionEdit.editDosage("Twice a day");
         prescriptionEdit.editStartDate(generateTodayNextMonthDates(new SimpleDateFormat("yyyy-MM-dd"))[0]);
         prescriptionEdit.editEndDate(generateTodayNextMonthDates(new SimpleDateFormat("yyyy-MM-dd"))[1]);
-        prescriptionList = prescriptionEdit.confirmEdit();
+        prescriptionList = (PrescriptionListPO) prescriptionEdit.confirmEdit(true);
 
         // Check results
 
@@ -153,6 +215,47 @@ class PrescriptionControllerTest extends BrowserTest {
 
     }
 
+    @Test
+    public void testEditPrescriptionWrongDate(){
+
+        // Get to page
+        PrescriptionListPO prescriptionList = getToPrescriptionPage();
+
+        // Click on edit link
+        PrescriptionEditPO prescriptionEdit = prescriptionList.clickEditPrescription();
+
+        // Enter edits and submit
+        prescriptionEdit.editStartDate("2023-11-10");
+        prescriptionEdit.editEndDate("2022-11-10");
+
+        prescriptionEdit = (PrescriptionEditPO) prescriptionEdit.confirmEdit(false);
+
+        assertEquals(prescriptionEdit.getErrorMessage(),"End date cannot be before start date.");
+
+
+    }
+
+    @Test
+    public void testEditPrescriptionWrongDosage(){
+
+        // Get to page
+        PrescriptionListPO prescriptionList = getToPrescriptionPage();
+
+        // Click on edit link
+        PrescriptionEditPO prescriptionEdit = prescriptionList.clickEditPrescription();
+
+        // Enter edits and submit
+        prescriptionEdit.editDosage("");
+
+        prescriptionEdit = (PrescriptionEditPO) prescriptionEdit.confirmEdit(false);
+
+        assertEquals(prescriptionEdit.getErrorMessage(),"Dosage is not set.");
+
+
+    }
+
+
+    // Utilites
 
 
     /***
