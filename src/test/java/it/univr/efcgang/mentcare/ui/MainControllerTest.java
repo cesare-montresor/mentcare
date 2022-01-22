@@ -24,6 +24,7 @@ class MainControllerTest extends BrowserTest {
 
 		browserLogin("maria", "maria");
 		assertTrue(mainPO.isLoggedIn());
+		logout();
 	}
 
 	@Test
@@ -41,6 +42,7 @@ class MainControllerTest extends BrowserTest {
 		assertEquals(title_txt, "Profile");
 		assertEquals(username_txt , "maria");
 		assertEquals(roles_txt, "DOCTOR");
+		logout();
 	}
 
 	@Test
@@ -52,6 +54,34 @@ class MainControllerTest extends BrowserTest {
 		ArrayList<String> names = new ArrayList<>();
 		mainPO.menuItems.forEach( item -> names.add( item.getText() ) );
 		System.out.println(names);
+		assertEquals(String.join( ", ", names), "Home, Drug, Patient, Prescription");
+		logout();
+	}
+
+	@Test
+	public void testLoginAdmin() throws InterruptedException {
+
+		browserLogin("admin", "admin");
+		assertTrue(mainPO.isLoggedIn());
+
+		ArrayList<String> names = new ArrayList<>();
+		mainPO.menuItems.forEach( item -> names.add( item.getText() ) );
+		System.out.println(names);
+		assertEquals(String.join( ", ", names), "Home, User, Utils");
+		logout();
+	}
+
+	@Test
+	public void testLoginOffice() throws InterruptedException {
+
+		browserLogin("ugo", "ugo");
+		assertTrue(mainPO.isLoggedIn());
+
+		ArrayList<String> names = new ArrayList<>();
+		mainPO.menuItems.forEach( item -> names.add( item.getText() ) );
+		System.out.println(names);
+		assertEquals(String.join( ", ", names), "Home, Drug, Patient");
+		logout();
 	}
 
 
