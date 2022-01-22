@@ -19,8 +19,8 @@ class PatientControllerTest extends BrowserTest {
         assertEquals(2, patientListPO.getRowNum(), "The table wasn't initialized correcty");
         assertEquals("Giovanni Rossi", patientListPO.getFirstPatient(), "Patient name was different");
         assertEquals("maria", patientListPO.getFirstDoctor(), "DoctorName of the patient was different");
-        logout();
-        resetDb();
+        /*logout();
+        resetDb();*/
     }
 
     /**
@@ -45,8 +45,7 @@ class PatientControllerTest extends BrowserTest {
         assertEquals(3, patientListPO.getRowNum(), "Entry wasn't added to the list");
 
         assertEquals("Luca Bianchi", patientListPO.getThirdPatient(), "Name of the new patient is different");
-        logout();
-        resetDb();
+
     }
 
     /**
@@ -56,7 +55,6 @@ class PatientControllerTest extends BrowserTest {
     //TODO
     @Test
     public void testEditPatient(){
-        printAllDb();
         // Get to patient page
         PatientListPO patientListPO = getToPatientPage();
         // Get to edit page
@@ -74,8 +72,6 @@ class PatientControllerTest extends BrowserTest {
         // although before the update it was the first
         assertEquals("luigi", patientListPO.getSecondPatientDoctor(), "Doctor wasn't updated correctly");
 
-        logout();
-        resetDb();
     }
 
     /**
@@ -93,9 +89,6 @@ class PatientControllerTest extends BrowserTest {
 
         assertEquals("Patients", patientListPO.getTitle(), "Page title of patient index.html is different than expected");
         assertEquals(1, patientListPO.getRowNum(), "Entry wasn't deleted correctly");
-
-        logout();
-        resetDb();
     }
 
     /**

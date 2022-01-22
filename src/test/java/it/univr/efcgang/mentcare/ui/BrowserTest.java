@@ -5,6 +5,7 @@ import it.univr.efcgang.mentcare.po.MainPO;
 import it.univr.efcgang.mentcare.utils.BrowserDriver;
 import it.univr.efcgang.mentcare.utils.BrowserDriver.BrowserKind;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 
@@ -58,10 +59,10 @@ public class BrowserTest extends BaseTest {
 
         return true;
     }
-
-    public boolean logout(){
+    @AfterEach
+    public void logout(){
         driver.get(url("/logout"));
-        return true;
+        //return true;
     }
 
 
