@@ -1,7 +1,7 @@
 package it.univr.efcgang.mentcare.ui;
 
-import it.univr.efcgang.mentcare.BaseTest;
 import it.univr.efcgang.mentcare.po.*;
+import it.univr.efcgang.mentcare.ui.BrowserTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,8 +18,9 @@ class PatientControllerTest extends BrowserTest {
         PatientListPO patientListPO = getToPatientPage();
         assertEquals(2, patientListPO.getRowNum(), "The table wasn't initialized correcty");
         assertEquals("Giovanni Rossi", patientListPO.getFirstPatient(), "Patient name was different");
-        assertEquals(3, patientListPO.getFirstDoctor(), "DoctorId of the patient was different");
-
+        assertEquals("maria", patientListPO.getFirstDoctor(), "DoctorName of the patient was different");
+        /*logout();
+        resetDb();*/
     }
 
     /**
@@ -69,7 +70,7 @@ class PatientControllerTest extends BrowserTest {
 
         //The updated patient becomes the second patient of the list,
         // although before the update it was the first
-        assertEquals(4, patientListPO.getSecondPatientDoctor(), "Doctor wasn't updated correctly");
+        assertEquals("luigi", patientListPO.getSecondPatientDoctor(), "Doctor wasn't updated correctly");
 
     }
 
@@ -88,7 +89,6 @@ class PatientControllerTest extends BrowserTest {
 
         assertEquals("Patients", patientListPO.getTitle(), "Page title of patient index.html is different than expected");
         assertEquals(1, patientListPO.getRowNum(), "Entry wasn't deleted correctly");
-
     }
 
     /**

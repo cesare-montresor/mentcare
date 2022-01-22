@@ -45,10 +45,16 @@ public class User {
         this.active=active;
     }
 
-
     public User(String username, String password, String name, String roles) {
         this(username, password, name, roles, true);
     }
+    /*
+    public String toString(){
+        return "Id: "+ id + "\nUsername: " + username + "\n" +
+                "Name: " + username + "\n" +
+                "Roles: " + username + "\n" ;
+    }
+    */
 
 
 

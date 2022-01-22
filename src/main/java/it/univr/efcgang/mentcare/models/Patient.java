@@ -27,4 +27,9 @@ public class Patient {
         this.name = name;
         this.mainDoctor = mainDoctor;
     }
+    /*
+    @Override
+    public String toString(){
+        return "Id: "+ id + "\nName: " + name + " \nDoctor: " + mainDoctor.toString();
+    }*/
 }
