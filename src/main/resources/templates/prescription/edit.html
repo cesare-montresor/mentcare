@@ -12,10 +12,11 @@
 
 
     <h1>Editing a prescription</h1>
+    <h4 th:text="${error_msg}">Error message</h4>
     <form action="/prescription/save" method="post">
 
         <!--/* Prescription ID*/-->
-        <input id= "perscription_id" type="text" class="form-control" name="prescription_id" value="1" th:value = "${prescription.id}" hidden/>
+        <input id= "prescription_id" type="text" class="form-control" name="prescription_id" value="1" th:value = "${prescription.id}" hidden/>
         </br>
 
         <!--/* Patient */-->

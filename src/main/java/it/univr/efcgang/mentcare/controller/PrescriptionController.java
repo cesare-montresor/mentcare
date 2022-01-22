@@ -53,11 +53,18 @@ public class PrescriptionController {
     }
 
     @RequestMapping("prescription/edit")
-    public String edit(@RequestParam(name="id", required=true) long id, Model model){
+    public String edit(@RequestParam(name="id", required=true) long id,
+                       @RequestParam(name="error_msg", required=false) String error_msg,
+                       Model model){
         sendPatientsToModel(model);
         sendDrugsToModel(model);
+
         Prescription prescription = prescriptionRepository.findById(id);
+        System.out.println(prescription);
+
+        model.addAttribute("error_msg",error_msg);
         model.addAttribute("prescription",prescription);
+
         return "prescription/edit";
     }
 
@@ -78,16 +85,17 @@ public class PrescriptionController {
 
         if (patient == null || drug == null)
             return "notfound";
+        
 
-        // TODO: mergiare prescription in caso di edit (check if this works!)
-
-        if(prescription_id != null)
-            prescriptionRepository.delete(prescriptionRepository.findById(prescription_id).get());
         Prescription prescription = new Prescription(drug,patient,authService.UserGet(),dosage, dateStart, dateEnd);
 
         // TODO: anziché mandare tutto in errore, se i dati non sono validi lascio che il doctor li ricompili
         if (!prescription.getValidity())
-            return "error";
+            return "redirect:/prescription/edit?id=" + prescription_id+"&error_msg="+prescription.getValidDescription();
+
+
+        if(prescription_id != null)
+            prescriptionRepository.delete(prescriptionRepository.findById(prescription_id).get());
 
         prescriptionRepository.save(prescription);
 
