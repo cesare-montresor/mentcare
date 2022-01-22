@@ -15,9 +15,9 @@ class PatientControllerTest extends BaseTest{
     public void testInitListPatients(){
 
         PatientListPO patientListPO = getToPatientPage();
-        assertEquals(2, patientListPO.getRowNum());
-        assertEquals("Giovanni Rossi", patientListPO.getFirstPatient());
-        assertEquals(3, patientListPO.getFirstDoctor());
+        assertEquals(2, patientListPO.getRowNum(), "The table wasn't initialized correcty");
+        assertEquals("Giovanni Rossi", patientListPO.getFirstPatient(), "Patient name was different");
+        assertEquals(3, patientListPO.getFirstDoctor(), "DoctorId of the patient was different");
 
     }
 
@@ -27,28 +27,22 @@ class PatientControllerTest extends BaseTest{
      *
      */
 
-    //TODO
     @Test
     public void testCreatePatient(){
         // Get to index page
         PatientListPO patientListPO = getToPatientPage();
 
-        //Deleting the first 2 patients
-        //NON FUNZIONANO
-        patientListPO.deleteFirstPatient();
-        patientListPO.deleteFirstPatient();
-
         // Get to create page
         PatientCreatePO patientCreatePO = patientListPO.clickNewPatient();
         patientCreatePO.addPatient();
-        assertEquals("Create a new patient", patientCreatePO.getTitle());
+        assertEquals("Create a new patient", patientCreatePO.getTitle(), "Page title of create.html is different than expected");
         patientListPO = patientCreatePO.createPatient();
 
-        assertEquals("Patients", patientListPO.getTitle());
-        assertEquals(3, patientListPO.getRowNum());
+        assertEquals("Patients", patientListPO.getTitle(),"Page title of patient index.html is different than expected");
+        //The new patient is the third in the list (because there was already other 2 patient
+        assertEquals(3, patientListPO.getRowNum(), "Entry wasn't added to the list");
 
-        //forse devo usare un modo diverso
-        assertEquals("Luca", patientListPO.getFirstPatient());
+        assertEquals("Luca Bianchi", patientListPO.getThirdPatient(), "Name of the new patient is different");
 
     }
 
@@ -65,14 +59,16 @@ class PatientControllerTest extends BaseTest{
         PatientEditPO patientEditPO = patientListPO.editFirstPatient();
 
         patientEditPO.editPatient();
-        assertEquals(" Updating a patient", patientEditPO.getTitle());
+        assertEquals("Updating a patient", patientEditPO.getTitle(), "Page title of edit.html is different than expected");
+        //in this case the method change the doctor of the patient
         patientListPO = patientEditPO.updatePatient();
 
-        assertEquals("Patients", patientListPO.getTitle());
-        assertEquals(3, patientListPO.getRowNum());
+        assertEquals("Patients", patientListPO.getTitle(), "Page title of patient index.html is different than expected");
+        assertEquals(2, patientListPO.getRowNum(), "Row number of table is different than expected");
 
-        //forse devo usare un modo diverso
-        assertEquals(1, patientListPO.getFirstPatientDoctor());
+        //The updated patient becomes the second patient of the list,
+        // although before the update it was the first
+        assertEquals(4, patientListPO.getSecondPatientDoctor(), "Doctor wasn't updated correctly");
 
     }
 
@@ -80,15 +76,17 @@ class PatientControllerTest extends BaseTest{
      * Test for deleting a patient that is already in the list and
      * checking if the list of patients is updated
      */
-    //TODO
     @Test
     public void testDeletePatient(){
         PatientListPO patientListPO = getToPatientPage();
+        //check table is not empty
+        assertEquals(2, patientListPO.getRowNum(),"The table wasn't initialized correcty");
+
 
         patientListPO.deleteFirstPatient();
 
-        assertEquals("Patients", patientListPO.getTitle());
-        assertEquals(1, patientListPO.getRowNum());
+        assertEquals("Patients", patientListPO.getTitle(), "Page title of patient index.html is different than expected");
+        assertEquals(1, patientListPO.getRowNum(), "Entry wasn't deleted correctly");
 
     }
 
@@ -109,7 +107,7 @@ class PatientControllerTest extends BaseTest{
         PatientListPO patientList = menu.goToPatientPage();
 
         // Check that it's the right page
-        assertEquals("Patients",patientList.getTitle());
+        assertEquals("Patients",patientList.getTitle(), "Page title of patient index.html is different than expected");
         return patientList;
     }
 }
