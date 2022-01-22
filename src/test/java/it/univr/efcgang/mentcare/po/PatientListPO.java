@@ -6,26 +6,40 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * This class is used for testing method testInitPatient of class PatientControllerTest
+ * and also for getting to the index page of list of patients
+ */
+
 public class PatientListPO extends PageObject {
 
-    @FindBy(tagName = "/html/body/div[1]/div/h1")
+    @FindBy(xpath = "//h1[contains(text(),'Patients')]")
     private WebElement title;
 
-    @FindBy(css="patient-table")
+    @FindBy(css="#patient-table")
     private WebElement table;
 
     //@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]")
     @FindBy(xpath = "//table[@id='patient-table']/tbody[1]/tr[1]/td[2]")
     private WebElement patientName;
 
+    //Name of the third patient of the list
+    @FindBy(xpath = "//table[@id='patient-table']/tbody[1]/tr[3]/td[2]")
+    private WebElement patientName3;
+
+
     @FindBy(xpath ="//table[@id='patient-table']/tbody[1]/tr[1]/td[3]")
     private WebElement doctorId;
+    //DoctorId of the second patient in the list
+    @FindBy(xpath ="//table[@id='patient-table']/tbody[1]/tr[2]/td[3]")
+    private WebElement doctorId2;
+
     /*INDEX*/
-    @FindBy(css="page-patient-index-edit")
+    @FindBy(css="#page-patient-index-edit")
     WebElement indexEdit;
-    @FindBy(css="page-patient-index-delete")
+    @FindBy(css="#page-patient-index-delete")
     WebElement indexDelete;
-    @FindBy(css="page-patient-index-create")
+    @FindBy(css="#page-patient-index-create")
     WebElement indexCreate;
 
     public PatientListPO(WebDriver driver) {
@@ -37,12 +51,37 @@ public class PatientListPO extends PageObject {
         return title.getText();
     }
     public Integer getRowNum(){
-        return table.findElements(By.tagName("tr")).size();
+        //-1 because for row with title
+        return table.findElements(By.tagName("tr")).size() - 1;
     }
     public String getFirstPatient(){
         return patientName.getText();
     }
     public Integer getFirstDoctor(){
         return Integer.parseInt(doctorId.getText());
+    }
+
+    public PatientCreatePO clickNewPatient() {
+        indexCreate.click();
+        return new PatientCreatePO(driver);
+    }
+
+    public void deleteFirstPatient() {
+        indexDelete.click();
+    }
+    public PatientEditPO editFirstPatient() {
+        indexEdit.click();
+        return new PatientEditPO(driver);
+    }
+    public Integer getFirstPatientDoctor() {
+        return Integer.parseInt(doctorId.getText());
+    }
+
+    public Integer getSecondPatientDoctor() {
+        return Integer.parseInt(doctorId2.getText());
+    }
+
+    public String getThirdPatient() {
+        return patientName3.getText();
     }
 }
