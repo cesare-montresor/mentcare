@@ -29,10 +29,10 @@ public class PatientListPO extends PageObject {
 
 
     @FindBy(xpath ="//table[@id='patient-table']/tbody[1]/tr[1]/td[3]")
-    private WebElement doctorId;
-    //DoctorId of the second patient in the list
+    private WebElement doctorName;
+    //DoctorName of the second patient in the list
     @FindBy(xpath ="//table[@id='patient-table']/tbody[1]/tr[2]/td[3]")
-    private WebElement doctorId2;
+    private WebElement doctorName2;
 
     /*INDEX*/
     @FindBy(css="#page-patient-index-edit")
@@ -57,8 +57,8 @@ public class PatientListPO extends PageObject {
     public String getFirstPatient(){
         return patientName.getText();
     }
-    public Integer getFirstDoctor(){
-        return Integer.parseInt(doctorId.getText());
+    public String getFirstDoctor(){
+        return doctorName.getText();
     }
 
     public PatientCreatePO clickNewPatient() {
@@ -73,12 +73,12 @@ public class PatientListPO extends PageObject {
         indexEdit.click();
         return new PatientEditPO(driver);
     }
-    public Integer getFirstPatientDoctor() {
-        return Integer.parseInt(doctorId.getText());
+    public String getFirstPatientDoctor() {
+        return (doctorName.getText());
     }
 
-    public Integer getSecondPatientDoctor() {
-        return Integer.parseInt(doctorId2.getText());
+    public String getSecondPatientDoctor() {
+        return (doctorName2.getText());
     }
 
     public String getThirdPatient() {
