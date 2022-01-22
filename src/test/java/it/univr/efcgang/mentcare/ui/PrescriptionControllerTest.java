@@ -124,7 +124,7 @@ class PrescriptionControllerTest extends BrowserTest {
         // Get to page
         PrescriptionListPO prescriptionList = getToPrescriptionPage();
 
-        // Click on edit link //TODO: button would be prettier!
+        // Click on edit link
         PrescriptionEditPO prescriptionEdit = prescriptionList.clickEditPrescription();
 
         // Enter edits and submit
@@ -134,9 +134,6 @@ class PrescriptionControllerTest extends BrowserTest {
         prescriptionList = prescriptionEdit.confirmEdit();
 
         // Check results
-
-        // TODO: for now, I delete the first row in order to reuse getFirstX function. Is this ok?
-        prescriptionList.deleteFirstEntry();
 
         // Dosage
         assertEquals("Twice a day",prescriptionList.getFirstDosage(),
