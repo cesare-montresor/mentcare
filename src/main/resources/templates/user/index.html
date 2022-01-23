@@ -8,8 +8,30 @@
 <body>
 <div th:replace="common/header"></div>
 <div id="page-content">
+
     <h1>User list</h1>
-    (work in progress)
+
+    <table id="user-table" class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "user: ${users}">
+            <td th:text = "${user.id}">1</td>
+            <td th:text = "${user.username}">DocMaria</td>
+            <td th:text = "${user.name}">Maria</td>
+            <td th:text = "${user.roles}">DOCTOR</td>
+            <td th:text = "${user.active}">false</td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
 <div th:replace="common/footer"></div>
 </body>

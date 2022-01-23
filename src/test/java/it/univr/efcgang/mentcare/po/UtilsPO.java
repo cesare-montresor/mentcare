@@ -8,8 +8,8 @@ public class UtilsPO extends PageObject{
     @FindBy(tagName = "h1")
     WebElement title;
 
-    @FindBy(xpath = "/html/body/ul/li/a")
-    WebElement initDatabaseLink;
+    @FindBy(id = "db-stat-link")
+    WebElement dbStatLink;
 
     public UtilsPO(WebDriver driver) {
         super(driver);
@@ -19,9 +19,9 @@ public class UtilsPO extends PageObject{
         return title.getText();
     }
 
-    public InitDatabasePO initDatabase(){
-        initDatabaseLink.click();
-        return new InitDatabasePO(driver);
+    public DBStatPO goToDBStat(){
+        dbStatLink.click();
+        return new DBStatPO(driver);
     }
 
 

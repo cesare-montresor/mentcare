@@ -6,10 +6,9 @@ import it.univr.efcgang.mentcare.models.Prescription;
 import it.univr.efcgang.mentcare.models.User;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit test class of User class in model
@@ -17,59 +16,61 @@ import static org.junit.Assert.assertEquals;
  */
 public class TestUser extends BaseTest {
 
+    User testUser = new User(
+            Long.parseLong("1"),
+            "TestUser",
+            "password",
+            "Test",
+            "DOCTOR",
+            true,
+            null,
+            null );
+
+
     @Test
-    public void testGetUsername(){
-        User user = new User();
-        String username = "mariorossi";
-        user.setUsername(username);
-        assertEquals(username, user.getUsername() );
+    public void testSetGetUsername(){
+        testUser.setUsername("TestUser2");
+        assertEquals("TestUser2", testUser.getUsername()); }
+
+    @Test
+    public void testSetGetPassword() {
+        testUser.setPassword("password2");
+        assertEquals("password2", testUser.getPassword()); }
+
+
+    @Test
+    public void testSetGetName() {
+        testUser.setName("Test2");
+        assertEquals("Test2", testUser.getName()); }
+
+
+    @Test
+    public void testSetGetRoles() {
+        testUser.setRoles("DOCTOR2");
+        assertEquals("DOCTOR2", testUser.getRoles()); }
+
+
+    @Test
+    public void testSetGetActive(){
+        testUser.setActive(false);
+        assertEquals(false, testUser.getActive()); }
+
+
+    @Test
+    public void testSetGetPatients(){
+        final Patient patient = new Patient("Andrea Andrei",testUser);
+        ArrayList<Patient> patientList = new ArrayList<Patient>();
+        testUser.setPatients(patientList);
+        assertEquals(testUser.getPatients(),patientList);
     }
 
     @Test
-    public void testGetPassword(){
-        User user = new User();
-        String password = "verysecret";
-        user.setPassword(password);
-        assertEquals(password, user.getPassword() );
-    }
+    public void testSetGetPrescriptions(){
 
-    @Test
-    public void testGetName(){
-        User user = new User();
-        String name = "mario";
-        user.setName(name);
-        assertEquals(name, user.getName() );
-    }
+        final Prescription prescription = new Prescription();
+        ArrayList<Prescription> prescriptionList = new ArrayList<Prescription>();
+        testUser.setPrescriptions(prescriptionList);
+        assertEquals(testUser.getPrescriptions(),prescriptionList);
 
-    @Test
-    public void testGetRoles(){
-        User user = new User();
-        String roles = "DOCTOR,OFFICE";
-        user.setRoles(roles);
-        assertEquals(roles, user.getRoles() );
-    }
-
-    @Test
-    public void testGetActive(){
-        User user = new User();
-        boolean active = false;
-        user.setActive(active);
-        assertEquals(active, user.getActive() );
-    }
-
-    @Test
-    public void testGetPatients(){
-        User user = new User();
-        Collection<Patient> patients = new HashSet<>();
-        user.setPatients(patients);
-        assertEquals(patients, user.getPatients() );
-    }
-
-    @Test
-    public void testGetPrescriptions(){
-        User user = new User();
-        Collection<Prescription> patients = new HashSet<>();
-        user.setPrescriptions(patients);
-        assertEquals(patients, user.getPrescriptions() );
     }
 }
