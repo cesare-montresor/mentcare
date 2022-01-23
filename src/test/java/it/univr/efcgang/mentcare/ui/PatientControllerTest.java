@@ -75,6 +75,32 @@ class PatientControllerTest extends BrowserTest {
     }
 
     /**
+     * Test for checking that is impossible to edit a patient that doesn't exists in the list
+     */
+    @Test
+    public void testEditPatientNotFound(){
+        // Get to patient page
+        PatientListPO patientListPO = getToPatientPage();
+        String url = baseUrl + "/patient/edit?id=400";
+        //trying to edit a patient with an non exiting id
+        PatientNotFoundPO patientEditNotFoundPO = patientListPO.notFoundPatient(url);
+        assertEquals("ERROR: Patient not found", patientEditNotFoundPO.getTitle(), "Page title of patient error.html is different than expected");
+    }
+
+    /**
+     * Test for checking that is impossible to update information of a patient that doesn't exists in the list
+     */
+    @Test
+    public void testUpdatePatientNotFound(){
+        // Get to patient page
+        PatientListPO patientListPO = getToPatientPage();
+        String url = baseUrl + "/patient/update?id=400&name=Debora&doctor_id=1000";
+        //trying to edit a patient with an non exiting id
+        PatientNotFoundPO patientUpdateNotFoundPO = patientListPO.notFoundPatient(url);
+        assertEquals("ERROR: Patient not found", patientUpdateNotFoundPO.getTitle(), "Page title of patient error.html is different than expected");
+    }
+
+    /**
      * Test for deleting a patient that is already in the list and
      * checking if the list of patients is updated
      */
@@ -90,6 +116,20 @@ class PatientControllerTest extends BrowserTest {
         assertEquals("Patients", patientListPO.getTitle(), "Page title of patient index.html is different than expected");
         assertEquals(1, patientListPO.getRowNum(), "Entry wasn't deleted correctly");
     }
+
+    /**
+     * Test for checking that is impossible to delete a patient that doesn't exists in the list
+     */
+    @Test
+    public void testDeletePatientNotFound(){
+        // Get to patient page
+        PatientListPO patientListPO = getToPatientPage();
+        String url = baseUrl + "/patient/delete?id=400";
+        //trying to edit a patient with an non exiting id
+        PatientNotFoundPO patientUpdateNotFoundPO = patientListPO.notFoundPatient(url);
+        assertEquals("ERROR: Patient not found", patientUpdateNotFoundPO.getTitle(), "Page title of patient error.html is different than expected");
+    }
+
 
     /**
      * Every test in this class start from the patient index page. Instead of writing every time the

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class PatientController implements ErrorController {
+public class PatientController {
 
     @Autowired
     private PatientRepository repository;
@@ -68,7 +68,7 @@ public class PatientController implements ErrorController {
 
         //TODO: in case no data is found, display the "notfound" page
         else
-            return "notfound";
+            return "patient/notfound";
     }
 
     @RequestMapping("patient/update")
@@ -91,7 +91,7 @@ public class PatientController implements ErrorController {
         }
         //TODO: in case no data is found, display the "notfound" page
         else
-            return "notfound";
+            return "patient/notfound";
     }
 
 
@@ -106,7 +106,7 @@ public class PatientController implements ErrorController {
             return "redirect:/patient";
         }
         //TODO: in case no data is found, display the "notfound" page
-        return "notfound";
+        return "patient/notfound";
     }
 
     private void sendUsersToModel(Model model) {
@@ -119,9 +119,4 @@ public class PatientController implements ErrorController {
 
     }
 
-
-    @Override
-    public String getErrorPath() {
-        return null;
-    }
 }
