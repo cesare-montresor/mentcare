@@ -1,7 +1,10 @@
 package it.univr.efcgang.mentcare.unit;
 
 import it.univr.efcgang.mentcare.BaseTest;
+import it.univr.efcgang.mentcare.models.Drug;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * Unit test class of Drug class in model
@@ -9,35 +12,11 @@ import org.junit.jupiter.api.Test;
  */
 public class TestDrug extends BaseTest {
 
+    private final Drug drug = new Drug("Drug A");
+
     @Test
     public void testGetName(){
-
-    }
-    @Test
-    public void testGet(){
-
-    }
-    @Test
-    public void testGetPrescriptions(){
-
-    }
-    @Test
-    public void testGetPatients(){
-
-    }
-    @Test
-    public void testGetDosage(){
-
-    }
-
-    @Test
-    public void testGetDateStart(){
-
-    }
-
-    @Test
-    public void testGetDateEnd(){
-
+        assertEquals("Drug A",drug.getName());
     }
 
 }

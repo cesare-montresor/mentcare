@@ -37,6 +37,7 @@ public class User {
     @OneToMany(mappedBy = "doctor", orphanRemoval = true, cascade = CascadeType.ALL)
     Collection<Prescription> prescriptions;
 
+
     public User(String username, String password, String name, String roles, Boolean active ){
         this.username=username;
         this.password=password;
@@ -48,6 +49,7 @@ public class User {
     public User(String username, String password, String name, String roles) {
         this(username, password, name, roles, true);
     }
+
     /*
     public String toString(){
         return "Id: "+ id + "\nUsername: " + username + "\n" +
