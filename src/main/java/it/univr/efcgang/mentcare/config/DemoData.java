@@ -77,10 +77,12 @@ public class DemoData {
         long num_patients = patientRepository.count();
         long num_prescriptions = prescriptionRepository.count();
 
+        /*
         System.out.println("num_drugs: " + num_drugs);
         System.out.println("num_users: " + num_users);
         System.out.println("num_patients: " + num_patients);
         System.out.println("num_prescriptions: " + num_prescriptions);
+        */
 
         return true;
     }
