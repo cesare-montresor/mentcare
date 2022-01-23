@@ -19,6 +19,9 @@ public class MenuPO extends PageObject{
     @FindBy(css = "#main-menu-patient")
     WebElement patients;
 
+    @FindBy(css = "#main-menu-user")
+    WebElement user;
+
     @FindBy(css = "#main-menu-utils")
     WebElement utils;
 
@@ -26,20 +29,10 @@ public class MenuPO extends PageObject{
         super(driver);
     }
 
-    public PrescriptionListEmptyPO goToPrescriptionPageEmpty(){
-        prescriptions.click();
-        return new PrescriptionListEmptyPO(driver);
-    }
-
     public PrescriptionListPO goToPrescriptionPage(){
         prescriptions.click();
         return new PrescriptionListPO(driver);
     }
-
-   /* public PatientListPO goToPatientPageEmpty(){
-        patients.click();
-        return new PatientListPO(driver);
-    }*/
 
     public PatientListPO goToPatientPage(){
         patients.click();
@@ -54,6 +47,11 @@ public class MenuPO extends PageObject{
     public UtilsPO goToUtilsPage(){
         utils.click();
         return new UtilsPO(driver);
+    }
+
+    public UserListPO goToUsersPage(){
+        user.click();
+        return new UserListPO(driver);
     }
 
 
