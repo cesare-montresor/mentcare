@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+>>>>>>> main
+
 /**
  * Unit test class of User class in model
  * that test all the methods of that class
@@ -72,5 +75,16 @@ public class TestUser extends BaseTest {
         testUser.setPrescriptions(prescriptionList);
         assertEquals(testUser.getPrescriptions(),prescriptionList);
 
+    }
+
+    @Test
+    public void testSetGetPrescriptions(){
+
+        final Prescription prescription = new Prescription();
+        ArrayList<Prescription> prescriptionList = new ArrayList<Prescription>();
+        testUser.setPrescriptions(prescriptionList);
+        assertEquals(testUser.getPrescriptions(),prescriptionList);
+
+>>>>>>> main
     }
 }
