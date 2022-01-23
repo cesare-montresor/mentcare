@@ -9,7 +9,28 @@
 <div th:replace="common/header"></div>
 <div id="page-content">
     <h1>Drugs</h1>
-    (work in progress)
+
+
+    <table id="prescription-table" class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Drug name</th>
+            <th># of prescriptions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "drug: ${drugs}">
+            <td th:text = "${drug.id}">1</td>
+            <td th:text = "${drug.name}">Ibuprofen 500mg</td>
+            <td th:text = "${drug.prescriptions.size()}">5</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
 </div>
 <div th:replace="common/footer"></div>
 </body>

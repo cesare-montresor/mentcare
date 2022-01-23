@@ -24,17 +24,6 @@ public class DrugController {
         return "drug/index";
     }
 
-    @GetMapping("/drug/{id}")
-    public String byId(
-            @RequestParam(name="id", required=true) Long id,
-            Model model
-    ) {
-        Optional<Drug> record = drugRepo.findById(id);
-        if (record.isEmpty()) { return "redirect:/notfound"; }
-        Drug drug = record.get();
-        model.addAttribute("drug", drug);
-        return "drug/show";
-    }
 
 
 }
