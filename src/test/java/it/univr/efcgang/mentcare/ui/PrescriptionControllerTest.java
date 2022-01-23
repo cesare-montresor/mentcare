@@ -130,6 +130,8 @@ class PrescriptionControllerTest extends BrowserTest {
 
     }
 
+
+
     @Test
     public void testAddPrescriptionWrongDate(){
 
@@ -171,7 +173,7 @@ class PrescriptionControllerTest extends BrowserTest {
                 "2023-11-01");
 
         // Check that system didn't accept this
-        assertEquals("Dosage is not set.",prescription404.getErrorMessage());
+        assertEquals("Dosage is not set. ",prescription404.getErrorMessage());
 
 
 
@@ -249,7 +251,7 @@ class PrescriptionControllerTest extends BrowserTest {
 
         prescriptionEdit = (PrescriptionEditPO) prescriptionEdit.confirmEdit(false);
 
-        assertEquals(prescriptionEdit.getErrorMessage(),"Dosage is not set.");
+        assertEquals(prescriptionEdit.getErrorMessage(),"Dosage is not set. ");
 
 
     }

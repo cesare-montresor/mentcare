@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Date;
 @NoArgsConstructor
 @Getter
-@Setter
 @Entity
 public class Prescription {
     @Id
@@ -41,14 +40,7 @@ public class Prescription {
 
     public boolean getValidity(){ return valid;}
 
-    /***
-     * Checks if the created prescription is valid.
-     * @return
-     */
-    /***
-     * Checks if the created prescription is valid.
-     * @return
-     */
+
     private void checkValidity(){
 
         boolean isNotEmpty = true;
@@ -65,8 +57,8 @@ public class Prescription {
             validDescription += "User is not set; something went wrong in authentication. ";
             isNotEmpty = isNotEmpty && false;
         }
-        if (dosage.equals("")) {
-            validDescription += "Dosage is not set.";
+        if (dosage == null || dosage.equals("")) {
+            validDescription += "Dosage is not set. ";
             isNotEmpty = isNotEmpty && false;
         }
         if (dateStart == null) {
@@ -83,12 +75,14 @@ public class Prescription {
 
 
         // Check dateEnd comes after dateStart
-        boolean areDatesValid = dateStart.compareTo(dateEnd) <= 0 ? true : false;
+        if (dateEnd!= null && dateStart!= null) {
+            boolean areDatesValid = dateStart.compareTo(dateEnd) <= 0 ? true : false;
 
-        validDescription = areDatesValid == true ? validDescription : validDescription + "End date cannot be before start date.";
+            validDescription = areDatesValid == true ? validDescription : validDescription + "End date cannot be before start date.";
 
 
-        valid = isNotEmpty && areDatesValid;
+            valid = isNotEmpty && areDatesValid;
+        }
 
     }
 
