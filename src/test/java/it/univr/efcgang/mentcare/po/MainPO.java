@@ -70,7 +70,13 @@ public class MainPO extends PageObject {
         return menuAuthLogin.size() == 1 && menuAuthProfile.size() == 0;
     }
 
+    /* TOP MENU, by ACCESS*/
+    public String adminMenuItems = "Home, User, Utils";
+    public String doctorMenuItems = "Home, Drug, Patient, Prescription";
+    public String officeMenuItems = "Home, Drug, Patient";
 
 
-
+    /*ERRORS*/
+    @FindBy(css = "#error_message")
+    public WebElement errorMessage;
 }
