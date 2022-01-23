@@ -57,7 +57,7 @@ class MainControllerTest extends BrowserTest {
 		ArrayList<String> names = new ArrayList<>();
 		mainPO.menuItems.forEach( item -> names.add( item.getText() ) );
 		System.out.println(names);
-		assertEquals(String.join( ", ", names), "Home, Drug, Patient, Prescription");
+		assertEquals(String.join( ", ", names), mainPO.doctorMenuItems);
 		logout();
 		assertTrue(mainPO.isLoggedOut());
 	}
@@ -71,7 +71,7 @@ class MainControllerTest extends BrowserTest {
 		ArrayList<String> names = new ArrayList<>();
 		mainPO.menuItems.forEach( item -> names.add( item.getText() ) );
 		System.out.println(names);
-		assertEquals(String.join( ", ", names), "Home, User, Utils");
+		assertEquals(String.join( ", ", names), mainPO.adminMenuItems);
 		logout();
 		assertTrue(mainPO.isLoggedOut());
 	}
@@ -85,9 +85,42 @@ class MainControllerTest extends BrowserTest {
 		ArrayList<String> names = new ArrayList<>();
 		mainPO.menuItems.forEach( item -> names.add( item.getText() ) );
 		System.out.println(names);
-		assertEquals(String.join( ", ", names), "Home, Drug, Patient");
+		assertEquals(String.join( ", ", names), mainPO.officeMenuItems);
 		logout();
 		assertTrue(mainPO.isLoggedOut());
+	}
+
+	@Test
+	public void testError404() throws InterruptedException {
+
+		browserLogin("maria", "maria");
+		assertTrue(mainPO.isLoggedIn());
+		driver.get(baseUrl+"/non-existing/index");
+
+		String errorMsg = mainPO.errorMessage.getText().trim();
+		assertTrue( errorMsg.startsWith("Error 404") );
+	}
+
+	@Test
+	public void testError403() throws InterruptedException {
+
+		browserLogin("maria", "maria");
+		assertTrue(mainPO.isLoggedIn());
+		driver.get(baseUrl+"/utils");
+
+		String errorMsg = mainPO.errorMessage.getText().trim();
+		assertTrue( errorMsg.startsWith("Error 403") );
+	}
+
+	@Test
+	public void testErrorNot() throws InterruptedException {
+
+		browserLogin("maria", "maria");
+		assertTrue(mainPO.isLoggedIn());
+		driver.get(baseUrl+"/error");
+
+		String errorMsg = mainPO.errorMessage.getText().trim();
+		assertTrue( errorMsg.startsWith("Unknown Error") );
 	}
 
 }
