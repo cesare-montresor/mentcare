@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Writing new prescription</title>
+    <div th:replace="common/head"></div>
+</head>
+
+<body>
+<div th:replace="common/header"></div>
+<div id="page-content">
+
+    <div class="center-wrapper">
+        <h1>404 - Not found        <br>
+        </h1>
+        <b th:text="${error_msg}">Error message</b>
+        <a id="button-go-back"  href="/prescription" class="btn btn-secondary btn-lg"> Go back to list </a>
+    </div>
+</div>
+<div th:replace="common/footer"></div>
+</body>
+</html>

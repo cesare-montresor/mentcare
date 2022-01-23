@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Date;
 @NoArgsConstructor
 @Getter
-@Setter
 @Entity
 public class Prescription {
     @Id
@@ -41,53 +40,49 @@ public class Prescription {
 
     public boolean getValidity(){ return valid;}
 
-    /***
-     * Checks if the created prescription is valid.
-     * @return
-     */
-    /***
-     * Checks if the created prescription is valid.
-     * @return
-     */
+
     private void checkValidity(){
 
-        boolean r = true;
+        boolean isNotEmpty = true;
 
         if(drug==null) {
             validDescription += "Drug is not set. ";
-            r = r && false; // messo in ogni riga perché IntelliJ altrimenti mi dava errore...
+            isNotEmpty = isNotEmpty && false; // messo in ogni riga perché IntelliJ altrimenti mi dava errore...
         }
         if(patient == null) {
             validDescription += "Patient is not set. ";
-            r = r && false;
+            isNotEmpty = isNotEmpty && false;
         }
         if(doctor == null) {
             validDescription += "User is not set; something went wrong in authentication. ";
-            r = r && false;
+            isNotEmpty = isNotEmpty && false;
         }
         if (dosage == null || dosage.equals("")) {
             validDescription += "Dosage is not set. ";
-            r = r && false;
+            isNotEmpty = isNotEmpty && false;
         }
         if (dateStart == null) {
             validDescription += "Start date is not set. ";
-            r = r && false;
+            isNotEmpty = isNotEmpty && false;
         }
         if (dateEnd == null) {
             validDescription += "End date is not set. ";
-            r = r && false;
+            isNotEmpty = isNotEmpty && false;
         }
 
-        if (r == false)
+        if (isNotEmpty == false)
             valid = false;
 
 
         // Check dateEnd comes after dateStart
-        boolean result = dateEnd.compareTo(dateStart) >= 0 ? true : false;
-        validDescription = result == true ? "Ok" : validDescription + "End date cannot be before start date. ";
+        if (dateEnd!= null && dateStart!= null) {
+            boolean areDatesValid = dateStart.compareTo(dateEnd) <= 0 ? true : false;
+
+            validDescription = areDatesValid == true ? validDescription : validDescription + "End date cannot be before start date.";
 
 
-        valid = r && result;
+            valid = isNotEmpty && areDatesValid;
+        }
 
     }
 

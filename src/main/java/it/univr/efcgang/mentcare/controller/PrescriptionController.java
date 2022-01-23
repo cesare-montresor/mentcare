@@ -85,9 +85,6 @@ public class PrescriptionController {
         Patient patient = patientRepository.findById(patient_id);
         Drug drug = drugRepository.findById(drug_id);
 
-        if (patient == null || drug == null)
-            return "notfound";
-
 
         Prescription prescription = new Prescription(drug,patient,authService.UserGet(),dosage, dateStart, dateEnd);
 
@@ -117,7 +114,17 @@ public class PrescriptionController {
             return "redirect:/prescription";
         }
 
-        return "notfound";
+        return "redirect:/prescription/notfound?error_msg=The prescription you're trying to edit was not found in the database.";
+    }
+
+
+    @RequestMapping("prescription/notfound")
+    public String delete(
+            @RequestParam(name="error_msg", required=true) String error_msg,
+            Model model) {
+
+        model.addAttribute("error_msg",error_msg);
+        return "prescription/notfound";
     }
 
     private void sendPatientsToModel(Model model){

@@ -1,9 +1,16 @@
 package it.univr.efcgang.mentcare.po;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class PrescriptionCreatePO extends PageObject {
 
@@ -27,18 +34,22 @@ public class PrescriptionCreatePO extends PageObject {
     @FindBy(id = "submit-button")
     WebElement submitButton;
 
+    @FindBy(id = "error_msg")
+    WebElement errorMessage;
+
 
     public PrescriptionCreatePO(WebDriver driver) {
         super(driver);
     }
 
-    public PrescriptionListPO insertPrescriptionData(String patient, String drug, String dosage,
+    public PageObject insertPrescriptionData(String patient, String drug, String dosage,
                                                      String dateStart, String dateEnd){
 
         patientSelector.selectByVisibleText(patient);
 
         drugSelector.selectByVisibleText(drug);
 
+        dosageSelector.click();
         dosageSelector.clear();
         dosageSelector.sendKeys(dosage);
 
@@ -54,6 +65,23 @@ public class PrescriptionCreatePO extends PageObject {
 
         submitButton.click();
 
-        return new PrescriptionListPO(driver);
+        try{
+            Date dateStartD = DateUtils.parseDate(dateStart, "yyyy-MM-dd");
+            Date dateEndD = DateUtils.parseDate(dateEnd, "yyyy-MM-dd");
+
+
+            if(dateStartD.compareTo(dateEndD) > 0 || drug == null || patient == null || dosage.equals(""))
+                return new PrescriptionCreatePO(driver);
+            else
+                return new PrescriptionListPO(driver);
+
+
+        } catch(ParseException e){
+
+        }
+
+        return null;
     }
+
+    public String getErrorMessage(){return errorMessage.getText();}
 }
