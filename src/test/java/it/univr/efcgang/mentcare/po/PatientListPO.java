@@ -69,6 +69,10 @@ public class PatientListPO extends PageObject {
     public void deleteFirstPatient() {
         indexDelete.click();
     }
+    public PatientNotFoundPO notFoundPatient(String url){
+        driver.get(url);
+        return new PatientNotFoundPO(driver);
+    }
     public PatientEditPO editFirstPatient() {
         indexEdit.click();
         return new PatientEditPO(driver);
@@ -84,4 +88,5 @@ public class PatientListPO extends PageObject {
     public String getThirdPatient() {
         return patientName3.getText();
     }
+
 }

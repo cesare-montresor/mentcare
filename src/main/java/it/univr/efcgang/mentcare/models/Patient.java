@@ -23,9 +23,16 @@ public class Patient {
     @OneToMany(mappedBy = "patient", orphanRemoval = true, cascade = CascadeType.ALL)
     Collection<Prescription> prescriptions;
 
-    public Patient(String name, User mainDoctor){
-        this.name = name;
-        this.mainDoctor = mainDoctor;
+    public Patient(String name, User mainDoctor) {
+
+            if(name != "" && name != null && mainDoctor != null) {
+                this.name = name;
+                this.mainDoctor = mainDoctor;
+            }
+            else{
+                this.name = null;
+                this.mainDoctor = null;
+            }
     }
     /*
     @Override
