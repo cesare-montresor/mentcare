@@ -11,6 +11,8 @@
 
     <div id="page-patient-edit">
         <h1 id="page-patient-edit-title">Updating a patient</h1>
+        <b id="error_msg" th:text="${error_msg}">Error message</b>
+
         <form action="update" method="post">
 
             Name: <input id="page-patient-edit-name" type="text" name="name" th:value="${patient.name}"><br>

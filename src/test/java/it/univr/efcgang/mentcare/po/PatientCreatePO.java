@@ -20,6 +20,8 @@ public class PatientCreatePO extends PageObject{
     Select select;
     @FindBy(css="#page-patient-create-submit")
     WebElement createSubmit;
+    @FindBy(css="#error_msg")
+    WebElement errorMsg;
 
     public PatientCreatePO(WebDriver driver) {
         super(driver);
@@ -43,5 +45,15 @@ public class PatientCreatePO extends PageObject{
     public PatientListPO createPatient() {
         createSubmit.click();
         return new PatientListPO(driver);
+    }
+
+    public void addPatientWithWrongData() {
+        createName.sendKeys("");
+        select.getFirstSelectedOption();
+        createSubmit.click();
+
+    }
+    public String getErrorMsg(){
+        return errorMsg.getText();
     }
 }
