@@ -16,7 +16,8 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-
+    private boolean valid;
+    private String validDescription = "";
     @ManyToOne(cascade = CascadeType.REFRESH)
     User mainDoctor;
 
@@ -24,15 +25,23 @@ public class Patient {
     Collection<Prescription> prescriptions;
 
     public Patient(String name, User mainDoctor) {
+        this.name = name;
+        this.mainDoctor = mainDoctor;
+        checkValidity();
+    }
 
-            if(name != "" && name != null && mainDoctor != null) {
-                this.name = name;
-                this.mainDoctor = mainDoctor;
-            }
-            else{
-                this.name = null;
-                this.mainDoctor = null;
-            }
+    private void checkValidity(){
+        boolean isNotEmpty = true;
+        if(name == null || name.equals("")) {
+            validDescription += "Patient name is not set. ";
+            isNotEmpty = false;
+        }
+        if(mainDoctor == null){
+            validDescription += "Doctor is not set. ";
+            isNotEmpty = false;
+        }
+        if(isNotEmpty == false)
+            valid = false;
     }
     /*
     @Override
