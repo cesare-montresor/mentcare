@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
  * This class is used for testing method testEditPatient of class PatientControllerTest
  */
 public class PatientEditPO extends PageObject{
-    @FindBy(css ="page-patient-edit-title")
+    @FindBy(css ="#page-patient-edit-title")
     WebElement editTitle;
 
     /*EDIT*/
@@ -46,6 +46,7 @@ public class PatientEditPO extends PageObject{
     }
 
     public void editPatientWithWrongData() {
+        editName.clear();
         editName.sendKeys("");
         select.selectByVisibleText("luigi");
         editSubmit.click();
