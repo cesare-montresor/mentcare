@@ -1,9 +1,5 @@
-package it.univr.efcgang.mentcare.utils;
+package it.univr.efcgang.mentcare;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,15 +9,14 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
-@Setter
-@Getter
-@NoArgsConstructor
 public class BrowserDriver {
 
     public enum BrowserKind {
         Firefox,
         Chrome
     }
+
+    public BrowserDriver(){};
 
     public static BrowserDriver sharedInstance = new BrowserDriver();
 
