@@ -22,6 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class MainController implements ErrorController {
+    //Deprecated but necessary for "implements ErrorController"
+    //therefore catching errors and display custom pages
+    @Override public String getErrorPath() {return null;}
+
     @Autowired
     AuthService authService;
 
@@ -39,12 +43,6 @@ public class MainController implements ErrorController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/logout")
-    public String getLogout (HttpServletRequest request, HttpServletResponse response) {
-        authService.UserLogout(request, response);
-        return "redirect:/login"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
-    }
-
     @GetMapping("/profile")
     public String getProfile(Model model) {
         User authUser = authService.UserGet();
@@ -52,11 +50,11 @@ public class MainController implements ErrorController {
         return "main/profile";
     }
 
-    //Deprecated but necessary for "implements ErrorController"
-    @Override public String getErrorPath() {return null;}
+
 
     @RequestMapping("error")
     public String handleError(HttpServletRequest request, Model model) {
+        String error_path = getErrorPath();
         String error_message = "Unknown Error";
         int statusCode=-1;
 
@@ -73,7 +71,7 @@ public class MainController implements ErrorController {
             error_message += ": Not found.\nThe resource you are looking for has never existed.";
         }
         else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-            error_message += ": Access forbidden.\nServer is on fire.";
+            error_message += ": Internal error.\nServer is on fire.";
         }
 
         model.addAttribute("error_message",error_message);

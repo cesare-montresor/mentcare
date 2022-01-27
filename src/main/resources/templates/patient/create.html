@@ -14,18 +14,24 @@
         <h1 id = "page-patient-create-title" >Create a new patient</h1>
         <b id="error_msg" th:text="${error_msg}">Error message</b>
         <form action="/patient/save" method="post">
-            Name: <input id="page-patient-create-name" type="text" name="name"><br>
+            Name: <input id="page-patient-create-name" type="text" name="name" class="form-control">
             <!-- >Doctor<!-->
+            </br>
+
             <label for="page-patient-create-doctor">Doctor: </label>
-            <select id="page-patient-create-doctor" name="doctor_id">
+            <select id="page-patient-create-doctor" name="doctor_id" class="form-select">
                 <option value="1" th:each ="doctor : ${doctors}" th:text = "${doctor.name}" th:value ="${doctor.id}">John Watson</option>
             </select>
             </br>
-            <input id="page-patient-create-submit" text="Create patient" type="submit"/>
 
+
+            </br></br>
+            <div class="center-wrapper">
+                <input id="page-patient-create-submit" value="Create patient" type="submit" class="btn btn-primary btn-lg"/>
+                <a id="page-patient-create-list" href="/patient" class="btn btn-secondary btn-lg">Go back to the list </a>
+
+            </div>
         </form>
-        <a id="page-patient-create-list" href="/patient">Go back to the list </a>
-
     </div>
 
 

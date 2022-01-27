@@ -1,20 +1,15 @@
 package it.univr.efcgang.mentcare.config;
 
-import it.univr.efcgang.mentcare.repository.UserRepository;
-import it.univr.efcgang.mentcare.utils.BrowserDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+
 import org.springframework.stereotype.Component;
-
-import java.awt.Desktop;
-
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Optional;
+
 
 @Component
 public class EventHandler {
@@ -29,10 +24,14 @@ public class EventHandler {
         System.out.println("System: OnReady");
         demoData.addDemoData();
 
-        if (!testingMode){
-         browserOpen();
-         browserLogin("maria","maria");
-        }
+
+    }
+
+    /* USE IN DEV MODE
+
+    if (!testingMode){
+     browserOpen();
+     browserLogin("maria","maria");
     }
 
     public void browserOpen(){
@@ -56,5 +55,7 @@ public class EventHandler {
 
         submit.click();
     }
+    */
+
 
 }

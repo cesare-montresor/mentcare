@@ -1,9 +1,10 @@
 package it.univr.efcgang.mentcare.ui;
 
+
 import it.univr.efcgang.mentcare.BaseTest;
+import it.univr.efcgang.mentcare.BrowserDriver;
+import it.univr.efcgang.mentcare.BrowserDriver.BrowserKind;
 import it.univr.efcgang.mentcare.po.MainPO;
-import it.univr.efcgang.mentcare.utils.BrowserDriver;
-import it.univr.efcgang.mentcare.utils.BrowserDriver.BrowserKind;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
