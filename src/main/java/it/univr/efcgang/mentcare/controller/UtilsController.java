@@ -23,9 +23,6 @@ public class UtilsController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    AuthService authService;
-
     @GetMapping("/utils")
     public String index() {
         return "utils/index";

@@ -43,12 +43,6 @@ public class MainController implements ErrorController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/logout")
-    public String getLogout (HttpServletRequest request, HttpServletResponse response) {
-        authService.UserLogout(request, response);
-        return "redirect:/login"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
-    }
-
     @GetMapping("/profile")
     public String getProfile(Model model) {
         User authUser = authService.UserGet();
@@ -77,7 +71,7 @@ public class MainController implements ErrorController {
             error_message += ": Not found.\nThe resource you are looking for has never existed.";
         }
         else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-            error_message += ": Access forbidden.\nServer is on fire.";
+            error_message += ": Internal error.\nServer is on fire.";
         }
 
         model.addAttribute("error_message",error_message);

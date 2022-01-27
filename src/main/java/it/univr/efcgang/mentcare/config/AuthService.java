@@ -39,12 +39,6 @@ public class AuthService implements UserDetailsService {
         return user.map(UserAuthDetails::new).get();
     }
 
-    public void UserLogout(HttpServletRequest request, HttpServletResponse response){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-    }
 
     public User UserAdd(String username, String password, String name, String roles) {
         // Username is already present
@@ -72,6 +66,14 @@ public class AuthService implements UserDetailsService {
         return user.get();
     }
 
+    /*
+    public void UserLogout(HttpServletRequest request, HttpServletResponse response){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+    }
+
     public User UserSet(String username){
         Optional<User> userSearch = userRepository.findByUsername(username);
         if ( userSearch.isEmpty() ) {return null;}
@@ -81,5 +83,6 @@ public class AuthService implements UserDetailsService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return user;
     }
+    */
 
 }
