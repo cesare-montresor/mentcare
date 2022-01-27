@@ -22,6 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class MainController implements ErrorController {
+    //Deprecated but necessary for "implements ErrorController"
+    //therefore catching errors and display custom pages
+    @Override public String getErrorPath() {return null;}
+
     @Autowired
     AuthService authService;
 
@@ -52,11 +56,11 @@ public class MainController implements ErrorController {
         return "main/profile";
     }
 
-    //Deprecated but necessary for "implements ErrorController"
-    @Override public String getErrorPath() {return null;}
+
 
     @RequestMapping("error")
     public String handleError(HttpServletRequest request, Model model) {
+        String error_path = getErrorPath();
         String error_message = "Unknown Error";
         int statusCode=-1;
 
