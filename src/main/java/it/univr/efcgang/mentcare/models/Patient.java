@@ -27,12 +27,13 @@ public class Patient {
     public Patient(String name, User mainDoctor) {
         this.name = name;
         this.mainDoctor = mainDoctor;
+        this.valid = true;
         checkValidity();
     }
 
     private void checkValidity(){
         boolean isNotEmpty = true;
-        if(name == null || name.equals("")) {
+        if(name == null || name.isBlank()) {
             validDescription += "Patient name is not set. ";
             isNotEmpty = false;
         }
@@ -40,7 +41,7 @@ public class Patient {
             validDescription += "Doctor is not set. ";
             isNotEmpty = false;
         }
-        if(isNotEmpty == false)
+        if(!isNotEmpty)
             valid = false;
     }
     /*

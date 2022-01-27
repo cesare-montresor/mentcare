@@ -53,6 +53,8 @@ public class TestPatient extends BaseTest  {
         prescriptions.add(prescription);
         p.setPrescriptions(prescriptions);
         assertEquals(prescriptions, p.getPrescriptions(), "Patient's prescription weren't updated");
+        assertEquals(true, p.isValid(), "Patient is not valid");
+
     }
 
     @Test
@@ -61,7 +63,7 @@ public class TestPatient extends BaseTest  {
         assertNull(p.getName(), "Patient Name is not null");
         assertNull(p.getMainDoctor(), "Patient doctor is not null");
         User user = new User("pietro", "pietro", "Pietro Verdi", "DOCTOR");
-        assertNull(new Patient("", user).getName(), "Patient name is not null");
+        assertEquals("", new Patient("", user).getName(), "Patient name is different than expected");
         assertNull(new Patient("Mario Rossi", null).getMainDoctor(), "Patient doctor is not null");
     }
 }

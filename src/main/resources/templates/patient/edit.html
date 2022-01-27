@@ -10,23 +10,27 @@
 <div id="page-content">
 
     <div id="page-patient-edit">
-        <h1 id="page-patient-edit-title">Updating a patient</h1>
+        <h1 id = "page-patient-edit-title" >Updating a patient</h1>
         <b id="error_msg" th:text="${error_msg}">Error message</b>
 
         <form action="update" method="post">
 
-            Name: <input id="page-patient-edit-name" type="text" name="name" th:value="${patient.name}"><br>
+            Name: <input id="page-patient-edit-name" type="text" class="form-control" name="name" th:value="${patient.name}"><br>
             <!-- >Doctor<!-->
             <label for="page-patient-edit-doctor">Doctor: </label>
-            <select id="page-patient-edit-doctor" name="doctor_id">
+            <select id="page-patient-edit-doctor" name="doctor_id" class="form-select">
                 <option value="1" th:text="${patient.mainDoctor.name}" th:value="${patient.mainDoctor.id}" selected disabled hidden>Selected doctor John Watson</option>
                 <option value="2" th:each ="doctor : ${doctors}" th:text="${doctor.name}" th:value="${doctor.id}" >John Watson</option>
             </select>
             <input type="hidden" name="id" th:value="${patient.id}"/>
+            </br></br>
             </br>
-            <input id="page-patient-edit-submit" type="submit"/>
+        <div class="center-wrapper">
+            <input id="page-patient-edit-submit" type="submit" class="btn btn-primary btn-lg" value="Confirm changes"/>
+            <a id="page-patient-edit-list" href="/patient"  class="btn btn-secondary btn-lg">Go back to the list </a>
+        </div>
         </form>
-        <a id="page-patient-edit-list" href="/patient">Go back to the list </a>
+
     </div>
 
 
