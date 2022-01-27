@@ -1,7 +1,6 @@
 package it.univr.efcgang.mentcare.ui;
 
 import it.univr.efcgang.mentcare.po.*;
-import it.univr.efcgang.mentcare.ui.BrowserTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,6 +44,32 @@ class PatientControllerTest extends BrowserTest {
         assertEquals(3, patientListPO.getRowNum(), "Entry wasn't added to the list");
 
         assertEquals("Luca Bianchi", patientListPO.getThirdPatient(), "Name of the new patient is different");
+
+    }
+    @Test
+    public void testCreatePatientWrongInput(){
+        // Get to index page
+        PatientListPO patientListPO = getToPatientPage();
+
+        // Get to create page
+        PatientCreatePO patientCreatePO = patientListPO.clickNewPatient();
+        patientCreatePO.addPatientWithWrongData();
+
+        assertEquals("Create a new patient", patientCreatePO.getTitle(), "Page title of create.html is different than expected");
+        assertEquals("Patient name is not set.", patientCreatePO.getErrorMsg());
+    }
+
+    @Test
+    public void testUpdatePatientWrongInput(){
+        // Get to index page
+        PatientListPO patientListPO = getToPatientPage();
+
+        // Get to create page
+        PatientEditPO patientEditPO = patientListPO.editFirstPatient();
+        patientEditPO.editPatientWithWrongData();
+
+        assertEquals("Updating a patient", patientEditPO.getTitle(), "Page title of edit.html is different than expected");
+        assertEquals("Patient name is not set.", patientEditPO.getErrorMsg());
 
     }
 

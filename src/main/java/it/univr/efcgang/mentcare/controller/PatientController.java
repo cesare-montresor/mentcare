@@ -37,8 +37,12 @@ public class PatientController {
     }
 
     @RequestMapping("patient/create")
-    public String create(Model model){
+    public String create(
+            @RequestParam(name = "error_msg", required = false) String error_msg,
+            Model model){
         sendUsersToModel(model);
+        model.addAttribute("error_msg",error_msg);
+
         return "patient/create";
     }
 
@@ -47,26 +51,34 @@ public class PatientController {
             @RequestParam(name="name", required=true) String name,
             @RequestParam(name="doctor_id", required = true) long doctor_id,
             Model model) {
+        User doctor = userRepository.findById(doctor_id);
+        Patient p = new Patient(name, doctor);
+        if(p.isValid()){
+            repository.save(p);
 
+        }else{
+            return "redirect:/patient/create?error_msg=" + p.getValidDescription();
+        }
 
-        repository.save(new Patient(name,userRepository.findById(doctor_id)));
         return "redirect:/patient";
     }
 
     @RequestMapping("patient/edit")
     public String edit(
             @RequestParam(name="id", required=true) Long id,
+            @RequestParam(name = "error_msg", required = false) String error_msg,
             Model model) {
+        model.addAttribute("error_msg",error_msg);
         Optional<Patient> result = repository.findById(id);
         //TODO: check if the result is found
         //TODO: put data in the model field to be displayed in the next page to edit them
         if(result.isPresent()) {
             sendUsersToModel(model);
             model.addAttribute("patient", result.get());//serve nell'update
+
             return "patient/edit";
         }
 
-        //TODO: in case no data is found, display the "notfound" page
         else
             return "patient/notfound";
     }
@@ -78,18 +90,19 @@ public class PatientController {
             @RequestParam(name="doctor_id", required=true) long doctor_id,
             Model model) {
         Optional<Patient> result = repository.findById(id);
-
-        //TODO: check if the result is found
-        //TODO: delete the old person and add a new person
+        Patient p = new Patient(name, userRepository.findById(doctor_id));
         if(result.isPresent()){
-            repository.delete(result.get());
-            //similmente senza applicare i metodi set
-            repository.save(new Patient(name, userRepository.findById(doctor_id)));
+            if(p.isValid()){
+                repository.delete(result.get());
+                //similmente senza applicare i metodi set
+                repository.save(p);
+                return "redirect:/patient";
 
-            return "redirect:/patient";
+            }else{
+                return "redirect:/patient/edit?error_msg=" + p.getValidDescription();
+            }
 
         }
-        //TODO: in case no data is found, display the "notfound" page
         else
             return "patient/notfound";
     }
