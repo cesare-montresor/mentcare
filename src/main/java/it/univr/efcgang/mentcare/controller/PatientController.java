@@ -40,8 +40,9 @@ public class PatientController {
     public String create(
             @RequestParam(name = "error_msg", required = false) String error_msg,
             Model model){
-        sendUsersToModel(model);
         model.addAttribute("error_msg",error_msg);
+
+        sendUsersToModel(model);
 
         return "patient/create";
     }
@@ -68,13 +69,15 @@ public class PatientController {
             @RequestParam(name="id", required=true) Long id,
             @RequestParam(name = "error_msg", required = false) String error_msg,
             Model model) {
-        model.addAttribute("error_msg",error_msg);
         Optional<Patient> result = repository.findById(id);
         //TODO: check if the result is found
         //TODO: put data in the model field to be displayed in the next page to edit them
         if(result.isPresent()) {
             sendUsersToModel(model);
+            model.addAttribute("error_msg",error_msg);
+
             model.addAttribute("patient", result.get());//serve nell'update
+
 
             return "patient/edit";
         }
@@ -99,7 +102,8 @@ public class PatientController {
                 return "redirect:/patient";
 
             }else{
-                return "redirect:/patient/edit?error_msg=" + p.getValidDescription();
+                System.out.println("ValidDescription: "+ p.getValidDescription());
+                return "redirect:/patient/edit?id="+ id +"&error_msg=" + p.getValidDescription();
             }
 
         }
@@ -126,7 +130,7 @@ public class PatientController {
         List<User> doctors = new LinkedList<>();
         for (User u : userRepository.findByRolesContains("DOCTOR")){
             doctors.add(u);
-            System.out.println("Id:"+ u.getId() + "Name: "+ u.getName());
+            //System.out.println("Id: "+ u.getId() + "Name: "+ u.getName());
         }
         model.addAttribute("doctors", doctors);
 
