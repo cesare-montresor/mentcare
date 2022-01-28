@@ -4,27 +4,28 @@
 
 > a.a. 2021/22
 
-> Fabiola Fabretti VR482924, Cesare Montresor VRxxxxxx, Elisa Zanella VRxxxxxx
+> Fabiola Fabretti VR482924, Cesare Montresor VRxxxxxx, Elisa Zanella VR482140
 
 ## Informazioni sul progetto
 
-Il progetto è stato sviluppato in IntelliJ, usando Java SDK XX e Gradle XX. Abbiamo usato un'architettura MVC, usando il framework Java Spring e Springboot (+ moduli Thymeleaf e security), con un database h2.
+Il progetto è stato sviluppato con il linguaggio Java nella versione 11, invece come supporto per la gestione delle dipendenze abbiamo utilizzato Gradle con versione 7.3.1 e come IDE IntelliJ. Abbiamo usato un'architettura MVC, usando il framework Java Spring e Springboot (+ moduli Thymeleaf e security), con un database h2 che è stata necessaria per gestire la creazione dei dati.
 
-Il testing utilizza selenium, junit 4.12 e "bonigarcia webdrivermanager"
+Il testing utilizza selenium, junit 4.12 e "bonigarcia webdrivermanager".
 
+Per effettuare la generazione automatica di alcune parti codice ci siamo serviti della libreria lombok nella versione 1.18.12. In particolare essa è stata utilizzata per generare automaticamente i metodi getter e setter dei campi nelle classi del package model.
 ## Processo di sviluppo
 
 Il processo di sviluppo si è svolto principalmente in maniera informale, pur cercando di applicare qualcuna delle tecniche viste in classe. In particolare, siamo rimasti più vicini all’agile durante lo sviluppo vero e proprio, mentre a inizio progetto abbiamo deciso di dedicare del tempo alla scelta della traccia, alla programmazione a grandi linee del lavoro e soprattutto alla stima dell’effort necessario allo sviluppo di ciascuna feature.
 
 Questo ci ha anche permesso di dividere il lavoro in maniera equa: inizialmente abbiamo deciso di scrivere insieme il codice per definire le interfacce tra moduli e il mapping degli indirizzi, per poi continuare a sviluppare parallelamente un modulo a testa (Patient, Prescription, Main/Login/Security) con frequenti riunioni di aggiornamento sulla situazione di ciascun componente del gruppo.
 
-Per lavorare simultaneamente abbiamo usato GitHub, con tre fork separate, in modo da poter avere massima flessibilità e indipendenza durante l'intero processo.
+Per lavorare simultaneamente abbiamo usato GitHub, con tre fork separate (ispirandoci al modello forking workflow), in modo da poter avere massima flessibilità e indipendenza durante l'intero processo.
 
 Il coordinamento e aggiornamento è avvenuto principalmente via chat e chiamate attraverso la piattaforma Discord.
 
 ## Requirements
 
-### Use cases
+### Scenarios
 
 #### 1. Login
 
@@ -54,7 +55,7 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                          |
 | **Normal function**            | L’utente clicca sul pulsante “Patient” nella barra menu superiore per accedere al modulo relativo ai pazienti.Successivamente, individua la riga relativa al paziente che vuole eliminare, e clicca sul pulsante “Delete” presente nella riga. La pagina si ricarica automaticamente per mostrare la nuova lista dei pazienti a sistema. |
-| **What can go wrong**          | Non è possibile che succeda attraverso la GUI, ma se l’utente dovesse cercare di forzare l’eliminazione di una prescrizione inserendo l'id direttamente nell’URL, il sistema rileva il tentativo e mostra un messaggio di errore.                                                                                                        |
+| **What can go wrong**          | Non è possibile che succeda attraverso la GUI, ma se l’utente dovesse cercare di forzare l’eliminazione di una paziente inserendo l'id direttamente nell’URL, il sistema rileva il tentativo e mostra un messaggio di errore.                                                                                                        |
 | **Other activities**           | -                                                                                                                                                                                                                                                                                                                                        |
 | **System state on completion** | Il paziente viene eliminato dal database.                                                                                                                                                                                                                                                                                                |
 
@@ -163,23 +164,23 @@ Di seguito riportiamo, per ciascuno scenario descritto in precedenza, gli E2E te
 
 | Nome del test                   | Descrizione                                                                                                                                           |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **testCreatePatient**           | Aggiunge un nuovo paziente e verifica che la tabella sia stata aggiornata di conseguenza.                                                             |
-| **testCreatePatientWrongInput** | Tenta di aggiungere un nuovo paziente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato un messaggio di errore. |
+| **testCreatePatient**           | Aggiunge un nuovo paziente e verifica che la lista dei pazienti sia stata aggiornata di conseguenza.                                                             |
+| **testCreatePatientWrongInput** | Tenta di aggiungere un nuovo paziente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato un messaggio di errore in alto alla pagina di creazione del paziente. |
 
 #### 3. Modifica paziente
 
 | Nome del test                   |                                                                                                                                                           |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **testUpdatePatientWrongInput** | Tenta di modificare un paziente esistente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato un messaggio di errore. |
-| **testEditPatient**             | Modifica i dati di un paziente e verifica che la tabella sia aggiornata di conseguenza.                                                                   |
-| **testEditPatientNotFound**     | Tenta di modificare un paziente non esistente e verifica che venga visualizzato un messaggio di errore.                                                   |
+| **testEditPatientWrongInput**   | Tenta di modificare un paziente esistente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato il relativo messaggio di errore. |
+| **testEditPatient**             | Modifica i dati di un paziente e verifica che la entry della tabella relativa a quel paziente sia aggiornata di conseguenza.                                                                  |
+| **testEditPatientNotFound**     | Tenta di modificare un paziente con id non esistente inserendo l'id nello url della pagina e verifica che venga visualizzato una pagina di errore che dice che il paziente non è stato trovato solo che a differenza di testUpdatePatientWrongInput l'utente visualizza una pagina di errore diversa da edit perchè la pagina di modifica di quel paziente non esiste per questo viene mostrata la pagina notfound.      |
 
 #### 4. Elimina paziente
 
 |                               |                                                                                                        |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **testDeletePatient**         | Elimina un paziente e verifica che la tabella sia aggiornata di conseguenza.                           |
-| **testDeletePatientNotFound** | Tenta di eliminare un paziente non esistente e verifica che venga visualizzato un messaggio di errore. |
+| **testDeletePatient**         | Elimina un paziente e verifica che la lista di pazienti sia aggiornata di conseguenza.                           |
+| **testDeletePatientNotFound** | Tenta di eliminare un paziente inserendo da url l'id di un paziente non esistente e verifica che venga visualizzata la relativa pagina di errore che dice che il paziente non è stato trovato. |
 
 #### 5. Visualizza lista pazienti
 
