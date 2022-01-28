@@ -64,7 +64,7 @@ Essi sono stati suddivisi in 3 macro categorie:
 
 Per tutti i casi successivi a questo, si supporrà che l’utente abbia già effettuato il login.
 
-
+|                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente si è appena collegato al sito e non è loggato.                                                                                                                                                                                                                                                      |
 | **Normal function**            | L’utente si collega al sito e compare una schermata che richiede nome utente e password. L’utente inserisce le proprie credenziali e preme invio, per poi essere reindirizzato alla homepage del sito.<br>La homepage ed il relativi menù sono personalizzati sulla base del livello di accesso dell’utente. |
@@ -107,8 +107,9 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 5. Visualizza lista pazienti
 
-|                                |                                                                                                         |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------- |
+
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                         |
 | **Normal function**            | L’utente clicca sul menu “Patient” nel menu principale, e viene reindirizzato alla pagina dei pazienti. |
 | **What can go wrong**          | -                                                                                                       |
@@ -117,8 +118,8 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 6. Inserisci prescrizione farmaco
 
-|                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**     | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | **Normal function**        | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni.Successivamente, clicca sul pulsante “Create new prescription”. Viene visualizzato un form dove scegliere paziente e medicinale, scrivere il dosaggio a parole e impostare la data di inizio e fine di validità della prescrizione. Infine, l’utente preme il pulsante “Create prescription” ed è reindirizzato alla pagina delle prescrizioni. |
 | **What can go wrong**      | Se l’utente non compila il campo del dosaggio o sceglie una data di inizio successiva alla data di fine, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di creazione prescrizione con aggiunto un messaggio relativo agli errori riscontrati.                                                                                                                                                   |
@@ -127,8 +128,9 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 7. Elimina prescrizione farmaco
 
-|                                |                                                                                                                                                                                                                                                                                                                                                                  |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                  |
 | **Normal function**            | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni.Successivamente, individua la riga relativa alla prescrizione che vuole eliminare, e clicca sul pulsante “Delete” presente nella riga. La pagina si ricarica automaticamente per mostrare la nuova lista delle prescrizioni a sistema. |
 | **What can go wrong**          | -                                                                                                                                                                                                                                                                                                                                                                |
@@ -137,8 +139,9 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 8. Modifica prescrizione farmaco
 
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Normal function**            | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni, dove individua la prescrizione che vuole modificare e clicca sul pulsante “Edit” relativo. Viene visualizzato un form analogo a quello della Create ma precompilato con i dati della prescrizione che si sta modificando, per selezionare paziente e medicinale, scrivere il dosaggio a parole e impostare la data di inizio e fine di validità della prescrizione. Infine, l’utente preme il pulsante “Create prescription” ed è reindirizzato alla pagina delle prescrizioni. |
 | **What can go wrong**          | Se l’utente non compila il campo del dosaggio o sceglie una data di inizio successiva alla data di fine, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di edit prescrizione con aggiunto un messaggio relativo agli errori riscontrati e i dati originariamente presenti nel database.                                                                                                                                                                                                                                          |
@@ -147,8 +150,8 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 9. Visualizza lista prescrizioni farmaco
 
-|                                |                                                                                                                                                                                                       |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                       |
 | **Normal function**            | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni, e viene visualizzata una tabella con tutte quelle memorizzate nel sistema. |
 | **What can go wrong**          | -                                                                                                                                                                                                     |
