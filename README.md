@@ -27,7 +27,7 @@ Il coordinamento e aggiornamento è avvenuto principalmente via chat e chiamate 
 
 Mentcare é un sistema informativo per la gestione di informazioni di pazienti con problemi di salute mentale in cura presso una clinica.
 
-Il sistema ha due obbiettivi:
+Il sistema ha due obiettivi:
 
 - generare informazioni riguardanti i pazienti che consentono ai responsabili di prescrivere dei farmaci per poterli curare;
 - fornire all'accesso a queste informazioni agli utenti riportati di seguito;
@@ -38,15 +38,16 @@ Il sistema dispone di:
 - l'accesso da host remoti, da cui è possibile effettuare diverse operazioni in base alla tipologia di utente che accede.
 
 Il sistema necessita dell'implementazione delle seguenti funzionalità:
+
 - memorizzare le informazioni relative ai pazienti e di poterle visualizzare 
 - registrare le prescrizioni di farmaci ai pazienti e di poterle visualizzare
 - premettere agli utenti di accedere a queste informazioni a seconda della tipologia di utente che effettua il login
 
 Gli utenti di tale sistema sono:
-- Guest: l'ospite può solamente visualizzare le informazioni relative al proprio profilo
-- Admin: amministratore dell'intero sistema che può gestire le informazioni degli utenti
-- Doctor: Ovvero i dottori possono gestire le informazioni dei pazienti e anche di gestire il lato delle loro prescrizioni
-- Office: quindi il personale amministrativo che si occupa gestione delle informazioni dei pazienti 
+- Guest: l'ospite può solamente visualizzare le informazioni relative al proprio profilo;
+- Admin: amministratore dell'intero sistema che può gestire le informazioni degli utenti;
+- Doctor: ovvero i dottori possono gestire le informazioni dei pazienti e anche di gestire il lato delle loro prescrizioni;
+- Office: quindi il personale amministrativo che si occupa gestione delle informazioni dei pazienti; 
 
 Si ricorda inoltre che tutti gli utenti possono visualizzare le informazioni relative al proprio profilo.
 
@@ -155,6 +156,7 @@ I **60** tests scritti sono divisi in due categorie:
 
 - **Tests end to end** (package `ui`)  
   Sono test che interagiscono con il sistema attraverso l'interfaccia, usando Selenium.
+  In particolare questi test hanno avuto lo scopo di garantire il corretto funzionamento dell'applicativo, oltre garantire la code coverage delle classi presenti all'interno del package controller.
 
 Non abbiamo fatto del testing esplicito per quanto riguarda l’interazione fra i componenti, in quanto non abbiamo fatto interagire i models fra loro e l’interazione fra model, view e controller è gestita da Spring MVC.
 
@@ -167,6 +169,7 @@ Infine, pur non essendo esplicitamente collegati agli scenari scelti e dunque ag
 ### Unit testing
 
 Gli unit test si sono concentrati sui model, e in particolare sulla verifica del funzionamento della logica interna di Patient e Prescription - dato che verificano internamente la validità dell’istanza.
+Tali test sono stati fatti su tutti i metodi presenti nelle classi compresi anche i costruttori, getter e setter.
 
 ### End to end testing
 
