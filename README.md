@@ -1,12 +1,9 @@
-# README.md
-
-> Progetto finale per il corso di Fondamenti di Ingegneria del Software
-
-> a.a. 2021/22
+# Progetto finale per il corso di Fondamenti di Ingegneria del Software (a.a. 2021/2022 )
 
 Fabiola Fabretti VR482924    
-Cesare Montresor VR481252    
 Elisa Zanella VRxxxxxx    
+Cesare Montresor VR481252    
+
 
 ## Informazioni sul progetto
 
