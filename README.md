@@ -70,16 +70,6 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 #### 5. Visualizza lista pazienti
 
-|     |
-| --- | --- |
-| **Initial assumption** | L’utente è loggato come medico. |
-| **Normal function** | L’utente clicca sul menu “Patient” nel menu principale, e viene reindirizzato alla pagina dei pazienti. |
-| **What can go wrong** | -   |
-| **Other activities** | -   |
-| **System state on completion** | -   |
-
-#### 6. Inserisci prescrizione farmaco
-
 |                                |                                                                                                         |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                         |
@@ -87,6 +77,16 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 | **What can go wrong**          | -                                                                                                       |
 | **Other activities**           | -                                                                                                       |
 | **System state on completion** | -                                                                                                       |
+
+#### 6. Inserisci prescrizione farmaco
+
+|                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Initial assumption**     | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Normal function**        | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni.Successivamente, clicca sul pulsante “Create new prescription”. Viene visualizzato un form dove scegliere paziente e medicinale, scrivere il dosaggio a parole e impostare la data di inizio e fine di validità della prescrizione. Infine, l’utente preme il pulsante “Create prescription” ed è reindirizzato alla pagina delle prescrizioni. |
+| **What can go wrong**      | Se l’utente non compila il campo del dosaggio o sceglie una data di inizio successiva alla data di fine, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di creazione prescrizione con aggiunto un messaggio relativo agli errori riscontrati.                                                                                                                                                   |
+| **Other activities**       | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.                                                                                                                                                                                                                                                                                                                                          |
+| System state on completion | La prescrizione viene aggiunta al database.                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 #### 7. Elimina prescrizione farmaco
 
