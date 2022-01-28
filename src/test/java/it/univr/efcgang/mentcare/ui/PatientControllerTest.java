@@ -60,7 +60,7 @@ class PatientControllerTest extends BrowserTest {
     }
 
     @Test
-    public void testUpdatePatientWrongInput(){
+    public void testEditPatientWrongInput(){
         // Get to index page
         PatientListPO patientListPO = getToPatientPage();
 
