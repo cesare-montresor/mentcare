@@ -17,7 +17,7 @@ Per effettuare la generazione automatica di alcune parti codice ci siamo serviti
 
 Il processo di sviluppo si è svolto principalmente in maniera informale, pur cercando di applicare qualcuna delle tecniche viste in classe. In particolare, siamo rimasti più vicini all’agile durante lo sviluppo vero e proprio, mentre a inizio progetto abbiamo deciso di dedicare del tempo alla scelta della traccia, alla programmazione a grandi linee del lavoro e soprattutto alla stima dell’effort necessario allo sviluppo di ciascuna feature.
 
-Questo ci ha anche permesso di dividere il lavoro in maniera equa: inizialmente abbiamo deciso di scrivere insieme il codice per definire le interfacce tra moduli e il mapping degli indirizzi, per poi continuare a sviluppare parallelamente un modulo a testa (Patient, Prescription, Main/Login/Security) con frequenti riunioni di aggiornamento sulla situazione di ciascun componente del gruppo.
+Questo ci ha anche permesso di dividere il lavoro in modo equo: inizialmente abbiamo deciso di scrivere insieme il codice per definire le interfacce tra moduli e il mapping degli indirizzi, per poi continuare a sviluppare parallelamente un modulo a testa (Patient, Prescription, Main/Login/Security) con frequenti riunioni di aggiornamento sulla situazione di ciascun componente del gruppo.
 
 Per lavorare simultaneamente abbiamo usato GitHub, con tre fork separate (ispirandoci al modello forking workflow), in modo da poter avere massima flessibilità e indipendenza durante l'intero processo.
 
@@ -25,7 +25,32 @@ Il coordinamento e aggiornamento è avvenuto principalmente via chat e chiamate 
 
 ## Requirements
 
-### Scenarios
+Mentcare é un sistema informativo per la gestione di informazioni di pazienti con problemi di salute mentale in cura presso una clinica.
+
+Il sistema ha due obbiettivi:
+
+- generare informazioni riguardanti i pazienti che consentono ai responsabili di prescrivere dei farmaci per poterli curare;
+- fornire all'accesso a queste informazioni agli utenti riportati di seguito;
+
+Il sistema dispone di:
+
+- un database centrale;
+- l'accesso da host remoti, da cui è possibile effettuare diverse operazioni in base alla tipologia di utente che accede.
+
+Il sistema necessita dell'implementazione delle seguenti funzionalità:
+- memorizzare le informazioni relative ai pazienti e di poterle visualizzare 
+- registrare le prescrizioni di farmaci ai pazienti e di poterle visualizzare
+- premettere agli utenti di accedere a queste informazioni a seconda della tipologia di utente che effettua il login
+
+Gli utenti di tale sistema sono:
+- Guest: l'ospite può solamente visualizzare le informazioni relative al proprio profilo
+- Admin: amministratore dell'intero sistema che può gestire le informazioni degli utenti
+- Doctor: Ovvero i dottori possono gestire le informazioni dei pazienti e anche di gestire il lato delle loro prescrizioni
+- Office: quindi il personale amministrativo che si occupa gestione delle informazioni dei pazienti 
+
+Si ricorda inoltre che tutti gli utenti possono visualizzare le informazioni relative al proprio profilo.
+
+## Scenarios
 
 #### 1. Login
 
