@@ -30,7 +30,7 @@ Mentcare é un sistema informativo per la gestione di informazioni di pazienti c
 Il sistema ha due obiettivi:
 
 - generare informazioni riguardanti i pazienti che consentono ai responsabili di prescrivere dei farmaci per poterli curare;
-- fornire all'accesso a queste informazioni agli utenti riportati di seguito;
+- fornire l'accesso a queste informazioni alle diverse tipologie di utenti;
 
 Il sistema dispone di:
 
@@ -43,6 +43,8 @@ Il sistema necessita dell'implementazione delle seguenti funzionalità:
 - registrare le prescrizioni di farmaci ai pazienti e di poterle visualizzare
 - premettere agli utenti di accedere a queste informazioni a seconda della tipologia di utente che effettua il login
 
+Inoltre il sistema presuppone che le password degli utenti non siano salvate in chiaro all'interno della base di dati per evitare che l'amministratore di sistema possa modificarle.
+
 Gli utenti di tale sistema sono:
 - Guest: l'ospite può solamente visualizzare le informazioni relative al proprio profilo;
 - Admin: amministratore dell'intero sistema che può gestire le informazioni degli utenti;
@@ -52,6 +54,12 @@ Gli utenti di tale sistema sono:
 Si ricorda inoltre che tutti gli utenti possono visualizzare le informazioni relative al proprio profilo.
 
 ## Scenarios
+
+Gli seguenti scenari sono volti a soddisfare i requisiti appena esplicitati.
+Essi sono stati suddivisi in 3 macro categorie:
+1. gestione dell'accesso (login)
+2. gestione dei pazienti
+3. gestione delle prescrizioni 
 
 #### 1. Login
 
@@ -264,3 +272,9 @@ Abbiamo verificato la code coverage dei nostri tests attraverso il tool integrat
 Nello specifico, la parte sugli unit test raggiunge una copertura del 98% sulle classi relative ai models.
 
 ![img3](img_readme/3.png)
+
+### Informazioni aggiuntive 
+
+Per garantire una maggior sicurezza nella memorizzazione delle password degli utenti è stato necessario memorizzarne l'hash usando la crittografia //non so come si chiama...
+
+La grafica delle pagine è stata arricchita con elementi presi dalla libreria bootstrap.
