@@ -13,7 +13,7 @@ class UserControllerTest extends BrowserTest {
 
 
     @Test
-    public void testDrugViewInit(){
+    public void testUsersViewInit(){
 
         driver.get(baseUrl);
 
