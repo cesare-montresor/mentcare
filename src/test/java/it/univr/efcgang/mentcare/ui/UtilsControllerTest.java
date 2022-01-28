@@ -28,9 +28,9 @@ class UtilsControllerTest extends BrowserTest {
         //Check I'm on correct page
         assertEquals(dbStat.getTitle(),"Database Stats");
 
-        assertEquals("Drugs: 1",dbStat.getStatDrug());
+        assertEquals("Drugs: 8",dbStat.getStatDrug());
         assertEquals("Users: 5",dbStat.getStatUser());
-        assertEquals("Patients: 2",dbStat.getStatPatient());
+        assertEquals("Patients: 5",dbStat.getStatPatient());
         assertEquals("Prescription: 1",dbStat.getStatPrescription());
 
 

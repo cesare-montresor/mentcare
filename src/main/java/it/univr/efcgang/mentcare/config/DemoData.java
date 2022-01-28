@@ -43,13 +43,36 @@ public class DemoData {
 
         // ------------ Drug
         Drug drug1 = new Drug("drug A");
+        Drug drug2 = new Drug("drug B");
+        Drug drug3 = new Drug("drug C");
+        Drug drug4 = new Drug("drug D");
+        Drug drug5 = new Drug("drug E");
+        Drug drug6 = new Drug("drug F");
+        Drug drug7 = new Drug("drug G");
+        Drug drug8 = new Drug("drug H");
+
         drugRepository.save(drug1);
+        drugRepository.save(drug2);
+        drugRepository.save(drug3);
+        drugRepository.save(drug4);
+        drugRepository.save(drug5);
+        drugRepository.save(drug6);
+        drugRepository.save(drug7);
+        drugRepository.save(drug8);
+
+
 
         // ------------ Patient
         Patient patient1 = new Patient("Giovanni Rossi", docMaria);
         Patient patient2 = new Patient("Andrea Andrei", docLuigi);
+        Patient patient3 = new Patient("Mario Rossi", docMaria);
+        Patient patient4 = new Patient("Giuseppe Verdi", docLuigi);
+        Patient patient5 = new Patient("Mario Bianchi", docMaria);
         patientRepository.save(patient1);
         patientRepository.save(patient2);
+        patientRepository.save(patient3);
+        patientRepository.save(patient4);
+        patientRepository.save(patient5);
 
         // ------------ Prescription
         Calendar cal = Calendar.getInstance();

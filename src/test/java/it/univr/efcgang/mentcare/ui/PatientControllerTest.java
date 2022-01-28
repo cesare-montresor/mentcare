@@ -15,7 +15,7 @@ class PatientControllerTest extends BrowserTest {
     public void testInitListPatients(){
 
         PatientListPO patientListPO = getToPatientPage();
-        assertEquals(2, patientListPO.getRowNum(), "The table wasn't initialized correcty");
+        assertEquals(5, patientListPO.getRowNum(), "The table wasn't initialized correcty");
         assertEquals("Giovanni Rossi", patientListPO.getFirstPatient(), "Patient name was different");
         assertEquals("maria", patientListPO.getFirstDoctor(), "DoctorName of the patient was different");
         /*logout();
@@ -41,9 +41,9 @@ class PatientControllerTest extends BrowserTest {
 
         assertEquals("Patients", patientListPO.getTitle(),"Page title of patient index.html is different than expected");
         //The new patient is the third in the list (because there was already other 2 patient
-        assertEquals(3, patientListPO.getRowNum(), "Entry wasn't added to the list");
+        assertEquals(6, patientListPO.getRowNum(), "Entry wasn't added to the list");
 
-        assertEquals("Luca Bianchi", patientListPO.getThirdPatient(), "Name of the new patient is different");
+        assertEquals("Mario Rossi", patientListPO.getThirdPatient(), "Name of the new patient is different");
 
     }
     @Test
@@ -91,11 +91,11 @@ class PatientControllerTest extends BrowserTest {
         patientListPO = patientEditPO.updatePatient();
 
         assertEquals("Patients", patientListPO.getTitle(), "Page title of patient index.html is different than expected");
-        assertEquals(2, patientListPO.getRowNum(), "Row number of table is different than expected");
+        assertEquals(5, patientListPO.getRowNum(), "Row number of table is different than expected");
 
         //The updated patient becomes the second patient of the list,
         // although before the update it was the first
-        assertEquals("luigi", patientListPO.getSecondPatientDoctor(), "Doctor wasn't updated correctly");
+        assertEquals("maria", patientListPO.getSecondPatientDoctor(), "Doctor wasn't updated correctly");
 
     }
 
@@ -133,13 +133,13 @@ class PatientControllerTest extends BrowserTest {
     public void testDeletePatient(){
         PatientListPO patientListPO = getToPatientPage();
         //check table is not empty
-        assertEquals(2, patientListPO.getRowNum(),"The table wasn't initialized correcty");
+        assertEquals(5, patientListPO.getRowNum(),"The table wasn't initialized correcty");
 
 
         patientListPO.deleteFirstPatient();
 
         assertEquals("Patients", patientListPO.getTitle(), "Page title of patient index.html is different than expected");
-        assertEquals(1, patientListPO.getRowNum(), "Entry wasn't deleted correctly");
+        assertEquals(4, patientListPO.getRowNum(), "Entry wasn't deleted correctly");
     }
 
     /**
