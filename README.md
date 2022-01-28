@@ -4,7 +4,9 @@
 
 > a.a. 2021/22
 
-> Fabiola Fabretti VR482924, Cesare Montresor VRxxxxxx, Elisa Zanella VRxxxxxx
+Fabiola Fabretti VR482924    
+Cesare Montresor VR481252    
+Elisa Zanella VRxxxxxx    
 
 ## Informazioni sul progetto
 
