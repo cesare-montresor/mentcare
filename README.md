@@ -64,8 +64,8 @@ Essi sono stati suddivisi in 3 macro categorie:
 
 Per tutti i casi successivi a questo, si supporrà che l’utente abbia già effettuato il login.
 
-|                                |                                                                                                                                                                                                                                                                                                              |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|                                |                                                       |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente si è appena collegato al sito e non è loggato.                                                                                                                                                                                                                                                      |
 | **Normal function**            | L’utente si collega al sito e compare una schermata che richiede nome utente e password. L’utente inserisce le proprie credenziali e preme invio, per poi essere reindirizzato alla homepage del sito.<br>La homepage ed il relativi menù sono personalizzati sulla base del livello di accesso dell’utente. |
 | **What can go wrong**          | Se l’utente inserisce le credenziali errate, la pagina si aggiorna senza concedere l’accesso all’utente.                                                                                                                                                                                                     |
