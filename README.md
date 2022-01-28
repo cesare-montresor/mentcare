@@ -64,7 +64,7 @@ Essi sono stati suddivisi in 3 macro categorie:
 
 Per tutti i casi successivi a questo, si supporrà che l’utente abbia già effettuato il login.
 
-|                                |                                                       |
+|                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente si è appena collegato al sito e non è loggato.                                                                                                                                                                                                                                                      |
 | **Normal function**            | L’utente si collega al sito e compare una schermata che richiede nome utente e password. L’utente inserisce le proprie credenziali e preme invio, per poi essere reindirizzato alla homepage del sito.<br>La homepage ed il relativi menù sono personalizzati sulla base del livello di accesso dell’utente. |
@@ -74,8 +74,9 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 2. Inserisci paziente
 
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Normal function**            | L’utente clicca sul pulsante “Patient” nella barra menu superiore per accedere al modulo relativo ai pazienti.Successivamente, clicca sul pulsante “New patient”. Viene visualizzato un form dove impostare il nome del nuovo paziente, e un menù a tendina da cui selezionare il medico curante fra quelli iscritti nel sistema. Infine, l’utente preme il pulsante “Create patient” ed è reindirizzato alla pagina dei pazienti. |
 | **What can go wrong**          | Se l’utente non compila il campo del nome del paziente, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di creazione paziente con aggiunto un messaggio relativo all’errore riscontrato.                                                                                                                                                                  |
@@ -84,8 +85,9 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 3. Elimina paziente
 
-|                                |                                                                                                                                                                                                                                                                                                                                          |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                          |
 | **Normal function**            | L’utente clicca sul pulsante “Patient” nella barra menu superiore per accedere al modulo relativo ai pazienti.Successivamente, individua la riga relativa al paziente che vuole eliminare, e clicca sul pulsante “Delete” presente nella riga. La pagina si ricarica automaticamente per mostrare la nuova lista dei pazienti a sistema. |
 | **What can go wrong**          | Non è possibile che succeda attraverso la GUI, ma se l’utente dovesse cercare di forzare l’eliminazione di una paziente inserendo l'id direttamente nell’URL, il sistema rileva il tentativo e mostra un messaggio di errore.                                                                                                        |
@@ -94,8 +96,9 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 ### 4. Modifica paziente
 
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+|                                | Descrizione                                           |
+| ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                  |
 | **Normal function**            | L’utente clicca sul pulsante “Patient” nella barra menu superiore per accedere al modulo relativo ai pazienti, dove individua il paziente che vuole modificare e clicca sul pulsante “Edit” relativo. Viene visualizzato un form analogo a quello della Create ma precompilato con i dati del paziente che si sta modificando. Infine, l’utente preme il pulsante “Confirm changes” ed è reindirizzato alla pagina dei pazienti. |
 | **What can go wrong**          | Se l’utente lascia vuoto il campo del nome, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di edit paziente con aggiunto un messaggio relativo agli errori riscontrati e i dati originariamente presenti nel database.                                                                                                                                 |
