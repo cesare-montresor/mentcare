@@ -1,4 +1,5 @@
-# Progetto finale per il corso di Fondamenti di Ingegneria del Software (a.a. 2021/2022 )
+# Fondamenti di Ingegneria del Software 
+# Progetto finale a.a. 2021 / 2022
 
 Fabiola Fabretti VR482924    
 Elisa Zanella VRxxxxxx    
