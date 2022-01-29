@@ -26,12 +26,12 @@ Cesare Montresor VR481252
   - [End-to-end testing](#end-to-end-testing)     
       1 [Login](#1-login-1)  
       2 [Inserisci paziente](#2-inserisci-paziente-1)  
-      3 [Elimina paziente](#3-elimina-paziente-1)  
-      4 [Modifica paziente](#4-modifica-paziente-1)  
+      3 [Elimina paziente](#4-elimina-paziente-1)  
+      4 [Modifica paziente](#3-modifica-paziente-1)  
       5 [Visualizza lista pazienti](#5-visualizza-lista-pazienti-1)  
       6 [Inserisci prescrizione farmaco](#6-inserisci-prescrizione-farmaco-1)  
-      7 [Elimina prescrizione farmaco](#7-elimina-prescrizione-farmaco-1)  
-      8 [Modifica prescrizione farmaco](#8-modifica-prescrizione-farmaco-1)  
+      7 [Elimina prescrizione farmaco](#8-elimina-prescrizione-farmaco-1)  
+      8 [Modifica prescrizione farmaco](#7-modifica-prescrizione-farmaco-1)  
       9 [Visualizza lista prescrizioni farmaco](#9-visualizza-lista-prescrizioni-farmaci)  
 
 ## Informazioni sul progetto
