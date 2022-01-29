@@ -190,16 +190,28 @@ Di seguito riportiamo, per ciascuno scenario descritto in precedenza, gli E2E te
 
 ### 1. Login
 
+Class Reference: [MainControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L21
+
 | Nome del test        | Descrizione                                                                                                            |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **testLogin**        | Effettua il login.                                                                                                     |
-| **testLoginProfile** | Effettua il login. Accede al profilo e verifica le informazioni dell’utente                                            |
-| **testLoginDoctor**  | Effettua il login con un utente di livello DOCTOR.<br/>Verifica che il menu mostri i moduli per il ruolo DOCTOR.       |
-| **testLoginAdmin**   | Effettua il login con un utente di livello ADMIN.<br/>Verifica che il menu mostri i moduli per il ruolo ADMIN.         |
-| **testLoginOffice**  | Effettua il login con un utente di livello OFFICE.<br/>Verifica che il menu mostri i moduli per il ruolo OFFICE.       |
-| **testError404**     | Effettua il login. Tenta di accedere ad una risorsa inesistente.                                                       |
-| **testError403**     | Effettua il login con un utente di livello DOCTOR.<br/>Tenta di accedere ad una risorsa che appartiene al ruolo ADMIN. |
-| **testError403**     | Effettua il login, accede alla pagina di errore direttamente.                                                          |
+| **[testLogin]**        | Effettua il login.                                                                                                     |
+| **[testLoginProfile]** | Effettua il login. Accede al profilo e verifica le informazioni dell’utente                                            |
+| **[testLoginDoctor]**  | Effettua il login con un utente di livello DOCTOR.<br/>Verifica che il menu mostri i moduli per il ruolo DOCTOR.       |
+| **[testLoginAdmin]**   | Effettua il login con un utente di livello ADMIN.<br/>Verifica che il menu mostri i moduli per il ruolo ADMIN.         |
+| **[testLoginOffice]**  | Effettua il login con un utente di livello OFFICE.<br/>Verifica che il menu mostri i moduli per il ruolo OFFICE.       |
+| **[testError404]**     | Effettua il login. Tenta di accedere ad una risorsa inesistente.                                                       |
+| **[testError403]**     | Effettua il login con un utente di livello DOCTOR.<br/>Tenta di accedere ad una risorsa che appartiene al ruolo ADMIN. |
+| **[testErrorNot]**     | Effettua il login, accede alla pagina di errore direttamente.                                                          |
+
+[testLogin]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L24
+[testLoginProfile]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L33
+[testLoginDoctor]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L52
+[testLoginAdmin]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L66
+[testLoginOffice]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L80
+[testError404]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L94
+[testError403]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L105
+[testErrorNot]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L116
+
 
 ### 2. Inserisci paziente
 
