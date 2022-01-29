@@ -350,7 +350,7 @@ Class Reference: [PrescriptionControllerTest]
 
 |  Nome del test         | Descrizione                                                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **testTableInitState** | Verifica che la tabella delle prescription sia visualizzata correttamente con le informazioni di prova (DemoData). |
+| **[testTableInitState]** | Verifica che la tabella delle prescription sia visualizzata correttamente con le informazioni di prova (DemoData). |
 
 [testTableInitState]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L19
 
