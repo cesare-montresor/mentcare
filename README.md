@@ -11,29 +11,28 @@ Cesare Montresor VR481252
 - [Processo di sviluppo](#processo-di-sviluppo)  
 - [Requisiti](#Requisiti)  
 - [Scenarios](#scenarios)    
-  1. [Login](#1-login)  
-  2. [Inserisci paziente](#2-inserisci-paziente)  
-  3. [Elimina paziente](#3-elimina-paziente)  
-  4. [Modifica paziente](#4-modifica-paziente)  
-  5. [Visualizza lista pazienti](#5-visualizza-lista-pazienti)  
-  6. [Inserisci prescrizione farmaco](#6-inserisci-prescrizione-farmaco)  
-  7. [Elimina prescrizione farmaco](#7-elimina-prescrizione-farmaco)  
-  8. [Modifica prescrizione farmaco](#8-modifica-prescrizione-farmaco)  
-  9. [Visualizza lista prescrizioni farmaco](#9-visualizza-lista-prescrizioni-farmaco)  
-  
+      1 [Login](#1-login)  
+      2 [Inserisci paziente](#2-inserisci-paziente)  
+      3 [Elimina paziente](#3-elimina-paziente)  
+      4 [Modifica paziente](#4-modifica-paziente)  
+      5 [Visualizza lista pazienti](#5-visualizza-lista-pazienti)  
+      6 [Inserisci prescrizione farmaco](#6-inserisci-prescrizione-farmaco)  
+      7 [Elimina prescrizione farmaco](#7-elimina-prescrizione-farmaco)  
+      8 [Modifica prescrizione farmaco](#8-modifica-prescrizione-farmaco)  
+      9 [Visualizza lista prescrizioni farmaco](#9-visualizza-lista-prescrizioni-farmaco) 
 - [Quality assurance](#quality-assurance)
   - [Test selection](#test-selection)
   - [Unit testing](#unit-testing)
   - [End-to-end testing](#end-to-end-testing)     
-    1. [Login](#1-login-1)  
-    2. [Inserisci paziente](#2-inserisci-paziente-1)  
-    3. [Elimina paziente](#3-elimina-paziente-1)  
-    4. [Modifica paziente](#4-modifica-paziente-1)  
-    5. [Visualizza lista pazienti](#5-visualizza-lista-pazienti-1)  
-    6. [Inserisci prescrizione farmaco](#6-inserisci-prescrizione-farmaco-1)  
-    7. [Elimina prescrizione farmaco](#7-elimina-prescrizione-farmaco-1)  
-    8. [Modifica prescrizione farmaco](#8-modifica-prescrizione-farmaco-1)  
-    9. [Visualizza lista prescrizioni farmaco](#9-visualizza-lista-prescrizioni-farmaco-1)  
+      1 [Login](#1-login-1)  
+      2 [Inserisci paziente](#2-inserisci-paziente-1)  
+      3 [Elimina paziente](#3-elimina-paziente-1)  
+      4 [Modifica paziente](#4-modifica-paziente-1)  
+      5 [Visualizza lista pazienti](#5-visualizza-lista-pazienti-1)  
+      6 [Inserisci prescrizione farmaco](#6-inserisci-prescrizione-farmaco-1)  
+      7 [Elimina prescrizione farmaco](#7-elimina-prescrizione-farmaco-1)  
+      8 [Modifica prescrizione farmaco](#8-modifica-prescrizione-farmaco-1)  
+      9 [Visualizza lista prescrizioni farmaco](#9-visualizza-lista-prescrizioni-farmaci)  
 
 ## Informazioni sul progetto
 
@@ -107,11 +106,11 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 |                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
-| **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                    |
+| **Initial assumption**         | L’utente è loggato come medico.   |
 | **Normal function**            | L’utente clicca sul pulsante “Patient” nella barra menu superiore per accedere al modulo relativo ai pazienti.Successivamente, clicca sul pulsante “New patient”. Viene visualizzato un form dove impostare il nome del nuovo paziente, e un menù a tendina da cui selezionare il medico curante fra quelli iscritti nel sistema. Infine, l’utente preme il pulsante “Create patient” ed è reindirizzato alla pagina dei pazienti. |
-| **What can go wrong**          | Se l’utente non compila il campo del nome del paziente, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di creazione paziente con aggiunto un messaggio relativo all’errore riscontrato.                                                                                                                                                                  |
-| **Other activities**           | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.                                                                                                                                                                                                                                                                                                   |
-| **System state on completion** | Il paziente viene aggiunto al database.                                                                                                                                                                                                                                                                                                                                                                                            |
+| **What can go wrong**          | Se l’utente non compila il campo del nome del paziente, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di creazione paziente con aggiunto un messaggio relativo all’errore riscontrato.  |
+| **Other activities**           | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.   |
+| **System state on completion** | Il paziente viene aggiunto al database.       |
 
 ### 3. Elimina paziente
 
@@ -120,8 +119,8 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 | ------------------------------ | ----------------------------------------------------- |
 | **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                          |
 | **Normal function**            | L’utente clicca sul pulsante “Patient” nella barra menu superiore per accedere al modulo relativo ai pazienti.Successivamente, individua la riga relativa al paziente che vuole eliminare, e clicca sul pulsante “Delete” presente nella riga. La pagina si ricarica automaticamente per mostrare la nuova lista dei pazienti a sistema. |
-| **What can go wrong**          | Non è possibile che succeda attraverso la GUI, ma se l’utente dovesse cercare di forzare l’eliminazione di una paziente inserendo l'id direttamente nell’URL, il sistema rileva il tentativo e mostra un messaggio di errore.                                                                                                        |
-| **Other activities**           | -                                                                                                                                                                                                                                                                                                                                        |
+| **What can go wrong**          | Non è possibile che succeda attraverso la GUI, ma se l’utente dovesse cercare di forzare l’eliminazione di una paziente inserendo l'id direttamente nell’URL, il sistema rileva il tentativo e mostra un messaggio di errore.    |
+| **Other activities**           | -         |
 | **System state on completion** | Il paziente viene eliminato dal database.                                                                                                                                                                                                                                                                                                |
 
 ### 4. Modifica paziente
@@ -129,11 +128,11 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 |                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
-| **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Initial assumption**         | L’utente è loggato come medico.                          |
 | **Normal function**            | L’utente clicca sul pulsante “Patient” nella barra menu superiore per accedere al modulo relativo ai pazienti, dove individua il paziente che vuole modificare e clicca sul pulsante “Edit” relativo. Viene visualizzato un form analogo a quello della Create ma precompilato con i dati del paziente che si sta modificando. Infine, l’utente preme il pulsante “Confirm changes” ed è reindirizzato alla pagina dei pazienti. |
-| **What can go wrong**          | Se l’utente lascia vuoto il campo del nome, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di edit paziente con aggiunto un messaggio relativo agli errori riscontrati e i dati originariamente presenti nel database.                                                                                                                                 |
-| **Other activities**           | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.                                                                                                                                                                                                                                                                                                 |
-| **System state on completion** | La versione originale del paziente viene eliminata e sostituita con la nuova.                                                                                                                                                                                                                                                                                                                                                    |
+| **What can go wrong**          | Se l’utente lascia vuoto il campo del nome, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di edit paziente con aggiunto un messaggio relativo agli errori riscontrati e i dati originariamente presenti nel database.  |
+| **Other activities**           | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.  |
+| **System state on completion** | La versione originale del paziente viene eliminata e sostituita con la nuova.   |
 
 ### 5. Visualizza lista pazienti
 
@@ -150,43 +149,43 @@ Per tutti i casi successivi a questo, si supporrà che l’utente abbia già eff
 
 |                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
-| **Initial assumption**     | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Initial assumption**     | L’utente è loggato come medico.     |
 | **Normal function**        | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni.Successivamente, clicca sul pulsante “Create new prescription”. Viene visualizzato un form dove scegliere paziente e medicinale, scrivere il dosaggio a parole e impostare la data di inizio e fine di validità della prescrizione. Infine, l’utente preme il pulsante “Create prescription” ed è reindirizzato alla pagina delle prescrizioni. |
-| **What can go wrong**      | Se l’utente non compila il campo del dosaggio o sceglie una data di inizio successiva alla data di fine, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di creazione prescrizione con aggiunto un messaggio relativo agli errori riscontrati.                                                                                                                                                   |
-| **Other activities**       | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.                                                                                                                                                                                                                                                                                                                                          |
-| System state on completion | La prescrizione viene aggiunta al database.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **What can go wrong**      | Se l’utente non compila il campo del dosaggio o sceglie una data di inizio successiva alla data di fine, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di creazione prescrizione con aggiunto un messaggio relativo agli errori riscontrati.  |
+| **Other activities**       | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.    |
+| System state on completion | La prescrizione viene aggiunta al database.   |
 
 ### 7. Elimina prescrizione farmaco
 
 
 |                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
-| **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                  |
+| **Initial assumption**         | L’utente è loggato come medico.    |
 | **Normal function**            | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni.Successivamente, individua la riga relativa alla prescrizione che vuole eliminare, e clicca sul pulsante “Delete” presente nella riga. La pagina si ricarica automaticamente per mostrare la nuova lista delle prescrizioni a sistema. |
-| **What can go wrong**          | -                                                                                                                                                                                                                                                                                                                                                                |
-| **Other activities**           | Non è possibile che succeda attraverso la GUI, ma se l’utente dovesse cercare di forzare l’eliminazione di una prescrizione inserendo l'id direttamente nell’URL, il sistema rileva il tentativo e mostra un messaggio di errore.                                                                                                                                |
-| **System state on completion** | La prescrizione viene eliminata dal database.                                                                                                                                                                                                                                                                                                                    |
+| **What can go wrong**          | -  |
+| **Other activities**           | Non è possibile che succeda attraverso la GUI, ma se l’utente dovesse cercare di forzare l’eliminazione di una prescrizione inserendo l'id direttamente nell’URL, il sistema rileva il tentativo e mostra un messaggio di errore.    |
+| **System state on completion** | La prescrizione viene eliminata dal database. |
 
 ### 8. Modifica prescrizione farmaco
 
 
 |                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
-| **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Initial assumption**         | L’utente è loggato come medico.                       |
 | **Normal function**            | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni, dove individua la prescrizione che vuole modificare e clicca sul pulsante “Edit” relativo. Viene visualizzato un form analogo a quello della Create ma precompilato con i dati della prescrizione che si sta modificando, per selezionare paziente e medicinale, scrivere il dosaggio a parole e impostare la data di inizio e fine di validità della prescrizione. Infine, l’utente preme il pulsante “Create prescription” ed è reindirizzato alla pagina delle prescrizioni. |
-| **What can go wrong**          | Se l’utente non compila il campo del dosaggio o sceglie una data di inizio successiva alla data di fine, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di edit prescrizione con aggiunto un messaggio relativo agli errori riscontrati e i dati originariamente presenti nel database.                                                                                                                                                                                                                                          |
-| **Other activities**           | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| **System state on completion** | La versione originale della prescrizione viene eliminata e sostituita con la nuova prescrizione.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **What can go wrong**          | Se l’utente non compila il campo del dosaggio o sceglie una data di inizio successiva alla data di fine, al click del tasto di salvataggio i nuovi dati non vengono inseriti nel database, ma viene caricata nuovamente la pagina di edit prescrizione con aggiunto un messaggio relativo agli errori riscontrati e i dati originariamente presenti nel database.   |
+| **Other activities**           | Se l’utente clicca su “Go back to list” anziché salvare le modifiche, il database non viene modificato e la “bozza” viene persa.  |
+| **System state on completion** | La versione originale della prescrizione viene eliminata e sostituita con la nuova prescrizione.    |
 
 ### 9. Visualizza lista prescrizioni farmaco
 
 |                                | Descrizione                                           |
 | ------------------------------ | ----------------------------------------------------- |
-| **Initial assumption**         | L’utente è loggato come medico.                                                                                                                                                                       |
+| **Initial assumption**         | L’utente è loggato come medico.                       |
 | **Normal function**            | L’utente clicca sul pulsante “Prescriptions” nella barra menu superiore per accedere al modulo relativo alle prescrizioni, e viene visualizzata una tabella con tutte quelle memorizzate nel sistema. |
-| **What can go wrong**          | -                                                                                                                                                                                                     |
-| **Other activities**           | -                                                                                                                                                                                                     |
-| **System state on completion** | -                                                                                                                                                                                                     |
+| **What can go wrong**          | -                                                     |
+| **Other activities**           | -                                                     |
+| **System state on completion** | -                                                     |
 
 ## Quality assurance
 
@@ -293,8 +292,8 @@ Class Reference: [PatientControllerTest]
 [PatientControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L8
 
 | Nome del test                 | Descrizione                                                                                          |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **[testDeletePatient]**         | Elimina un paziente e verifica che la lista di pazienti sia aggiornata di conseguenza.                           |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **[testDeletePatient]**         | Elimina un paziente e verifica che la lista di pazienti sia aggiornata di conseguenza.             |
 | **[testDeletePatientNotFound]** | Tenta di eliminare un paziente inserendo da url l'id di un paziente non esistente e verifica che venga visualizzata la relativa pagina di errore che dice che il paziente non è stato trovato. |
 
 [testDeletePatient]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L133
@@ -310,8 +309,8 @@ Class Reference: [PatientControllerTest]
 
 [PatientControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L8
 
-| Nome del test            | Descrizione                                                                                |
-| ------------------------ | ------------------------------------------------------------------------------------------ |
+| Nome del test              | Descrizione                                                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------ |
 | **[testInitListPatients]** | Verifica che la lista dei pazienti sia inizializzata correttamente con i dati in DemoData. |
 
 [testInitListPatients]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L15
@@ -326,9 +325,9 @@ Class Reference: [PrescriptionControllerTest]
 
 [PrescriptionControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L16
 
-| Nome del test                      | Descrizione                                                                          |
-| ---------------------------------- | ------------------------------------------------------------------------------------ |
-| **[testAddPrescription]**            | Aggiunge una nuova prescription e verifica che la tabella sia stata aggiornata di conseguenza.              |
+| Nome del test                        | Descrizione                                                                          |
+| ------------------------------------ | ------------------------------------------------------------------------------------ |
+| **[testAddPrescription]**            | Aggiunge una nuova prescription e verifica che la tabella sia stata aggiornata di conseguenza. |
 | **[testAddPrescriptionWrongDate]**   | Tenta di aggiungere una nuova prescription con un dato non accettabile (data di fine validità antecedente alla data di inizio validità) e verifica che venga visualizzato un messaggio di errore. |
 | **[testAddPrescriptionWrongDosage]** | Tenta di aggiungere una nuova prescription con un dato non accettabile (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore. |
 
@@ -378,8 +377,8 @@ Class Reference: [PrescriptionControllerTest]
 
 [PrescriptionControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L16
 
-|  Nome del test         | Descrizione                                                                                                     |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
+|  Nome del test           | Descrizione                                                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | **[testTableInitState]** | Verifica che la tabella delle prescription sia visualizzata correttamente con le informazioni di prova (DemoData). |
 
 [testTableInitState]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L19
