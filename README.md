@@ -190,7 +190,9 @@ Di seguito riportiamo, per ciascuno scenario descritto in precedenza, gli E2E te
 
 ### 1. Login
 
-Class Reference: [MainControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L21
+Class Reference: [MainControllerTest] 
+
+[MainControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L21
 
 | Nome del test        | Descrizione                                                                                                            |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
