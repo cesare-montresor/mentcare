@@ -2,7 +2,7 @@
 # Progetto finale a.a. 2021 / 2022
 
 Fabiola Fabretti VR482924    
-Elisa Zanella VRxxxxxx    
+Elisa Zanella VR482140    
 Cesare Montresor VR481252    
 
 ## Informazioni sul progetto
