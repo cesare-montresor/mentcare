@@ -292,40 +292,84 @@ Class Reference: [PatientControllerTest]
 
 ### 6. Inserisci prescrizione farmaco
 
-| Nome del test                      | Descrizione                                                                              |
+Class Reference: [PrescriptionControllerTest] 
+
+[PrescriptionControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L16
+
+| Nome del test                      | Descrizione                                                                          |
 | ---------------------------------- | ------------------------------------------------------------------------------------ |
-| **testAddPrescription**            | Aggiunge una nuova prescription e verifica che la tabella sia stata aggiornata di conseguenza.                                                                                                    |
-| **testAddPrescriptionWrongDate**   | Tenta di aggiungere una nuova prescription con un dato non accettabile (data di fine validità antecedente alla data di inizio validità) e verifica che venga visualizzato un messaggio di errore. |
-| **testAddPrescriptionWrongDosage** | Tenta di aggiungere una nuova prescription con un dato non accettabile (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore.     |
+| **[testAddPrescription]**            | Aggiunge una nuova prescription e verifica che la tabella sia stata aggiornata di conseguenza.              |
+| **[testAddPrescriptionWrongDate]**   | Tenta di aggiungere una nuova prescription con un dato non accettabile (data di fine validità antecedente alla data di inizio validità) e verifica che venga visualizzato un messaggio di errore. |
+| **[testAddPrescriptionWrongDosage]** | Tenta di aggiungere una nuova prescription con un dato non accettabile (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore. |
+
+[testAddPrescription]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L85
+[testAddPrescriptionWrongDate]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L136
+[testAddPrescriptionWrongDosage]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L159
+
+
+
+
 
 ### 7. Modifica prescrizione farmaco
 
+Class Reference: [PrescriptionControllerTest] 
+
+[PrescriptionControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L16
+
 | Nome del test                       | Descrizione                                                                             |
 | ----------------------------------- | ------------------------------------------------------------------------------------------ |
-| **testEditPrescription**            | Modifica la prima prescription della tabella e verifica sia che la prescription in modifica sia pre compilata correttamente nel modulo, sia che a fine procedura risulti aggiornata di conseguenza              |
-| **testEditPrescriptionWrongDate**   | Tenta di modificare la prima prescription della tabella con dei dati non accettabili (data di fine validità antecedente alla data di inizio validità) e verifica che venga visualizzato un messaggio di errore. |
-| **testEditPrescriptionWrongDosage** | Tenta di modificare la prima prescription della tabella con dei dati non accettabili (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore.                  |
+| **[testEditPrescription]**            | Modifica la prima prescription della tabella e verifica sia che la prescription in modifica sia pre compilata correttamente nel modulo, sia che a fine procedura risulti aggiornata di conseguenza      |
+| **[testEditPrescriptionWrongDate]**   | Tenta di modificare la prima prescription della tabella con dei dati non accettabili (data di fine validità antecedente alla data di inizio validità) e verifica che venga visualizzato un messaggio di errore. |
+| **[testEditPrescriptionWrongDosage]** | Tenta di modificare la prima prescription della tabella con dei dati non accettabili (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore.  |
+
+[testEditPrescription]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L185
+[testEditPrescriptionWrongDate]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L221
+[testEditPrescriptionWrongDosage]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L241
+
 
 ### 8. Elimina prescrizione farmaco
 
+Class Reference: [PrescriptionControllerTest] 
+
+[PrescriptionControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L16
+
+
 | Nome del test                 | Descrizione                                                                              |
 | ----------------------------- | ---------------------------------------------------------------------------------------- |
-| **testDeletePrescription**    | Elimina la prima prescription della tabella delle prescrizioni e verifica che la tabella sia stata aggiornata di conseguenza.                  |
-| **testDeletePrescription404** | Tenta di forzare l’eliminazione di una entry non esistente, e verifica che il sistema reagisca reindirizzando l'utente a una pagina di errore. |
+| **[testDeletePrescription]**    | Elimina la prima prescription della tabella delle prescrizioni e verifica che la tabella sia stata aggiornata di conseguenza. |
+| **[testDeletePrescription404]** | Tenta di forzare l’eliminazione di una entry non esistente, e verifica che il sistema reagisca reindirizzando l'utente a una pagina di errore. |
+
+[testDeletePrescription]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L55
+[testDeletePrescription404]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L72
 
 ### 9. Visualizza lista prescrizioni farmaci
+
+Class Reference: [PrescriptionControllerTest] 
+
+[PrescriptionControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L16
 
 |  Nome del test         | Descrizione                                                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | **testTableInitState** | Verifica che la tabella delle prescription sia visualizzata correttamente con le informazioni di prova (DemoData). |
 
+[testTableInitState]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PrescriptionControllerTest.java#L19
+
+
 ## Extra
 
-| Nome del test         | Descrizione                                                                                                        |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **testDrugViewInit**  | Verifica che la tabella con l’elenco dei medicinali sia inizializzata correttamente e visibile a un dottore.       |
-| **testDBStats**       | Verifica che il conteggio delle entry nel database siainizializzato correttamente e visibile a un admin.           |
-| **testUsersViewInit** | Verifica che la tabella con l’elenco degli utenti registrati siainizializzata correttamente e visibile a un admin. |
+| Nome del test           | Descrizione                                                                                                          |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **[testDrugViewInit]**  | Verifica che la tabella con l’elenco dei medicinali sia inizializzata correttamente e visibile a un DOCTOR o OFFICE. |
+| **[testDBStats]**       | Verifica che il conteggio delle entry nel database siainizializzato correttamente e visibile a un ADMIN.             |
+| **[testUsersViewInit]** | Verifica che la tabella con l’elenco degli utenti registrati siainizializzata correttamente e visibile a un ADMIN.   |
+
+
+[testDrugViewInit]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/DrugControllerTest.java#L20
+[testDBStats]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/UtilsControllerTest.java#L13
+[testUsersViewInit]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/UserControllerTest.java#L16
+
+
+
 
 ### Code coverage
 
