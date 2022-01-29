@@ -5,6 +5,36 @@ Fabiola Fabretti VR482924
 Elisa Zanella VR482140    
 Cesare Montresor VR481252    
 
+#### Table of Contents
+
+- [Informazioni sul progetto](#informazioni-sul-progetto)  
+- [Processo di sviluppo](#processo-di-sviluppo)  
+- [Requisiti](#Requisiti)  
+- [Scenarios](#scenarios)    
+  1. [Login](#1-login)  
+  2. [Inserisci paziente](#2-inserisci-paziente)  
+  3. [Elimina paziente](#3-elimina-paziente)  
+  4. [Modifica paziente](#4-modifica-paziente)  
+  5. [Visualizza lista pazienti](#5-visualizza-lista-pazienti)  
+  6. [Inserisci prescrizione farmaco](#6-inserisci-prescrizione-farmaco)  
+  7. [Elimina prescrizione farmaco](#7-elimina-prescrizione-farmaco)  
+  8. [Modifica prescrizione farmaco](#8-modifica-prescrizione-farmaco)  
+  9. [Visualizza lista prescrizioni farmaco](#9-visualizza-lista-prescrizioni-farmaco)  
+  
+- [Quality assurance](#quality-assurance)
+  - [Test selection](#test-selection)
+  - [Unit testing](#unit-testing)
+  - [End-to-end testing](#end-to-end-testing)     
+    1. [Login](#1-login-1)  
+    2. [Inserisci paziente](#2-inserisci-paziente-1)  
+    3. [Elimina paziente](#3-elimina-paziente-1)  
+    4. [Modifica paziente](#4-modifica-paziente-1)  
+    5. [Visualizza lista pazienti](#5-visualizza-lista-pazienti-1)  
+    6. [Inserisci prescrizione farmaco](#6-inserisci-prescrizione-farmaco-1)  
+    7. [Elimina prescrizione farmaco](#7-elimina-prescrizione-farmaco-1)  
+    8. [Modifica prescrizione farmaco](#8-modifica-prescrizione-farmaco-1)  
+    9. [Visualizza lista prescrizioni farmaco](#9-visualizza-lista-prescrizioni-farmaco-1)  
+
 ## Informazioni sul progetto
 
 Il progetto è stato sviluppato con il linguaggio Java nella versione 11, invece come supporto per la gestione delle dipendenze abbiamo utilizzato Gradle con versione 7.3.1 e come IDE IntelliJ. Abbiamo usato un'architettura MVC, usando il framework Java Spring e Springboot (+ moduli Thymeleaf e security), con un database h2 che è stata necessaria per gestire la creazione dei dati.
@@ -22,7 +52,7 @@ Per lavorare simultaneamente abbiamo usato GitHub, con tre fork separate (ispira
 
 Il coordinamento e aggiornamento è avvenuto principalmente via chat e chiamate attraverso la piattaforma Discord.
 
-## Requirements
+## Requisiti
 
 Mentcare é un sistema informativo per la gestione di informazioni di pazienti con problemi di salute mentale in cura presso una clinica.
 
