@@ -188,6 +188,8 @@ Tali test sono stati fatti su tutti i metodi presenti nelle classi compresi anch
 
 Di seguito riportiamo, per ciascuno scenario descritto in precedenza, gli E2E test relativi e una descrizione delle operazioni svolte.
 
+
+
 ### 1. Login
 
 Class Reference: [MainControllerTest] 
@@ -215,54 +217,99 @@ Class Reference: [MainControllerTest]
 [testErrorNot]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/MainControllerTest.java#L116
 
 
+
+
 ### 2. Inserisci paziente
 
-| Nome del test                   | Descrizione                                                                                                                                           |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **testCreatePatient**           | Aggiunge un nuovo paziente e verifica che la lista dei pazienti sia stata aggiornata di conseguenza.                                                             |
-| **testCreatePatientWrongInput** | Tenta di aggiungere un nuovo paziente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato un messaggio di errore in alto alla pagina di creazione del paziente. |
+Class Reference: [PatientControllerTest] 
+
+[PatientControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L8
+
+| Nome del test                   | Descrizione                                                                                                     |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **[testCreatePatient]**           | Aggiunge un nuovo paziente e verifica che la lista dei pazienti sia stata aggiornata di conseguenza.            |
+| **[testCreatePatientWrongInput]** | Tenta di aggiungere un nuovo paziente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato un messaggio di errore in alto alla pagina di creazione del paziente. |
+
+[testCreatePatient]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L32
+[testCreatePatientWrongInput]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L50
+
+
+
 
 ### 3. Modifica paziente
 
-| Nome del test                   | Descrizione                                                                                                                                  |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **testEditPatientWrongInput**   | Tenta di modificare un paziente esistente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato il relativo messaggio di errore. |
-| **testEditPatient**             | Modifica i dati di un paziente e verifica che la entry della tabella relativa a quel paziente sia aggiornata di conseguenza.                                                                  |
-| **testEditPatientNotFound**     | Tenta di modificare un paziente con id non esistente inserendo l'id nello url della pagina e verifica che venga visualizzato una pagina di errore che dice che il paziente non è stato trovato solo che a differenza di testUpdatePatientWrongInput l'utente visualizza una pagina di errore diversa da edit perchè la pagina di modifica di quel paziente non esiste per questo viene mostrata la pagina notfound.      |
+Class Reference: [PatientControllerTest] 
+
+[PatientControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L8
+
+| Nome del test                   | Descrizione                                                             |
+| ------------------------------- | ----------------------------------------------------------------------- |
+| **[testEditPatientWrongInput]**   | Tenta di modificare un paziente esistente con un dato non accettabile (nome del paziente vuoto) e verifica che venga visualizzato il relativo messaggio di errore. |
+| **[testEditPatient]**             | Modifica i dati di un paziente e verifica che la entry della tabella relativa a quel paziente sia aggiornata di conseguenza. |
+| **[testEditPatientNotFound]**     | Tenta di modificare un paziente con id non esistente inserendo l'id nello url della pagina e verifica che venga visualizzato una pagina di errore che dice che il paziente non è stato trovato solo che a differenza di testUpdatePatientWrongInput l'utente visualizza una pagina di errore diversa da edit perchè la pagina di modifica di quel paziente non esiste per questo viene mostrata la pagina notfound. |
+
+
+[testEditPatientWrongInput]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L63
+[testEditPatient]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L82
+[testEditPatientNotFound]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L106
+
+
+
 
 ### 4. Elimina paziente
 
+Class Reference: [PatientControllerTest] 
+
+[PatientControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L8
+
 | Nome del test                 | Descrizione                                                                                          |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **testDeletePatient**         | Elimina un paziente e verifica che la lista di pazienti sia aggiornata di conseguenza.                           |
-| **testDeletePatientNotFound** | Tenta di eliminare un paziente inserendo da url l'id di un paziente non esistente e verifica che venga visualizzata la relativa pagina di errore che dice che il paziente non è stato trovato. |
+| **[testDeletePatient]**         | Elimina un paziente e verifica che la lista di pazienti sia aggiornata di conseguenza.                           |
+| **[testDeletePatientNotFound]** | Tenta di eliminare un paziente inserendo da url l'id di un paziente non esistente e verifica che venga visualizzata la relativa pagina di errore che dice che il paziente non è stato trovato. |
+
+[testDeletePatient]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L133
+[testDeletePatientNotFound]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L149
+
+
+
+
 
 ### 5. Visualizza lista pazienti
 
+Class Reference: [PatientControllerTest] 
+
+[PatientControllerTest]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L8
+
 | Nome del test            | Descrizione                                                                                |
 | ------------------------ | ------------------------------------------------------------------------------------------ |
-| **testInitListPatients** | Verifica che la lista dei pazienti sia inizializzata correttamente con i dati in DemoData. |
+| **[testInitListPatients]** | Verifica che la lista dei pazienti sia inizializzata correttamente con i dati in DemoData. |
+
+[testInitListPatients]: https://github.com/cesare-montresor/mentcare/blob/main/src/test/java/it/univr/efcgang/mentcare/ui/PatientControllerTest.java#L15
+
+
+
+
 
 ### 6. Inserisci prescrizione farmaco
 
-| Nome del test                      | Descrizione                                                                                                                                                                       |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Nome del test                      | Descrizione                                                                              |
+| ---------------------------------- | ------------------------------------------------------------------------------------ |
 | **testAddPrescription**            | Aggiunge una nuova prescription e verifica che la tabella sia stata aggiornata di conseguenza.                                                                                                    |
 | **testAddPrescriptionWrongDate**   | Tenta di aggiungere una nuova prescription con un dato non accettabile (data di fine validità antecedente alla data di inizio validità) e verifica che venga visualizzato un messaggio di errore. |
-| **testAddPrescriptionWrongDosage** | Tenta di aggiungere una nuova prescription con un dato non accettabile (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore.                  |
+| **testAddPrescriptionWrongDosage** | Tenta di aggiungere una nuova prescription con un dato non accettabile (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore.     |
 
 ### 7. Modifica prescrizione farmaco
 
-| Nome del test                       | Descrizione                                                                                                                                                                                                  |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Nome del test                       | Descrizione                                                                             |
+| ----------------------------------- | ------------------------------------------------------------------------------------------ |
 | **testEditPrescription**            | Modifica la prima prescription della tabella e verifica sia che la prescription in modifica sia pre compilata correttamente nel modulo, sia che a fine procedura risulti aggiornata di conseguenza              |
 | **testEditPrescriptionWrongDate**   | Tenta di modificare la prima prescription della tabella con dei dati non accettabili (data di fine validità antecedente alla data di inizio validità) e verifica che venga visualizzato un messaggio di errore. |
 | **testEditPrescriptionWrongDosage** | Tenta di modificare la prima prescription della tabella con dei dati non accettabili (campo di testo che descrive il dosaggio vuoto) e verifica che venga visualizzato un messaggio di errore.                  |
 
 ### 8. Elimina prescrizione farmaco
 
-| Nome del test                 | Descrizione                                                                                                                               |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Nome del test                 | Descrizione                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------------- |
 | **testDeletePrescription**    | Elimina la prima prescription della tabella delle prescrizioni e verifica che la tabella sia stata aggiornata di conseguenza.                  |
 | **testDeletePrescription404** | Tenta di forzare l’eliminazione di una entry non esistente, e verifica che il sistema reagisca reindirizzando l'utente a una pagina di errore. |
 
